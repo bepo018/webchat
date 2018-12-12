@@ -54,21 +54,13 @@ class adminsDaoImpl implements IAdminsService {
     @Override
     public Admins login(String username, String password) {
         Admins admins = adminsDao.selectAdminByName(username);
-<<<<<<< HEAD
         if (admins == null) {
             throw new UsernameNotFoundException("管理员不存在");
         } else {
             if (admins.getPassword().equals(password)) {
                 return admins;
             } else {
-=======
-        if(admins == null){
-            throw new UsernameNotFoundException("管理员不存在");
-        }else{
-            if(admins.getPassword().equals(password)){
-                return admins;
-            }else{
->>>>>>> 5e10e83bc41ac902099a258ac811bdcfccb6305c
+
                 throw new PasswordNotMatchException("密码错误");
             }
         }
