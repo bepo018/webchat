@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glkj.webchat.dao.IAdminsDao">
+    <!--TODO 这里修改过-->
+    <insert id="save" parameterType="com.glkj.webchat.pojo.Admins">
+        INSERT INTO
+            q_admins
+        VALUES(
+            null,#{username},#{password},#{level},#{qq},#{weixin},
+            #{phone},#{remarks},#{createUser},#{createTime},#{modifiedUser},#{modifiedTime}
+        );
+    </insert>
+    <select id="selectAdminById" resultType="com.glkj.webchat.pojo.Admins">
+        SELECT
+            id,username,password,level,qq,weixin,phone,remarks,
+            create_user createUser,
+            create_time createTime,
+            modified_user modifiedUser,
+            modified_time modifiedTime
+        FROM
+            q_admins
+        WHERE
+            id = #{id}
+    </select>
+    <select id="selectAdminByName" resultType="com.glkj.webchat.pojo.Admins">
+        SELECT
+            id,username,password,level,qq,weixin,phone,remarks,
+            create_user createUser,
+            create_time createTime,
+            modified_user modifiedUser,
+            modified_time modifiedTime
+        FROM
+            q_admins
+        WHERE
+            username=#{username}
+    </select>
+</mapper>

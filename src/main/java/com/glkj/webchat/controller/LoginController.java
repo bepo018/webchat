@@ -54,8 +54,6 @@ public class LoginController {
         user.setLasttime(date.getTime24());
         user.setIp(ip);
         user.setLevel(1);
-        userService.insert(user);
-        logService.insert(logUtil.setLog(userid, date.getTime24(), defined.LOG_TYPE_LOGIN, defined.LOG_DETAIL_USER_LOGIN, netUtil.getIpAddress(request)));
         session.setAttribute("level", user.getLevel());
         session.setAttribute("userid", userid);
         session.setAttribute("login_status", true);

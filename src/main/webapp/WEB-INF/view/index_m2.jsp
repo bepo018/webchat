@@ -27,21 +27,12 @@
     	<div class="chatHeader">
             <ul>
                 <li>
-                    <a href="http://m.111ctx.com/login">登录</a>
-                </li>
-                <li>
                     <img src="${ctx}/static/m/images/chat/m-logo_ctx2.png" alt="">
-                </li>
-                <li>
-                    <a href="http://m.111ctx.com/register?id=94649462">注册</a>
                 </li>
             </ul>
         </div>
         <div class="chatNav">
             <ul>
-                <!-- <li>
-                    <a href="#pageone">聊天</a>
-                </li> -->
                 <li>
                     <a href="#" class="nav-active">计划</a>
                 </li>
@@ -162,13 +153,7 @@
         <div class="chatHeader">
             <ul>
                 <li>
-                    <a href="http://m.111ctx.com/login">登录</a>
-                </li>
-                <li>
                     <img src="${ctx}/static/m/images/chat/m-logo_ctx2.png" alt="">
-                </li>
-                <li>
-                    <a href="http://m.111ctx.com/register?id=94649462">注册</a>
                 </li>
             </ul>
         </div>
@@ -203,13 +188,7 @@
         <div class="chatHeader">
             <ul>
                 <li>
-                    <a href="http://m.111ctx.com/login">登录</a>
-                </li>
-                <li>
                     <img src="${ctx}/static/m/images/chat/m-logo_ctx2.png" alt="">
-                </li>
-                <li>
-                    <a href="http://m.111ctx.com/register?id=94649462">注册</a>
                 </li>
             </ul>
         </div>
@@ -247,13 +226,7 @@
         <div class="chatHeader">
             <ul>
                 <li>
-                    <a href="http://m.111ctx.com/login">登录</a>
-                </li>
-                <li>
                     <img src="${ctx}/static/m/images/chat/m-logo_ctx2.png" alt="">
-                </li>
-                <li>
-                    <a href="http://m.111ctx.com/register?id=94649462">注册</a>
                 </li>
             </ul>
         </div>
@@ -308,13 +281,7 @@
         <div class="chatHeader">
             <ul>
                 <li>
-                    <a href="http://m.111ctx.com/login">登录</a>
-                </li>
-                <li>
                     <img src="${ctx}/static/m/images/chat/m-logo_ctx2.png" alt="">
-                </li>
-                <li>
-                    <a href="http://m.111ctx.com/register?id=94649462">注册</a>
                 </li>
             </ul>
         </div>

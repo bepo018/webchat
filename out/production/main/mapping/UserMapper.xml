@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glkj.webchat.dao.IUserDao">
+
+	<resultMap id="BaseResultMap"
+		type="com.glkj.webchat.pojo.User">
+		<id column="USERID" property="userid" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password"
+			jdbcType="VARCHAR" />
+		<result column="NICKNAME" property="nickname"
+			jdbcType="VARCHAR" />
+		<result column="SEX" property="sex" jdbcType="INTEGER" />
+		<result column="AGE" property="age" jdbcType="INTEGER" />
+		<result column="PROFILEHEAD" property="profilehead"
+			jdbcType="VARCHAR" />
+		<result column="PROFILE" property="profile" jdbcType="VARCHAR" />
+		<result column="FIRSTTIME" property="firsttime"
+			jdbcType="VARCHAR" />
+		<result column="LASTTIME" property="lasttime"
+			jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="INTEGER" />
+		<result column="IP" property="ip" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME,
+		LASTTIME, STATUS,IP
+	</sql>
+
+	<!-- 查询所有用户 -->
+	<select id="selectAll" resultMap="BaseResultMap">
+		SELECT USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE,
+		FIRSTTIME, LASTTIME, STATUS, IP FROM user
+		ORDER BY FIRSTTIME
+		LIMIT #{offset}, #{limit}
+	</select>
+	<select id="level" resultType="java.lang.Integer"
+		parameterType="java.lang.String">
+		SELECT level FROM USER WHERE USERID=#{userid,jdbcType=VARCHAR}
+	</select>
+	<!-- 根据用户id查询用户 -->
+	<select id="selectUserByUserid" resultMap="BaseResultMap"
+		parameterType="string">
+		SELECT
+		USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD, PROFILE, FIRSTTIME,
+		LASTTIME, STATUS,IP,LEVEL
+		FROM user
+		WHERE USERID = #{userid, jdbcType=VARCHAR}
+	</select>
+
+	<!-- 根据用户id查询用户 -->
+	<select id="selectCount" resultMap="BaseResultMap">
+		SELECT COUNT(*) USERID
+		FROM user
+	</select>
+
+	<!-- 插入用户 -->
+	<insert id="insert"
+		parameterType="com.glkj.webchat.pojo.User">
+		INSERT INTO user (USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD,
+		PROFILE, FIRSTTIME, LASTTIME, STATUS, IP)
+		VALUES (#{userid, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
+		#{nickname, jdbcType=VARCHAR}, #{sex, jdbcType=INTEGER},
+		#{age, jdbcType=INTEGER}, #{profilehead, jdbcType=VARCHAR}, #{profile,
+		jdbcType=VARCHAR},
+		#{firsttime, jdbcType=VARCHAR}, #{lasttime, jdbcType=VARCHAR}, #{status,
+		jdbcType=INTEGER}, #{ip, jdbcType=VARCHAR})
+	</insert>
+
+	<!-- 更新用户 -->
+	<update id="update"
+		parameterType="com.glkj.webchat.pojo.User">
+		UPDATE user
+		<set>
+			<if test="password != null and password != ''">
+				PASSWORD = #{password, jdbcType=VARCHAR},
+			</if>
+			<if test="nickname != null and nickname != ''">
+				NICKNAME = #{nickname, jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null and sex != ''">
+				SEX = #{sex, jdbcType=INTEGER},
+			</if>
+			<if test="age != null and age != ''">
+				AGE = #{age, jdbcType=INTEGER},
+			</if>
+			<if test="profilehead != null and profilehead != ''">
+				PROFILEHEAD = #{profilehead, jdbcType=VARCHAR},
+			</if>
+			<if test="profile != null and profile != ''">
+				PROFILE = #{profile, jdbcType=VARCHAR},
+			</if>
+			<if test="firsttime != null and firsttime != ''">
+				FIRSTTIME = #{firsttime, jdbcType=VARCHAR},
+			</if>
+			<if test="lasttime != null and lasttime != ''">
+				LASTTIME = #{lasttime, jdbcType=VARCHAR},
+			</if>
+			<if test="status != null and status != ''">
+				STATUS = #{status, jdbcType=INTEGER},
+			</if>
+			<if test="ip != null and ip != ''">
+				IP = #{ip, jdbcType=VARCHAR},
+			</if>
+		</set>
+		WHERE USERID = #{userid, jdbcType=VARCHAR}
+	</update>
+
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="string">
+		DELETE FROM user
+		WHERE USERID = #{userid, jdbcType=VARCHAR}
+	</delete>
+
+	<!-- 获取聊天内容 -->
+	<select id="list" resultType="java.lang.String"
+		parameterType="java.lang.Integer">
+		select question from robot limit #{page},7200;
+	</select>
+
+	<!-- 根据userid查询用户 -->
+	<select id="findUserByUserid" resultType="com.glkj.webchat.pojo.User" >
+		SELECT
+		userid,password,nickname,profilehead,status,
+		level,qq,weixin,phone,
+		enter_status enterStatus,
+		invitation,remarks,
+		create_time createTime,
+		create_user createUser
+		FROM
+		user
+		WHERE
+		userid=#{userid}
+	</select>
+
+	<!--插入高级用户-->
+	<insert id="insertSeniorMenber" parameterType="com.glkj.webchat.pojo.User">
+		INSERT INTO user(
+		userid,password,nickname,sex,age,profilehead,status,
+		level,qq,phone,weixin,
+		enter_status,invitation,
+		create_time,create_user)
+		VALUES(
+		#{userid},#{password},#{nickname},#{sex},#{age},#{profilehead},#{status},
+		#{level},#{qq},#{phone},#{weixin},
+		#{enterStatus},#{invitation},
+		#{createTime},#{createUser}
+		);
+	</insert>
+
+	<select id="getRecordCountByQq" resultType="java.lang.Integer">
+		SELECT
+			COUNT(qq)
+		FROM
+			user
+		WHERE
+			qq=#{qq}
+	</select>
+
+	<select id="getRocordCountByWeixin" resultType="java.lang.Integer">
+		SELECT
+			COUNT(weixin)
+		FROM
+			user
+		WHERE
+			weixin=#{weixin}
+	</select>
+
+	<select id="getRocordCountByPhone" resultType="java.lang.Integer">
+		SELECT
+			COUNT(phone)
+		FROM
+			user
+		WHERE
+			phone=#{phone}
+	</select>
+
+	<!--展示未归属用户信息-->
+	<select id="selectUserInfo" resultType="com.glkj.webchat.pojo.UserShow">
+		SELECT
+			userid,level,qq,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
+		FROM
+			user
+		WHERE
+			level = 2 AND invitation LIKE '没有归属';
+	</select>
+
+	<select id="selectUseShow" resultType="com.glkj.webchat.pojo.UserShow">
+		SELECT
+			userid,level,qq,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
+		FROM
+			user
+		WHERE
+			userid LIKE #{userid};
+	</select>
+
+	<!--展示未归属用户信息-->
+	<select id="selectPrivateUser" resultType="com.glkj.webchat.pojo.UserShow">
+		SELECT
+			userid,level,qq,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
+		FROM
+			user
+		WHERE
+			invitation = #{invitation};
+	</select>
+
+	<!--修改归属者-->
+	<update id="updateInvitation">
+		UPDATE
+			user
+		SET
+			invitation = #{0}
+		WHERE
+			userid LIKE #{1};
+	</update>
+
+</mapper>
