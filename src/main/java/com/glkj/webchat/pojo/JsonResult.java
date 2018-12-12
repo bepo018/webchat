@@ -13,6 +13,10 @@ public class JsonResult<T> implements Serializable {
         this.code = code;
         this.message = message;
     }
+    public JsonResult(Integer code, Throwable throwable){
+        this.code = code;
+        this.message = throwable.getMessage();
+    }
 
     public JsonResult(Integer code, String message, T data){
         this(code,message);

@@ -27,7 +27,7 @@ import com.glkj.webchat.service.ILotteryService;
  * @author qsjteam
  * @date 2018-10-1
  */
-@Service("iLotteryService")
+//@Service("iLotteryService") TODO 暂时注释
 public class LotteryServiceImpl implements ILotteryService {
 
     @Autowired
