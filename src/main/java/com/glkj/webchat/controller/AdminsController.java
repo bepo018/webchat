@@ -21,10 +21,7 @@ public class AdminsController {
      */
     @RequestMapping("registerAdmin")
     public String toRegisterAdmin(){
-        System.out.println("jj");
         return "registerAdmin";
     }
-
-
 
 }
