@@ -19,6 +19,7 @@ public class Admins {
     private Date createTime;
     private String modifiedUser;
     private Date modifiedTime;
+    private String profilehead;
 
     @Override
     public String toString() {
@@ -35,31 +36,16 @@ public class Admins {
                 ", createTime=" + createTime +
                 ", modifiedUser='" + modifiedUser + '\'' +
                 ", modifiedTime=" + modifiedTime +
+                ", profilehead='" + profilehead + '\'' +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Admins admins = (Admins) o;
-        return Objects.equals(id, admins.id) &&
-                Objects.equals(username, admins.username) &&
-                Objects.equals(password, admins.password) &&
-                Objects.equals(level, admins.level) &&
-                Objects.equals(qq, admins.qq) &&
-                Objects.equals(weixin, admins.weixin) &&
-                Objects.equals(phone, admins.phone) &&
-                Objects.equals(remarks, admins.remarks) &&
-                Objects.equals(createUser, admins.createUser) &&
-                Objects.equals(createTime, admins.createTime) &&
-                Objects.equals(modifiedUser, admins.modifiedUser) &&
-                Objects.equals(modifiedTime, admins.modifiedTime);
+    public String getProfilehead() {
+        return profilehead;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password, level, qq, weixin, phone, remarks, createUser, createTime, modifiedUser, modifiedTime);
+    public void setProfilehead(String profilehead) {
+        this.profilehead = profilehead;
     }
 
     public Integer getId() {

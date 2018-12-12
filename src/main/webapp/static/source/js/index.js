@@ -11,16 +11,7 @@ $(function(){
     }
 
 })
-//点击表情图，加载QQ表情
-$("#faceChose").click(function () {
-    var faceItem=""
-    for(var i=1;i<=75;i++){
-        faceItem+=`<div>
-                        <img src="${ctx}/static/images/face/${i}.gif" alt=""  onclick="$(\'#'+'message'+'\').setCaret();$(\'#'+'message'+'\').insertAtCaret(\'' + '['+'em_'+${i}+']' + '\');">
-                    </div>`
-    }
-    $("#faceContent").html(faceItem);
-})
+
 
 // 功能2：房间切换管理
 $(function(){
