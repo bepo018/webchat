@@ -20,7 +20,4 @@ public class GetMD5 {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(getMD5("efefef"));;
-    }
 }

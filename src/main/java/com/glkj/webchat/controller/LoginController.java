@@ -43,19 +43,12 @@ public class LoginController {
         String userid = RandomCode.getCode(6);
         User user = new User();
         user.setUserid(userid);
-        user.setPassword("");
         user.setNickname("游客");
-        user.setSex(0);
-        user.setAge(18);
         user.setProfilehead("avater" + RandomCode.getNum(136) + ".png");
         user.setProfile("游客登录临时账号");
         user.setStatus(1);
-        user.setFirsttime(date.getTime24());
-        user.setLasttime(date.getTime24());
         user.setIp(ip);
         user.setLevel(1);
-        userService.insert(user);
-        logService.insert(logUtil.setLog(userid, date.getTime24(), defined.LOG_TYPE_LOGIN, defined.LOG_DETAIL_USER_LOGIN, netUtil.getIpAddress(request)));
         session.setAttribute("level", user.getLevel());
         session.setAttribute("userid", userid);
         session.setAttribute("login_status", true);
@@ -85,10 +78,11 @@ public class LoginController {
                 attributes.addFlashAttribute("error", defined.LOGIN_USERID_ERROR);
                 //登录成功
                 Admins admins = adminsService.login(userid,pwd);
+                session.setAttribute("level", admins.getLevel());
                 session.setAttribute("userid", userid);
-//                session.setAttribute("login_status", true);
-//                session.setAttribute("level", user.getLevel());
-                System.out.println("登录成功");
+                session.setAttribute("login_status", true);
+                session.setAttribute("headmsg", admins.getProfilehead());
+                session.setMaxInactiveInterval(-1);
                 return "redirect:/chat";
             } catch (Exception e) {
                 System.out.println("用户名或密码错误");

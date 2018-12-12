@@ -92,25 +92,25 @@
                         <div class="info-room">在线管理</div>
                         <ul>
                             <li>
-                                <a href="">
+                                <a href="http://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>充值、提额咨询</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="http://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>注册、优惠咨</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="http://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>投注、兑奖咨询</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="http://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>诚招代理、月赚百万</span>
                                 </a>
@@ -845,7 +845,7 @@
                 $("#jsksVip").children(":last")[0].tagName == 'A'?$("#jsksVip").children(":last").remove():$("#jsksVip").children(":last");
                 $("#ctx").children(":last")[0].tagName == 'A'?$("#ctx").children(":last").remove():$("#ctx").children(":last");
                 $("#ctxVip").children(":last")[0].tagName == 'A'?$("#dfVip").children(":last").remove():$("#dfVip").children(":last");
-                $("#dfVip").children(":last")[0].tagName == 'A'?$("#df").children(":last").remove():$("#df").children(":last");
+                $("#dfVip").children(":last")[0].tagName == 'A'?$("#dfVip").children(":last").remove():$("#dfVip").children(":last");
                 $("#df").append("<a class='changeShiliang'>&nbsp;&nbsp;所在房间<img src='${ctx}/static/images/down.png' style='width: 14px;'></a>");
             }else if(whoClick=="dfVip"){
                 let a=parseInt(Math.random()*(5000-3000+1)+3000);
@@ -1137,6 +1137,16 @@
 		    str = str.replace(/\[em_([0-9]*)\]/g,'<img src="${ctx}/static/images/face/$1.gif" border="0"/>');
 		    return str;
 		}
+    //点击表情图，加载QQ表情
+    $("#faceChose").click(function () {
+        var faceItem=""
+        for(var i=1;i<=75;i++){
+            faceItem+="<div>"+
+                "<img src='${ctx}/static/images/face/"+i+".gif'  onclick=\"$('#message').setCaret();$('#message').insertAtCaret('[em_"+i+"]');\">"+
+            "</div>"
+        }
+        $("#faceContent").html(faceItem);
+    })
 	/**
 	 * 机器会话信息
 	 */
@@ -1172,7 +1182,13 @@
 	 * 展示level4,level3在线列表
 	 */
 	 function showHighLevelOnline(list){
-		    $("#"+whoClick+"_list").html("");    //清空在线列表
+            if(whoClick.indexOf("Vip") != -1){
+                w=whoClick.split("V")[0]
+            }else{
+                w=whoClick
+            }
+            console.log(whoClick)
+		    $("#"+w+"_list").html("");    //清空在线列表
 		    $.each(list.list, function(index, item){     //添加私聊和视频按钮
 		    	if(item.level==4 && item.userid == "${userid}"){
 		    		var li ="<li>"+
@@ -1220,7 +1236,7 @@
 		    		"</li>"
 		    	}
 		    	
-		        $("#"+whoClick+"_list").append(li);
+		        $("#"+w+"_list").append(li);
 		    });
 
 		    //提出房间   
