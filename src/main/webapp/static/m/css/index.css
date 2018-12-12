@@ -1,0 +1,1146 @@
+/* header部分star */
+/* logo部分开始 */
+.chatHeader{
+    width:100%;
+    background: #ec0022;
+}
+.chatHeader>ul{
+    width:100%;
+    display: flex;
+    display: -webkit-flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items:center;
+}
+.chatHeader>ul>li>img{
+    width:8rem;
+    vertical-align: middle;
+}
+.chatHeader>ul>li>a{
+    color:#fff;
+    font-weight: 300 !important;
+    font-family: "yahei" !important;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.chatHeader>ul>li>a:visited{
+    color:#fff;
+}
+.chatHeader>ul>li>a:hover{
+    color:yellow;
+}
+/* logo部分结束 */
+
+/* 导航部分开始 */
+ul{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.chatNav{
+    width:100%;
+    background: #fff3f0;
+}
+.chatNav>ul{
+    width:100%;
+    display: flex;
+    display: -webkit-flex;
+    text-align: center;
+    justify-content: space-around;
+    align-items:center;
+}
+.chatNav>ul>li{
+    height:2.2rem;
+}
+.chatNav>ul>li>a{
+    display: block;
+    height:2.2rem;
+    line-height: 2.2rem;
+    color:#000;
+    font-weight: normal !important;
+    font-size: 0.8rem;
+}
+.chatNav>ul>li>a:visited{
+    color:#000;
+}
+.chatNav>ul>li>a:hover{
+    color:#ec0022;
+}
+.nav-active{
+    color:#ec0022 !important;
+}
+/* 导航部分结束 */
+
+.tip{
+    left:0;
+    width:100vw;
+    z-index: 100;
+}
+/* 字体轮播部分开始 */
+.wordCarousel{
+    width:100%;
+    height:2.5rem;
+    display: flex;
+    display: -webkit-flex;
+    align-items:center;
+    font-size:0.9rem;
+    background: #fff;
+}
+.wordCarousel>div:first-child{
+    width:25vw;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color:#000;
+    padding-left:1rem;
+}
+.wordCarousel>div:first-child>span{
+    float: left;
+}
+.wordCarousel>div:first-child>span:last-child{
+    color:red;
+}
+.wordCarousel>div:last-child{
+    width:75vw;
+}
+/* 字体轮播部分j结束 */
+
+/* 开奖轮播开始 */
+.rewordCarousel{
+    display:block;
+    width:100%;
+    height:14vw;
+    background: #eee;
+    padding: 1.875vw 0;
+    overflow:hidden;
+    /*touch-action: none; /*限制谷歌滚动报错*/
+}
+.rewordCarousel>div.scroll-wap{
+    width:100%;
+    height:14vw;
+    position: relative;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper{
+    transition-duration: 0ms;
+    transform: translate3d(18.5px,0px,0px);
+    position: absolute;
+    overflow: hidden;
+    height:14vw;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li{
+    margin-right:9px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width:89.6875vw;
+    float: left;
+    border-radius: 1.5625vw;
+    background: #fff;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li>.lf{
+    float: left;
+    margin-left: 1.875vw;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li>.lf>img{
+    width:10.9375vw;
+    margin-left:0.3125vw;
+    margin-top:0.3125vw;
+    border-radius: 50%;
+    border:1px solid #ececec;
+    background: #fff;
+    padding:0.625vw;
+    float: left;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li>.rt{
+    -webkit-box-flex:1;
+    flex:1;
+    margin-left:2.5vw;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li>.rt>.top{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-right: 4.21875vw;
+    height:7.03125vw;
+    line-height: 7.03125vw;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li>.rt>.top>span:first-child{
+    color:#333;
+    font-size:3.75vw;
+}
+.rewordCarousel>div.scroll-wap>ul.swiper-wrapper>li>.rt>.top>span:last-child{
+    color:#999;
+    font-size:2.8125vw;
+}
+/* 江苏快三star */
+.ball-wrap{
+    font-size:0;
+}
+.ball-ksan{
+    width:5.9375vw;
+    height:5.9375vw;
+    margin-right:3.75vw !important;
+    overflow: hidden;
+}
+.ball{
+    border-radius: 0;
+    width:5.9375vw;
+    height:5.9375vw;
+    background: url("../images/chat/carousel/trend-icons.png")no-repeat -.16875vw -.03125vw;
+    background-size: 38.875vw;
+    display: inline-block;
+    line-height: 1.24rem;
+    text-align: center;
+    color: #fff;
+    font-size: 0.7rem;
+}
+.ball2{
+    background-position: -6.15625vw -.03125vw;
+}
+.ball3{
+    background-position: -12.15625vw -.03125vw;
+}
+.ball4{
+    background-position: -18.15625vw -.03125vw;
+}
+.ball5{
+    background-position: -24.15625vw -.03125vw;
+}
+.ball6{
+	background-position: -30.15625vw -.03125vw;
+}
+
+.txt{
+    font-size:3.125vw;
+}
+.special-txt{
+    color:#ec0022;
+}
+.bottom>span{
+    float:left;
+    display: block;
+    text-align: center;
+}
+/* 江苏快三end */
+
+/* 重写单点击主体后样式 */
+.ui-fixed-hidden{
+    position: fixed !important;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.ui-btn-icon-left {
+    padding-left: 0 !important;
+}
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
+    font-weight: normal !important;
+}
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    background-color: #f9f9f9;
+    border-color: #bbb;
+    color: #333;
+    text-shadow: 0 0 0 #f3f3f3 !important;
+}
+/* 开奖轮播结束 */
+/* header部分end */
+
+/* content部分star */
+/* 聊天列表开始 */
+.chatlist{
+    min-height: 100%;
+    overflow-y: auto;
+    font-family: "yahei" !important;
+}
+.chatlist>ul{
+    min-height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+.chatlist>ul>li{
+    display: flex;
+    padding:0 2.76923077vw;
+    margin-bottom: 3.69230769vw;
+    font-size:0.7rem;
+    user-select: none;
+}
+.chat-left>img{
+    margin-right: 3.07692308vw;
+    width:8vw;
+    height:8vw;
+    border-radius: 100%;
+    margin-top:1.53846154vw;
+    float:none;
+    display: block;
+}
+.chat-left>div{
+    width:80vw;
+}
+.chat-left>div>p{
+    height: 5.625vw;
+    line-height: 5.625vw;
+    font-size: 0;
+    color:#656565;
+    margin-bottom:2.15384615vw;
+}
+.chat-left>div>p>img{
+    float: inherit;
+    width:11.40625vw;
+    height:2.96875vw;
+    margin-right:2vw !important;
+}
+.chat-left>div>p>span{
+    height:100%;
+}
+.chat-left>div>p>span:last-child{
+    margin-right: 0;
+}
+.chat-left>div>p *{
+    display:inline-block;
+    vertical-align: middle;
+    font-size: 3.07692308vw;
+    margin-right: .78125vw;
+}
+.chat-left>div>div{
+    max-width:69.53125vw;
+    display: inline-block;
+}
+.chat-left>div>div>div{
+    white-space: pre-wrap;
+    background: #e7ebf2;
+    display: inline-block;
+    padding:1.84615385vw 2.76923077vw;
+    border-radius: 6px;
+    position: relative;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.chat-left>div>div>div>img,.chat-right>div>div>div>img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.chat-left>div>div>div:before{
+    left:-8px;
+    border-top:8px solid #e7ebf2;
+}
+.pf:before{
+    content: "";
+    height: 0;
+    width:0;
+    position: absolute;
+    top:0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #e7ebf2;
+}
+/* self 说话开始*/
+.chat-right{
+    position: relative;
+}
+.chat-right>img{
+    position: absolute;
+    right:2.76923077vw;
+    margin-left: 3.07692308vw;
+    width:8vw;
+    height:8vw;
+    border-radius: 100%;
+    margin-top:1.53846154vw;
+    display: block;
+}
+.chat-right>div{
+    width:80vw;
+    margin-left: 4.07692308vw ;
+}
+.chat-right>div>p{
+    height: 5.625vw;
+    line-height: 5.625vw;
+    font-size: 0;
+    color:#656565;
+    margin-bottom:2.15384615vw;
+
+}
+.chat-right>div>p>img{
+    float: right;
+    width:11.40625vw;
+    height:2.96875vw;
+    margin:1.328125vw 0 1.328125vw 2vw !important;
+}
+.chat-right>div>p>span{
+    height:100%;
+    float: right;
+}
+.chat-right>div>p>span:last-child{
+    margin-right: .78125vw;
+}
+.chat-right>div>p *{
+    display:inline-block;
+    vertical-align: middle;
+    font-size: 3.07692308vw;
+    margin-left: .78125vw;
+}
+.chat-right>div>div{
+    width:80vw;
+}
+.chat-right>div>div{
+    max-width:69.53125vw;
+    display: inline-block;
+    position: relative;
+    float: right;
+}
+.chat-right>div>div>div{
+    float:right;
+    white-space: pre-wrap;
+    background: #0e79f6;
+    display: inline-block;
+    padding:1.84615385vw 2.76923077vw;
+    border-radius: 6px;
+    word-wrap: break-word;
+    word-break: break-all;
+    color:#fff;
+    font-weight: normal !important;
+}
+.chat-right>div>div>div:before{
+    right:-8px;
+    border-top:8px solid #0e79f6 ;
+}
+/* self 说话结束*/
+/* /加入聊天室开始 */
+.enter-chat-room{
+    width:100vw;
+    text-align: center;
+    display: block !important;
+    margin-bottom: 0 !important;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing:border-box;
+}
+.enter-chat-room>p{
+    display: inline-block;
+    height:6.5625vw;
+    line-height: 6.5625vw;
+    background: #c6c6c6;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    padding:0 1.5625vw;
+    font-size: 2.8125vw;
+    margin:6px 0 !important;
+}
+/* /加入聊天室结束 */
+/* 聊天列表结束 */
+/* content部分end */
+
+/* footer部分star */
+/* 输入区域开始 */
+.chat-input{
+    background: #eee;
+    display: flex;
+    align-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    padding:1.15384615vw 2.15384615vw;
+    border-bottom: 1px solid #cacaca;
+}
+.chat-input>i{
+    background: url("../images/chat/chat-input.png")no-repeat;
+    background-size: 30.76923077vw 30.76923077vw;
+    display:inline-block;
+    font-size: 0;
+    width:8.30769231vw;
+    height:8.30769231vw;
+    margin-right:1.230769231vw;
+}
+.chat-input>.icon-add{
+    background-position: 0 -9.38461538vw;
+}
+.chat-input>.icon-face{
+    background-position: -9.53846154vw -9.84615385vw;
+}
+.chat-input>.icon-send{
+    background-position: -19.23076923vw -9.84615385vw;
+}
+
+.chat-input>.ui-input-text{
+    width:68vw !important;
+    margin-right:1.230769231vw !important;
+    font-size: 3vw !important;
+    font-family: "yahei" !important;
+    color:#000;
+}
+/* 输入区域结束*/
+/* 表情区域开始 */
+.emoji{
+    display: block;
+    position: relative;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width:100vw;
+    height: 40vw;
+    overflow: hidden;
+    background: #fff;
+    transition: height 0.5s;
+    padding: 5vw;
+    padding-bottom: 10vw;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing:border-box;
+}
+.emojiListOne,.emojiListTwo{
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+    overflow: auto;
+}
+
+.emojiListOne>div,.emojiListTwo>div{
+    margin-bottom: 4.125vw;
+    padding: 0 3vw;
+}
+.emojiListOne>div>img{
+    width:16.5vw;
+    height:16.5vw;
+    float: left;
+}
+.emojiItems{
+    width:100vw;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    border-top:1px solid #ececec;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.emojiItems>.itm{
+    position: relative;
+    width:10vw;
+    height:10vw;
+    padding: 0 3.125vw;
+    font-size: 0;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.active{
+    background: #ececec;
+}
+.emojiItems>.itm:after{
+    display: block;
+    content: "";
+    visibility: visible;
+    height: 10vw;
+    position: absolute;
+    right: 0;
+    top:0;
+    border-right: 1px solid #ececec;
+}
+.emojiItems>.itm>img{
+    display: inline-block;
+    width:6.875vw;
+    height:6.875vw;
+    margin-top:1.5625vw;
+    float: left;
+}
+.emojiItems>.itm-face{
+    position: relative;
+    width:10vw;
+    height:10vw;
+    padding: 0 3.125vw;
+    font-size: 0;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.emojiItems>.itm-face:after{
+    display: block;
+    content: "";
+    visibility: visible;
+    height: 10vw;
+    position: absolute;
+    right: 0;
+    top:0;
+    border-right: 1px solid #ececec;
+}
+.emojiItems>.itm-face>span{
+    display: inline-block;
+    width:6.875vw;
+    height:6.875vw;
+    margin-top:1.5625vw;
+    float: left;
+    background: url("../images/chat/emoji-48.png")no-repeat;
+    background-position: 0 0;
+}
+.emojiListTwo>div>span{
+    display: inline-block;
+    width:24px;
+    height:24px;
+    margin-top:1.5625vw;
+    float: left;
+    background: url("../images/chat/emoji-48.png")no-repeat;
+}
+
+/* .emojiListTwo{ */
+
+/* 表情区域结束 */
+/* footer部分end */
+
+/* 小组件star */
+.sign-in{
+    position: fixed;
+    right: 4vw;
+    bottom:50%;
+    width:11.875vw;
+    height:10.46875vw;
+}
+.sign-in>div>img{
+    width:13vw;
+}
+.sign-in>div:first-child>img{
+    margin-bottom: 5vw;
+}
+/* 红包开始*/
+
+/* 红包结束*/
+/* 小组件end */
+/* 签到开始 */
+/* 签到结束 */
+
+
+/* *******第二个页面开始************/
+/* header部分开始 */
+.planHeader{
+    width:100%;
+    background: #ec0022;
+    text-align: center;
+    display: flex;
+    /*2018/12081011star*/
+    align-items: center;
+    justify-content: center;
+    /*2018/12081011end*/
+}
+/* 2018/12081011star */
+.planHeader>div{
+    flex:1;
+    color:#fff;
+    position: relative;
+
+}
+.planHeader>div>img{
+    width:8rem;
+    vertical-align: middle;
+}
+.planHeader>img{
+    width:8rem !important;
+    vertical-align: middle;
+}
+.togglePlan{
+    position: absolute;
+    padding: 0 0.5rem;
+    background: #f7f7f7;
+    color:#666;
+    right:10px;
+    top:2.2rem;
+    max-height: 300px;
+    overflow: auto;
+
+}
+.togglePlan>li{
+    font-size:0.9rem;
+    margin-bottom:0.5rem;
+    border-bottom: 1px solid #c8c7cc;
+    z-index: 10;
+    padding:0.5rem 0;
+    text-align: center;
+}
+.icon-toggle{
+    display: none;
+}
+.icon-toggle:before{
+    position: absolute;
+    top: 1.8rem;
+    left: 20%;
+    width: 26px;
+    height: 26px;
+    margin-left: 13px;
+    content: " ";
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-radius: 3px;
+    background: #f7f7f7;
+}
+/* 2018/12081011end */
+
+
+.planHeader>img{
+    width:8rem !important;
+    vertical-align: middle;
+}
+/* header部分结束*/
+/* center部分开始 */
+
+/* center部分结束 */
+#pagetwo{
+    font-family: "yahei" !important;
+}
+.plan-tab{
+    display: flex;
+
+}
+.plan-tab li{
+    -webkit-box-flex: 1;
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    padding: 3vw 2vw;
+    vertical-align: top;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+.plan-tab li:before{
+    content: "";
+    position: absolute;
+    background: url("../images/chat/hot.png");
+    background-size: 30px 13.2px;
+    right:4vw;
+    width:30px;
+    height:13.2px;
+    top:1vw;
+}
+.plan-tab li>img{
+    width:15vw;
+    float: none;
+}
+.plan-tab li>p{
+    padding: 0;
+    margin: 0;
+    font-size: 0.7rem;
+    color:#757575;
+}
+.plan-win {
+    padding: 8px 0;
+}
+.plan-win .planinfo {
+    text-align: center;
+    padding-bottom: 6px;
+    font-size: 0.8rem;;
+    color: #8b8b8b;
+}
+.plan-win .win-ball {
+    text-align: center;
+}
+.plan-ball-pk10 .planball {
+    width: 5.5vw;
+    height: 5.5vw;
+    line-height: 5.5vw;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 0.7rem;
+    color:#fff;
+    text-align: center;
+}
+.plan-ball-pk10 .ball-01 {
+    background-color: #fffc00;
+    color: #111;
+}
+.plan-ball-pk10 .ball-02 {
+    background-color: #0054ff;
+}
+.plan-ball-pk10 .ball-03 {
+    background-color: #001868;
+}
+.plan-ball-pk10 .ball-04 {
+    background-color: #ff5b00;
+}
+.plan-ball-pk10 .ball-05 {
+    background-color: #00c0ff;
+}
+.plan-ball-pk10 .ball-06 {
+    background-color: #5d06f4;
+}
+.plan-ball-pk10 .ball-07 {
+    background-color: #b2b2b2;
+}
+.plan-ball-pk10 .ball-08 {
+    background-color: #f70400;
+}
+.plan-ball-pk10 .ball-09 {
+    background-color: #ad0000;
+}
+.plan-ball-pk10 .ball-10 {
+    background-color: #0ad500;
+}
+.plan-main>.plan-tip {
+    text-align: center;
+    padding: 5px;
+    background-color: #ff7614;
+    color: #fff;
+    min-height: 30px;
+    /* 201812031304star */
+    display: flex;
+    align-items: center;
+    /* 201812021304end */
+}
+/* 201812031304star */
+.rewordHistory{
+    flex:1;
+}
+
+
+.rewordForecast{
+    flex:1;
+}
+.codeStyle>span{
+     margin-right:20px !important;
+ }
+
+/* 201812021304end */
+
+
+.plan-main>.plan-mains>ul{
+    width:100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing:border-box;
+}
+.plan-main>.plan-mains>ul>li{
+    width:100%;
+    text-align: center;
+    overflow: hidden;
+    /* min-height: 20px; */
+}
+.plan-main>.plan-mains>ul>li>div{
+    float: left;
+    padding: 5px;
+    display: block;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing:border-box;
+}
+.plan-pk10 .plan-mains>ul>li>div:first-child{
+    width:25vw;
+}
+.plan-pk10 .plan-mains>ul>li>div:last-child{
+    width:75vw;
+}
+.plan-main .plan-listTip{
+    background: #f2f2f2;
+}
+.plan-main .plan-list>li>div{
+    border:1px dashed #e6e6e6;
+}
+.plan-ball-ssc>span,.plan-ball-jsk3>span{
+    text-align: center;
+    color: #fff;
+    display: inline-block;
+    margin-right: 1vw;
+    height: 5vw;
+    width: 5vw;
+    line-height: 5vw;
+    border-radius: 100%;
+    background-color: #ec0022;
+    font-size: 0.7rem;
+}
+.plan-cqssc .plan-mains>ul>li>div:first-child,.plan-jsk3 .plan-mains>ul>li>div:first-child{
+    width:50vw;
+}
+.plan-cqssc .plan-mains>ul>li>div:last-child,.plan-jsk3 .plan-mains>ul>li>div:last-child{
+    width:50vw;
+}
+/* 重置样式开始 */
+.ui-bar-inherit {
+    text-shadow: 0 0px 0 #eee !important;
+}
+/* 重置样式结束 */
+/* *******第二个页面结束************/
+
+/************第三个页面开始 *****/
+.loadbet{
+    box-sizing: border-box !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing:border-box;
+}
+.loadbet>iframe{
+    width:100vw;
+    /* overflow-y : hidden; */
+}
+/************第三个页面结束*****/
+
+/* 第四个页面开始********* */
+.pagefour{
+    font-family: "yahei" !important;
+}
+.reword-page>li{
+    min-height: 90px;
+    padding: 6px .3rem 6px 55px;
+    border-bottom: 10px solid #eee;
+    position: relative;
+}
+.reword-page>li>.list-logo{
+    position: absolute;
+    left: .3rem;
+    top: 25px;
+}
+.reword-page>li>.list-logo>img{
+    width:40px;
+    float:left;
+}
+.reword-page>li>.list-detail{
+    margin-left: .3rem;
+}
+.reword-page>li>.list-detail>.title{
+    padding:3px 0;
+}
+.reword-page>li>.list-detail>.title>span:last-child{
+    font-size: 0.7rem;
+    color:#898484;
+    float: right;
+}
+.reword-page>li>.list-detail>.period{
+    font-size: .7rem;
+    color: #868484;
+    margin-bottom: .2rem;
+}
+.ui-list-balls>span{
+    float: left;
+    display: block;
+    text-align: center;
+    margin-right: .1rem;
+}
+.ui-list-balls>span>.reword-ball{
+    display: inline-block;
+    line-height: 1.24rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #d11606;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: .7rem;
+}
+/* 第四个页面结束********* */
+
+/* 第五个页面开始***** */
+.course-list>li>img{
+    width:100%;
+}
+.course-list>li:not(:last-child) {
+    margin-bottom: 3.125vw;
+    overflow: hidden;
+}
+/* <!-- 201812091515star -->*/
+.course-close{
+    position: fixed;
+    right:5vw;
+}
+.course-close span{
+    display: inline-block;
+    width:10px;
+    height:10px;
+}
+.course-close span:before{
+    content:'x';
+    width:20px;
+    height:20px;
+    display:inline-block;
+    background: #ddd;
+    border-radius: 50%;
+    text-align: center;
+}
+.course-content{
+    width:100vw;
+}
+.course-content>ul>li>img{
+    width:95vw;
+}
+
+/*<!-- 201812091515end --> */
+/* 第五个页面结束***** */
+
+
+
+.show{
+    display: block !important;
+}
+.hide{
+    display: none !important;
+}
+.plan-cqssc{
+    display:none;
+}
+.plan-jsk3{
+    display:none;
+}
+/* 中奖播报 */
+.prize-wrap {
+    position: fixed;
+    top: 40%;
+    width: 100vw;
+    z-index: 9;
+    left:100vw;
+}
+.prize-wrap>ul{
+    padding: 0;
+    margin: 0;
+}
+.prize-wrap>ul>li{
+    width: 100vw;
+    left:1.01875vw;
+    min-height: 20vw;
+    text-align: center;
+    background: url("../images/chat/prize_img.png")no-repeat;
+    background-size: 20vw;
+}
+.prize-wrap>ul>li>img{
+    width:15vw;
+    display: inline-block;
+    position: absolute;
+    right:0;
+    top:0;
+}
+.prize-wrap>ul>li>span{
+    position: absolute;
+    left:16vw;
+    bottom:0;
+    display: flex;
+    width: 80vw;
+    color:#fff;
+    min-height: 10vw !important;
+    font-size: 0.7rem;
+    text-align: center;
+    border-radius: 4vw;
+    background: linear-gradient(to right,#ff430f,#ff0f9e);
+    align-items: center;
+    justify-content: center;
+    padding:0 1.5vw;
+}
+
+/* 直播列表样式 star*/
+.live-list{
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.live-list>.item>.avatar {
+    position: relative;
+    width: 44.6875vw;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.live-list>.item>.avatar>img{
+    width:100%;
+    float: left;
+}
+.live-list>.item>.avatar>.hot {
+    position: absolute;
+    right: 1.875vw;
+    top: 1.5625vw;
+    height: 5.625vw;
+    padding: 0 1.5625vw;
+    line-height: 5.9375vw;
+    padding-left: 5.9375vw;
+    font-size: 2.8125vw;
+    border-radius: 8px;
+    background-color: rgba(0,0,0,.4);
+    background-image: url('../images/chat/livehot.png');
+    background-position: 1.5625vw .9375vw;
+    background-repeat: no-repeat;
+    background-size: 2.96875vw 3.4375vw;
+    color: #fff;
+}
+.live-list>.item>.name {
+    width: 44.6875vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 2.5vw 0 5.3125vw;
+    font-size: 3.75vw;
+    color: #000;
+    text-align: center;
+}
+
+.live-detail{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    z-index: 1000;
+}
+.live-detail>div>.video-close {
+    background: #fff;
+    width: 6.25vw;
+    height: 6.25vw;
+    text-align: center;
+    color: #000;
+    position: fixed;
+    right: 6vw;
+    top: 5vw;
+    z-index: 10;
+    border-radius: 100%;
+}
+.iconfont {
+    font-family: iconfont!important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-close:before {
+    content: "x";
+}
+/* 直播列表样式 end*/
+/* 重定义样式开始 */
+.ui-content{
+    padding:1em 0.5em !important;
+}
+/* 重定义结束 */
+
+/* 201811281426更改聊天页面中奖播报star */
+.codeBox{
+	display: inline-block;
+    line-height: 1.24rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: #d11606;
+    color: #fff;
+    text-align: center;
+    border-radius: 50%;
+    font-size: .7rem;
+    margin-right:3px;
+}
+
+/* 201811281426更改聊天页面中奖播报end */
+
+
+
+
