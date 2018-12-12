@@ -11,21 +11,21 @@ public interface IAdminsService {
      * @param id
      * @return
      */
-    Admins selectById(Integer id);
+    Admins findById(Integer id);
 
     /**
      * 根据管理员用户名查找管理员
      * @param adminName
      * @return
      */
-    Admins selectByName(String adminName);
+    Admins findByName(String adminName);
 
     /**
      * 保存管理员信息
      * @param admin
      * @return 返回受影响的行数
      */
-    Boolean save(Admins admin);
+    Boolean save(Admins admin,int[] rights,String createUser);
 
     /**
      * 管理员登录
@@ -36,4 +36,11 @@ public interface IAdminsService {
      * @throws com.glkj.webchat.service.ex.PasswordNotMatchException
      */
     Admins login(String username, String password);
+
+    /**
+     * 修改管理员信息
+     * @param admins
+     * @return
+     */
+    Boolean update(Admins admins,Integer rights,String modifiedUser);
 }
