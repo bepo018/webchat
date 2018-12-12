@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glkj.webchat.dao.ILiveDao">
+
+    <insert id="insert" parameterType="com.glkj.webchat.pojo.LiveInfo">
+        <!--INSERT INTO livebroadcast (name, photo, hot, roomAddress)-->
+        <!--VALUES("123","123",123,"123");-->
+        INSERT INTO livebroadcast (name,photo,hot,roomAddress,createTime,createUser)
+        VALUES(#{name},#{photo},#{hot},#{roomAddress},#{createTime},#{createUser});
+    </insert>
+    <select id="selectAll" resultType="com.glkj.webchat.pojo.LiveInfo">
+        SELECT * FROM livebroadcast;
+    </select>
+    <select id="selectLive" resultType="com.glkj.webchat.pojo.LivePc">
+        SELECT * FROM livepc;
+    </select>
+</mapper>

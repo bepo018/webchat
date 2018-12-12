@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.glkj.webchat.dao.ILottDao">
+
+	<select id="selectActivation" parameterType="integer" resultType="com.glkj.webchat.pojo.LottType">
+		SELECT
+			id,lott_code AS lottCode,lott_name AS lottName,lott_cycle AS lottCycle,state,
+			created_user AS createdUser,created_time AS createdTime,
+			modified_user AS modifiedUser,modified_time AS modifiedTime
+		FROM lott_type WHERE state = #{state}
+	</select>
+
+	<select id="findYuCeByIds" parameterType="string" resultType="com.glkj.webchat.pojo.YuCe">
+	SELECT
+        <if test="play != null and play != ''">
+            first,second,third,forth,fifth,sixth,seventh,eighth,ninth,tenth,
+        </if>
+        id,lott_id AS lottId,gid,champ_num AS champNum
+    FROM yuce
+    WHERE
+        gid &lt;= #{gid}+1 AND gid &gt; #{gid}-20
+        AND lott_id = (SELECT id FROM lott_type WHERE lott_code = #{lott}) ORDER BY gid DESC
+	</select>
+
+</mapper>

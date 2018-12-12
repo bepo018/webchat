@@ -454,7 +454,7 @@
         </div>
     </div>
     <div data-role="main">
-        <div class="loadbet">
+        <div class="loadbet" >
         </div>
     </div>
 </div>
@@ -916,13 +916,15 @@
  // 第四个页面
  //进入投注页面默认刷新
         function refreshFrame(){
+
+
             //判断用户终端类型
             if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
-                //判断是ios用户的时候执行某种操作
-                window.open("${ctx}/#pagethree","_self");
+                //判断是ios用户的时候执行某种操作--%>
+                var tempwindow=window.open('${ctx}/#pagethree?'+(new Date()).getTime(),'_self'); // 先打开页面
 
-            } else{
-                //判断是安卓用户的时候执行某种操作
+           } else{
+                //判断是安卓用户的时候执行某种操作--%>
                 window.location.reload(true);
             }
 
@@ -1140,7 +1142,7 @@
 	}
 	//拼接直播
     $(function () {
-    	var a=window.screen.height-88.3;
+
         $.getJSON("${ctx}/live/getLiveInfo", function (Obj) {
             var htmllist = "";
             var htmlpageList=[];
@@ -1181,10 +1183,10 @@
 
         });
 
-
+        var a=window.screen.height-88.3;
         var repage="";
         var randomnumber=Math.floor(Math.random()*100000);
-        repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+new Date().getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px""></iframe>'
+        repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
         $(".loadbet").html(repage);
 
       	

@@ -90,6 +90,7 @@ public class LoginController {
                 System.out.println(e.getMessage());
                 //登录失败
                 return "redirect:/user/login";
+
             }
 
         } else {
