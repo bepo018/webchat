@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * TODO 这里修改过
@@ -31,13 +32,13 @@ class adminsDaoImpl implements IAdminsService {
     }
 
     @Override
-    public Boolean save(Admins admin, int[] rights,String createUser) {
+    public Boolean save(Admins admin, int[] rights, String createUser) {
         Admins a = adminsDao.selectAdminByName(admin.getUsername());
         if (a == null) {
             adminsDao.save(admin);
             int adminId = findByName(admin.getUsername()).getId();
             //循环创建权限关联记录
-            for (int i=0;i<rights.length;i++) {
+            for (int i = 0; i < rights.length; i++) {
                 RightsAdmins rightsAdmins = new RightsAdmins();
                 rightsAdmins.setAdminID(adminId);
                 rightsAdmins.setRoleID(rights[i]);
@@ -67,25 +68,44 @@ class adminsDaoImpl implements IAdminsService {
     }
 
     @Override
-    public Boolean update(Admins admins,Integer rights,String modifiedUser) {
+    public Boolean update(Admins admins, Integer rights, String modifiedUser) {
         Admins a1 = findByName(admins.getUsername());
-        if(a1 == null){
+        if (a1 == null) {
             throw new UsernameNotFoundException("管理员不存在");
-        }else{
+        } else {
             Integer aid = a1.getId();
             admins.setId(aid);
             adminsDao.update(admins);
-            if(rights == 1){
-                adminsDao.removeRights(aid,1);
-            }else if(rights == 2){
-                RightsAdmins admins1 = new RightsAdmins();
-                admins1.setRoleID(2);
-                admins1.setAdminID(aid);
-                admins1.setCreate_user(modifiedUser);
-                admins1.setCreate_time(new Date());
-                adminsDao.saveRights(admins1);
+            if (rights == 1) {
+                adminsDao.removeRights(aid, 2);
+            } else if (rights == 2) {
+                if (adminsDao.getCountByAidRid(aid, 2) <1) {
+                    RightsAdmins admins1 = new RightsAdmins();
+                    admins1.setRoleID(2);
+                    admins1.setAdminID(aid);
+                    admins1.setCreate_user(modifiedUser);
+                    admins1.setCreate_time(new Date());
+                    adminsDao.saveRights(admins1);
+                }else{
+                    System.out.println("高级权限已存在");
+                }
             }
             return true;
+        }
+    }
+
+    @Override
+    public List<Admins> findAllAdmins() {
+        return adminsDao.selectAllAdmins();
+    }
+
+    @Override
+    public Boolean deleteAdmind(String adminName) {
+        Admins admins = adminsDao.selectAdminByName(adminName);
+        if(admins == null){
+            throw new UsernameNotFoundException("管理员不存在");
+        }else{
+            return adminsDao.deleteAdmins(admins.getId())>0;
         }
     }
 }

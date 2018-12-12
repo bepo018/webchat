@@ -5,6 +5,9 @@ import com.glkj.webchat.pojo.RightsAdmins;
 import com.sun.mail.imap.Rights;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
+
 /**
  *
  * 管理员映射
@@ -54,4 +57,25 @@ public interface IAdminsDao {
      * @return
      */
     Integer removeRights(Integer aid,Integer rid);
+
+    /**
+     * 查询管理员权限是否存在
+     * @param aid
+     * @param rid
+     * @return
+     */
+    Integer getCountByAidRid(Integer aid,Integer rid);
+
+    /**
+     * 查询所有管理员
+     * @return
+     */
+    List<Admins> selectAllAdmins();
+
+    /**
+     * 删除管理员
+     * @param adminName
+     * @return
+     */
+    Integer deleteAdmins(Integer adminName);
 }

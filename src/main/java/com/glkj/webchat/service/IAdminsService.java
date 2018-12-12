@@ -2,6 +2,8 @@ package com.glkj.webchat.service;
 
 import com.glkj.webchat.pojo.Admins;
 
+import java.util.List;
+
 /**
  * 管理员类业务层
  */
@@ -39,8 +41,22 @@ public interface IAdminsService {
 
     /**
      * 修改管理员信息
-     * @param admins
-     * @return
+     * @param admins 管理员ID
+     * @param rights 权限等级  1 基本管理  2 高级管理
+     * @param modifiedUser  修改者
+     * @return   返回是否修改成功
      */
     Boolean update(Admins admins,Integer rights,String modifiedUser);
+
+    /**
+     * 查询所有管理员
+     * @return
+     */
+    List<Admins> findAllAdmins();
+
+    /**
+     * 删除管理员
+     * @return
+     */
+    Boolean deleteAdmind(String adminName);
 }
