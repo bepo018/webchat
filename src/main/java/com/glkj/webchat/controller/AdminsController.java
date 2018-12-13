@@ -4,6 +4,7 @@ import com.glkj.webchat.pojo.AdminPermission;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.JsonResult;
 import com.glkj.webchat.service.IAdminsService;
+import com.glkj.webchat.service.ex.PasswordNotMatchException;
 import com.glkj.webchat.service.ex.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -171,6 +172,36 @@ public class AdminsController {
         JsonResult<List<AdminPermission>> jr;
         List<AdminPermission>  list =  adminsService.findPermissionByName(adminName);
         jr = new JsonResult<>(1,"success",list);
+        return jr;
+    }
+
+//    /**
+//     * 展示登录页面
+//     * @return
+//     */
+//    @RequestMapping(value = "adminLogin",method = RequestMethod.GET)
+//    public String toLogin(){
+//        return "adminLogin";
+//    }
+
+    /**
+     * 处理登录业务
+     * @param adminName
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "adminLogin",method = RequestMethod.GET)
+    @ResponseBody
+    public JsonResult<Void> login(String adminName,String password){
+        JsonResult<Void> jr;
+        try {
+            adminsService.login(adminName,password);
+            jr = new JsonResult<>(1,"登录成功");
+        } catch (UsernameNotFoundException e) {
+            jr = new JsonResult<>(0,e);
+        } catch (PasswordNotMatchException e){
+            jr = new JsonResult<>(-1,e);
+        }
         return jr;
     }
 }

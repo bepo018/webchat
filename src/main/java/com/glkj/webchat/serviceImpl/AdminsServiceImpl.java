@@ -19,7 +19,7 @@ import java.util.List;
  * 管理员业务层实现类
  */
 @Service(value = "adminsService")
-class adminsDaoImpl implements IAdminsService {
+public class AdminsServiceImpl implements IAdminsService {
     @Resource
     private IAdminsDao adminsDao;
 

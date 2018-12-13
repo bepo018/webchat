@@ -75,4 +75,5 @@ public interface IAdminsService {
      * @return  返回AdminPermission集合
      */
     List<AdminPermission> findPermissionByName(String adminName);
+
 }
