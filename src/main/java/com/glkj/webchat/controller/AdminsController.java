@@ -190,7 +190,7 @@ public class AdminsController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "adminLogin",method = RequestMethod.GET)
+    @RequestMapping(value = "adminLogin",method = RequestMethod.POST)
     @ResponseBody
     public JsonResult<Void> login(String adminName,String password){
         JsonResult<Void> jr;
