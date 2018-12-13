@@ -1,5 +1,6 @@
 package com.glkj.webchat.dao;
 
+import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
 import com.sun.mail.imap.Rights;
@@ -78,4 +79,14 @@ public interface IAdminsDao {
      * @return
      */
     Integer deleteAdmins(Integer adminName);
+
+    /**
+     * 根据管理员名查询 管理员等级
+     * @param adminName
+     * @return
+     */
+    AdminRole selectRoleByName(String adminName);
+
+
+
 }

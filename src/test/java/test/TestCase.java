@@ -1,6 +1,7 @@
 package test;
 
 import com.glkj.webchat.dao.IAdminsDao;
+import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
 import com.glkj.webchat.service.IAdminsService;
@@ -86,6 +87,7 @@ public class TestCase {
     }
     @Test
     public void test6(){
-       adminsService.deleteAdmind("demo");
+        AdminRole role = adminsDao.selectRoleByName("spring");
+        System.out.println(role);
     }
 }
