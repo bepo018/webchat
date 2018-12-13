@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.glkj.webchat.dao.IAdminsDao">
-    <!--TODO 这里修改过-->
+
     <!-- 保存一条管理员信息 -->
     <insert id="save" parameterType="com.glkj.webchat.pojo.Admins">
         INSERT INTO
             q_admins
         VALUES(
-            null,#{username},#{password},#{level},#{qq},#{weixin},
+            null,#{username},#{password},#{level},#{profilehead},#{qq},#{weixin},
             #{phone},#{remarks},#{createUser},#{createTime},#{modifiedUser},#{modifiedTime}
         );
     </insert>
@@ -48,6 +48,7 @@
         WHERE
             username=#{username}
     </select>
+
     <!-- 修改管理员 -->
     <update id="update" parameterType="com.glkj.webchat.pojo.Admins">
         UPDATE
@@ -76,6 +77,7 @@
         WHERE
             id=#{id}
     </update>
+
     <!--移除权限-->
     <delete id="removeRights">
         DELETE FROM
@@ -83,6 +85,7 @@
         WHERE
             aid=#{0} AND rid= #{1}
     </delete>
+
     <!-- 查询管理员权限是否存在-->
     <select id="getCountByAidRid" resultType="java.lang.Integer">
         SELECT
@@ -92,6 +95,7 @@
         WHERE
             aid =#{0} AND rid = #{1};
     </select>
+
     <!--查询所有管理员-->
     <select id="selectAllAdmins" resultType="com.glkj.webchat.pojo.Admins">
         SELECT
@@ -103,6 +107,7 @@
         FROM
             q_admins;
     </select>
+
     <!--删除管理员-->
     <delete id="deleteAdmins" >
         DELETE FROM
@@ -110,4 +115,31 @@
         WHERE
             id = #{id}
     </delete>
+
+    <!--根据管理员名查询管理等级-->
+    <select id="selectRoleByName" resultType="com.glkj.webchat.pojo.AdminRole">
+        SELECT
+            r.id,r.type,r.role_name roleName,r.role_code roleCode,r.status,
+            r.create_time createTime,
+            r.create_user createUser,
+            r.modified_time modifiedTime,
+            r.modified_user modifiedUser
+        FROM
+            q_admins a RIGHT JOIN  q_admins_role rar ON a.id = rar.aid
+            RIGHT JOIN q_role r ON rar.rid = r.id
+        WHERE
+            a.username LIKE #{username};
+    </select>
+
+    <select id="selectPermissionByName" resultType="com.glkj.webchat.pojo.AdminPermission">
+        select
+            p.id,p.pid,p.type,p.menu_code menuCode,p.menu_name menuName,p.href,p.icon,p.status,p.href
+        FROM
+            q_admins a RIGHT JOIN q_admins_role rar ON a.id = rar.aid
+            RIGHT JOIN q_role r ON rar.rid = r.id
+            RIGHT JOIN q_role_permission rrp ON r.id = rrp.rid
+            RIGHT JOIN q_permission p ON rrp.pid = p.id
+        WHERE
+            a.username LIKE #{adminName} ;
+    </select>
 </mapper>

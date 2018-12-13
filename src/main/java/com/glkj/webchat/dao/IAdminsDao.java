@@ -1,5 +1,7 @@
 package com.glkj.webchat.dao;
 
+import com.glkj.webchat.pojo.AdminPermission;
+import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
 import org.springframework.stereotype.Repository;
@@ -77,4 +79,18 @@ public interface IAdminsDao {
      * @return
      */
     Integer deleteAdmins(Integer adminName);
+
+    /**
+     * 根据管理员名查询 管理员等级
+     * @param adminName
+     * @return
+     */
+    AdminRole selectRoleByName(String adminName);
+
+    /**
+     * 根据用户名 查询 操作内容
+     * @param adminName
+     * @return
+     */
+    List<AdminPermission> selectPermissionByName(String adminName);
 }

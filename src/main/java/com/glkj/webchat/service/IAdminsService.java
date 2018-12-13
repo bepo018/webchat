@@ -1,5 +1,7 @@
 package com.glkj.webchat.service;
 
+import com.glkj.webchat.pojo.AdminPermission;
+import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 
 import java.util.List;
@@ -59,4 +61,18 @@ public interface IAdminsService {
      * @return
      */
     Boolean deleteAdmind(String adminName);
+
+    /**
+     * 根据用户名查询是否为高级管理员
+     * @param adminName
+     * @return
+     */
+    Boolean checkRights(String adminName);
+
+    /**
+     *  根据用户名查找操作许可
+     * @param adminName
+     * @return  返回AdminPermission集合
+     */
+    List<AdminPermission> findPermissionByName(String adminName);
 }

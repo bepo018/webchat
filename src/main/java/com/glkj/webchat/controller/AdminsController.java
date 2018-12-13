@@ -1,5 +1,6 @@
 package com.glkj.webchat.controller;
 
+import com.glkj.webchat.pojo.AdminPermission;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.JsonResult;
 import com.glkj.webchat.service.IAdminsService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.security.Permission;
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,10 +30,10 @@ public class AdminsController {
      *
      * @return
      */
-//    @RequestMapping(value = "registerAdmin", method = RequestMethod.GET)
-//    public String toRegisterAdmin() {
-//        return "registerAdmin";
-//    }
+    @RequestMapping(value = "registerAdmin", method = RequestMethod.GET)
+    public String toRegisterAdmin() {
+        return "registerAdmin";
+    }
 
     /**
      * 注册管理员   TODO 注册管理员
@@ -155,6 +157,20 @@ public class AdminsController {
         } catch (UsernameNotFoundException e) {
             jr = new JsonResult<>(0,e);
         }
+        return jr;
+    }
+
+    /**
+     * 根据用户名获取操作许可
+     * @param adminName
+     * @return
+     */
+    @RequestMapping(value = "findRoleByName",method = RequestMethod.GET)
+    @ResponseBody
+    public JsonResult<List<AdminPermission>> findRoleByName(String adminName){
+        JsonResult<List<AdminPermission>> jr;
+        List<AdminPermission>  list =  adminsService.findPermissionByName(adminName);
+        jr = new JsonResult<>(1,"success",list);
         return jr;
     }
 }
