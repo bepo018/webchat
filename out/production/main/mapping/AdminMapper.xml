@@ -2,12 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.glkj.webchat.dao.IAdminsDao">
     <!--TODO 这里修改过-->
+    <!-- 保存一条管理员信息 -->
     <insert id="save" parameterType="com.glkj.webchat.pojo.Admins">
         INSERT INTO
             q_admins
         VALUES(
             null,#{username},#{password},#{level},#{qq},#{weixin},
             #{phone},#{remarks},#{createUser},#{createTime},#{modifiedUser},#{modifiedTime}
+        );
+    </insert>
+
+    <insert id="saveRights" parameterType="com.glkj.webchat.pojo.RightsAdmins">
+        INSERT INTO
+            q_admins_role
+        VALUES(
+            null,#{adminID},#{roleID},#{create_user},#{create_time},#{modified_time},#{modified_user}
         );
     </insert>
     <select id="selectAdminById" resultType="com.glkj.webchat.pojo.Admins">
@@ -34,4 +43,38 @@
         WHERE
             username=#{username}
     </select>
+    <update id="update" parameterType="com.glkj.webchat.pojo.Admins">
+        UPDATE
+            q_admins
+        SET
+            <if test="password!=null">
+                password = #{password},
+            </if>
+            <if test="level!=null">
+                level = #{level},
+            </if>
+            <if test="qq!=null">
+                qq = #{qq},
+            </if>
+            <if test="weixin!=null">
+                weixin = #{weixin},
+            </if>
+            <if test="phone!=null">
+                phone = #{phone},
+            </if>
+            <if test="remarks!=null">
+                remarks = #{remarks},
+            </if>
+            modified_user = #{modifiedUser},
+            modified_time = #{modifiedTime}
+        WHERE
+            id=#{id}
+    </update>
+
+    <delete id="removeRights">
+        DELETE FROM
+            q_admins_role
+        WHERE
+            aid=#{0} AND rid=#{1}
+    </delete>
 </mapper>
