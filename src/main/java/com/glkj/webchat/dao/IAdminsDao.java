@@ -2,7 +2,6 @@ package com.glkj.webchat.dao;
 
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
-import com.sun.mail.imap.Rights;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;

@@ -12,6 +12,7 @@
         );
     </insert>
 
+    <!-- 保存权限 -->
     <insert id="saveRights" parameterType="com.glkj.webchat.pojo.RightsAdmins">
         INSERT INTO
             q_admins_role
@@ -19,6 +20,8 @@
             null,#{adminID},#{roleID},#{create_user},#{create_time},#{modified_time},#{modified_user}
         );
     </insert>
+
+    <!-- 根据ID查询管理员 -->
     <select id="selectAdminById" resultType="com.glkj.webchat.pojo.Admins">
         SELECT
             id,username,password,level,qq,weixin,phone,remarks,
@@ -31,6 +34,8 @@
         WHERE
             id = #{id}
     </select>
+
+    <!-- 根据用户名查询管理员 -->
     <select id="selectAdminByName" resultType="com.glkj.webchat.pojo.Admins">
         SELECT
             id,username,password,level,qq,weixin,phone,remarks,
@@ -43,6 +48,7 @@
         WHERE
             username=#{username}
     </select>
+    <!-- 修改管理员 -->
     <update id="update" parameterType="com.glkj.webchat.pojo.Admins">
         UPDATE
             q_admins
@@ -70,11 +76,38 @@
         WHERE
             id=#{id}
     </update>
-
+    <!--移除权限-->
     <delete id="removeRights">
         DELETE FROM
             q_admins_role
         WHERE
-            aid=#{0} AND rid=#{1}
+            aid=#{0} AND rid= #{1}
+    </delete>
+    <!-- 查询管理员权限是否存在-->
+    <select id="getCountByAidRid" resultType="java.lang.Integer">
+        SELECT
+            COUNT(ID)
+        FROM
+            q_admins_role
+        WHERE
+            aid =#{0} AND rid = #{1};
+    </select>
+    <!--查询所有管理员-->
+    <select id="selectAllAdmins" resultType="com.glkj.webchat.pojo.Admins">
+        SELECT
+            id,username,password,level,qq,weixin,phone,remarks,
+            create_user createUser,
+            create_time createTime,
+            modified_user modifiedUser,
+            modified_time modifiedTime
+        FROM
+            q_admins;
+    </select>
+    <!--删除管理员-->
+    <delete id="deleteAdmins" >
+        DELETE FROM
+            q_admins
+        WHERE
+            id = #{id}
     </delete>
 </mapper>
