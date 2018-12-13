@@ -1,11 +1,10 @@
 package test;
 
 import com.glkj.webchat.dao.IAdminsDao;
-import com.glkj.webchat.pojo.AdminPermission;
-import com.glkj.webchat.pojo.AdminRole;
-import com.glkj.webchat.pojo.Admins;
-import com.glkj.webchat.pojo.RightsAdmins;
+import com.glkj.webchat.dao.IUserDao;
+import com.glkj.webchat.pojo.*;
 import com.glkj.webchat.service.IAdminsService;
+import com.glkj.webchat.service.IUserService;
 import com.glkj.webchat.service.ex.UsernameNotFoundException;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -18,6 +17,8 @@ public class TestCase {
     AbstractApplicationContext ac = new ClassPathXmlApplicationContext("spring/spring-mvc.xml", "spring/spring-mybatis.xml");
     IAdminsDao adminsDao = ac.getBean("adminDao", IAdminsDao.class);
     IAdminsService adminsService = ac.getBean("adminsService", IAdminsService.class);
+    IUserDao userdao  = ac.getBean("userDao",IUserDao.class);
+    IUserService userService = ac.getBean("userService",IUserService.class);
 
     @Test
     public void test1() {
@@ -93,5 +94,21 @@ public class TestCase {
                 list) {
             System.out.println(a);
         }
+    }
+
+    @Test
+    public void test7(){
+        User u  = new User();
+        u.setUserid("adminsky");
+        u.setPassword("123456");
+        u.setNickname("test");
+        u.setQq("test");
+        u.setWeixin("test");
+        u.setPhone("test");
+        u.setStatus(1);
+        u.setInvitation("test");
+        u.setRemarks("test");
+        u.setProfilehead("avater123.png");
+        userdao.update(u);
     }
 }

@@ -7,7 +7,7 @@
         INSERT INTO
             q_admins
         VALUES(
-            null,#{username},#{password},#{level},#{qq},#{weixin},
+            null,#{username},#{password},#{level},#{profilehead},#{qq},#{weixin},
             #{phone},#{remarks},#{createUser},#{createTime},#{modifiedUser},#{modifiedTime}
         );
     </insert>

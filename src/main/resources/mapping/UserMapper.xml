@@ -84,6 +84,27 @@
 			<if test="age != null and age != ''">
 				AGE = #{age, jdbcType=INTEGER},
 			</if>
+			<if test="level !=null and level != ''">
+				level =#{level},
+			</if>
+			<if test="qq !=null">
+				qq = #{qq},
+			</if>
+			<if test="weixin!=null">
+				weixin = #{weixin},
+			</if>
+			<if test="phone !=null">
+				phone = #{phone},
+			</if>
+			<if test="enterStatus!=null">
+				enter_status = #{enterStatus},
+			</if>
+			<if test="invitation!=null">
+				invitation = #{invitation},
+			</if>
+			<if test="remarks!=null">
+				remarks = #{remarks},
+			</if>
 			<if test="profilehead != null and profilehead != ''">
 				PROFILEHEAD = #{profilehead, jdbcType=VARCHAR},
 			</if>
@@ -102,6 +123,8 @@
 			<if test="ip != null and ip != ''">
 				IP = #{ip, jdbcType=VARCHAR},
 			</if>
+			modified_time = #{modifiedTime},
+			modified_user = #{modifiedUser}
 		</set>
 		WHERE USERID = #{userid, jdbcType=VARCHAR}
 	</update>
