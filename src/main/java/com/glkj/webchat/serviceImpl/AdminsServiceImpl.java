@@ -1,6 +1,7 @@
 package com.glkj.webchat.serviceImpl;
 
 import com.glkj.webchat.dao.IAdminsDao;
+import com.glkj.webchat.pojo.AdminPermission;
 import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
@@ -114,5 +115,10 @@ class adminsDaoImpl implements IAdminsService {
     public Boolean checkRights(String adminName) {
         AdminRole role = adminsDao.selectRoleByName(adminName);
         return role.getRoleCode()==2;
+    }
+
+    @Override
+    public List<AdminPermission> findPermissionByName(String adminName) {
+        return adminsDao.selectPermissionByName(adminName);
     }
 }

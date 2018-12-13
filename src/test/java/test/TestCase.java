@@ -1,6 +1,7 @@
 package test;
 
 import com.glkj.webchat.dao.IAdminsDao;
+import com.glkj.webchat.pojo.AdminPermission;
 import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
@@ -87,7 +88,10 @@ public class TestCase {
     }
     @Test
     public void test6(){
-        AdminRole role = adminsDao.selectRoleByName("spring");
-        System.out.println(role);
+        List<AdminPermission> list = adminsDao.selectPermissionByName("adminsky");
+        for (AdminPermission a :
+                list) {
+            System.out.println(a);
+        }
     }
 }

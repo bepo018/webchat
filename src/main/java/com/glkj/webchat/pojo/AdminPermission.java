@@ -16,6 +16,7 @@ public class AdminPermission implements Serializable {
     private String menuName;
     private String href;
     private String icon;
+    private Integer status;
     private String remarks;
     private String createUser;
     private Date createTime;
@@ -32,6 +33,7 @@ public class AdminPermission implements Serializable {
                 ", menuName='" + menuName + '\'' +
                 ", href='" + href + '\'' +
                 ", icon='" + icon + '\'' +
+                ", status=" + status +
                 ", remarks='" + remarks + '\'' +
                 ", createUser='" + createUser + '\'' +
                 ", createTime=" + createTime +
@@ -52,6 +54,7 @@ public class AdminPermission implements Serializable {
                 Objects.equals(menuName, that.menuName) &&
                 Objects.equals(href, that.href) &&
                 Objects.equals(icon, that.icon) &&
+                Objects.equals(status, that.status) &&
                 Objects.equals(remarks, that.remarks) &&
                 Objects.equals(createUser, that.createUser) &&
                 Objects.equals(createTime, that.createTime) &&
@@ -61,7 +64,11 @@ public class AdminPermission implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, pid, type, menuCode, menuName, href, icon, remarks, createUser, createTime, modifiedUser, modifiedTime);
+        return Objects.hash(id, pid, type, menuCode, menuName, href, icon, status, remarks, createUser, createTime, modifiedUser, modifiedTime);
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Integer getId() {
@@ -118,6 +125,14 @@ public class AdminPermission implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getRemarks() {

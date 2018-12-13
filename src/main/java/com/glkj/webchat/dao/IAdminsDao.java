@@ -1,5 +1,6 @@
 package com.glkj.webchat.dao;
 
+import com.glkj.webchat.pojo.AdminPermission;
 import com.glkj.webchat.pojo.AdminRole;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.RightsAdmins;
@@ -87,6 +88,10 @@ public interface IAdminsDao {
      */
     AdminRole selectRoleByName(String adminName);
 
-
-
+    /**
+     * 根据用户名 查询 操作内容
+     * @param adminName
+     * @return
+     */
+    List<AdminPermission> selectPermissionByName(String adminName);
 }
