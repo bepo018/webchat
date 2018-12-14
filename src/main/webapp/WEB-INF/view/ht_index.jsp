@@ -11,9 +11,10 @@
     <meta name="description" content="大发彩票后台管理">
     <meta name="author" content="GeeksLabs">
     <meta name="keyword" content="大发彩票后台管理">
-    <link rel="shortcut icon" href="img/favicon.png">
 
-    <!-- Bootstrap CSS -->
+      <link rel="shortcut icon" href="${ctx}/static/images/ctx.ico" type="image/x-icon" />
+
+      <!-- Bootstrap CSS -->
     <link href="${ctx}/static/ht/css/bootstrap.min.css" rel="stylesheet">
     <!-- bootstrap theme -->
     <link href="${ctx}/static/ht/css/bootstrap-theme.css" rel="stylesheet">

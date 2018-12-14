@@ -59,13 +59,12 @@ public class AdminsServiceImpl implements IAdminsService {
         Admins admins = adminsDao.selectAdminByName(username);
 
         if (admins == null) {
-            throw new UsernameNotFoundException("管理员不存在");
+            throw new UsernameNotFoundException("账号或密码错误");
         } else {
             if (admins.getPassword().equals(password)) {
                 return admins;
             } else {
-
-                throw new PasswordNotMatchException("密码错误");
+                throw new PasswordNotMatchException("账号或密码错误");
             }
         }
     }
@@ -92,7 +91,6 @@ public class AdminsServiceImpl implements IAdminsService {
                     admins1.setCreate_time(new Date());
                     adminsDao.saveRights(admins1);
                 }else{
-                    System.out.println("高级权限已存在");
                     return true;
                 }
             }else{
@@ -128,4 +126,11 @@ public class AdminsServiceImpl implements IAdminsService {
     public List<AdminPermission> findPermissionByName(String adminName) {
         return adminsDao.selectPermissionByName(adminName);
     }
+
+    @Override
+    public List<AdminRole> selectRoles() {
+        return adminsDao.selectRoles();
+    }
+
+
 }

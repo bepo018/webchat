@@ -186,8 +186,8 @@ public class UserController {
         user.setUserid(uname);
         user.setPassword(password);
         user.setInvitation(invitation);
-        if(invitation ==null){
-            user.setInvitation("没有归属");
+        if(invitation == null){
+            user.setInvitation("0");
         }
         user.setPhone(phone);
         user.setQq(qq);
@@ -208,6 +208,7 @@ public class UserController {
     @RequestMapping("showUserInfo")
     public String showUserInfo(Model model){
         List<UserShow> list = userService.showUserInfo();
+        System.out.println("list::"+list);
         model.addAttribute("list",list);
         return "vip";
     }

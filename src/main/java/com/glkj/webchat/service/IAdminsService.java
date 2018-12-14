@@ -76,4 +76,6 @@ public interface IAdminsService {
      */
     List<AdminPermission> findPermissionByName(String adminName);
 
+
+    List<AdminRole> selectRoles();
 }

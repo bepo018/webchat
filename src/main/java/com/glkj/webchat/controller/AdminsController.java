@@ -49,7 +49,6 @@ public class AdminsController {
         if(userid == null || userid == "")
             return "redirect:/admin/adminLogin";
         List<AdminPermission> list = adminsService.findPermissionByName(userid);
-        System.out.println("list::::::"+list);
         model.addAttribute("menus",list);
         return "ht_index";
     }
@@ -83,8 +82,8 @@ public class AdminsController {
      * @return
      */
     @RequestMapping(value = "registerAdmin", method = RequestMethod.GET)
-    public String toRegisterAdmin() {
-
+    public String toRegisterAdmin(Model model) {
+        model.addAttribute("levels",adminsService.selectRoles());
         return "editAdmin";
     }
 
@@ -107,6 +106,7 @@ public class AdminsController {
             String username, String password, Integer level, String qq, String weixin,
             String phone, String remarks, HttpSession session
     ) {
+
         JsonResult<Void> jr;
         Admins admins = new Admins();
         admins.setUsername(username);
@@ -133,7 +133,6 @@ public class AdminsController {
     @RequestMapping(value = "editAdmin",method = RequestMethod.GET)
     public String toEditAdmin(String adminName,Model model){
         Admins admin = adminsService.findByName(adminName);
-        System.out.println(admin.getLevel());
         model.addAttribute("admin",admin);
         return "editAdmin";
     }

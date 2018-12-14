@@ -78,7 +78,7 @@
                             </a>
                         </div>
                         <div class="col-xs-4">
-                            <a href="">
+                            <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=227777999">
                                 <img src="${ctx}/static/images/lfHd3.png" alt="">
                                 <span>在线客服</span> 
                             </a>
@@ -92,7 +92,7 @@
                         <div class="info-room">在线管理</div>
                         <ul>
                             <li>
-                                <a href="http://m.111ctx.com/service" target="mServiceFrame">
+                                <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=227777999" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>充值、提额咨询</span>
                                 </a>
@@ -1182,63 +1182,110 @@
 	 * 展示level4,level3在线列表
 	 */
 	 function showHighLevelOnline(list){
-            if(whoClick.indexOf("Vip") != -1){
-                w=whoClick.split("V")[0]
-            }else{
-                w=whoClick
-            }
-		    $("#"+w+"_list").html("");    //清空在线列表
-		    $.each(list.list, function(index, item){     //添加私聊和视频按钮
-		    	if(item.level==4 && item.userid == "${userid}"){
-		    		var li ="<li>"+
-			        "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
-			        "<span>"+item.userid.slice(0,3)+"****</span>"+
-			        "<img src='${ctx}/static/images/id_ZM.png' alt=''>"+
-		    		"</li>"
-		    	}else if(item.level==4 && item.userid != "${userid}"){
-		    		var li ="<li>"+
-			        "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
-			        "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
-			        "<span class='sendSingle'>私聊</span>"+
-			        "<img src='${ctx}/static/images/id_ZM.png' alt=''>"+
-		    		"</li>"
-		    	}else if(item.level==3 && item.userid == "${userid}"){
-		    		var li ="<li>"+
-			        "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
-			        "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
-			        "<img src='${ctx}/static/images/id_BM.png' alt=''>"+
-		    		"</li>"
-		    	}else if(item.level==3 && item.userid != "${userid}"){
-		    		var li ="<li>"+
-			        "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
-			        "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
-			        "<span class='sendSingle'>私聊</span>"+
-			        "<img src='${ctx}/static/images/id_BM.png' alt=''>"+
-		    		"</li>"
-		    	}else if(item.level==2){
-		    		var li ="<li>"+
-			        "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
-			        "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
-			        "<span class='sendSingle'>私聊</span>"+
-			        "<span class='user'>踢出房间</span>"+
-			        "<span class='shut'>禁言</span>"+
-			        "<img src='${ctx}/static/images/id_HM.png' alt=''>"+
-		    		"</li>"
-		    	}else{
-		    		var li ="<li>"+
-			        "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
-			        "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
-			        "<span class='sendSingle'>私聊</span>"+
-			        "<span class='user'>踢出房间</span>"+
-			        "<span class='shut'>禁言</span>"+
-			       	"<img src='${ctx}/static/images/id_YK.png' alt=''>"+
-		    		"</li>"
-		    	}
-		    	
-		        $("#"+w+"_list").append(li);
-		    });
 
-		    //提出房间   
+            if(whoClick.indexOf("Vip") != -1){
+                var w=whoClick.split("V")[0];
+                $("#"+w+"_list").html("");    //清空在线列表
+                $.each(list.list, function(index, item){     //添加私聊和视频按钮
+
+                    if(item.level==4 && item.userid == "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span>"+item.userid.slice(0,3)+"****</span>"+
+                            "<img src='${ctx}/static/images/id_ZM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==4 && item.userid != "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<img src='${ctx}/static/images/id_ZM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==3 && item.userid == "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<img src='${ctx}/static/images/id_BM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==3 && item.userid != "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<img src='${ctx}/static/images/id_BM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==2){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<span class='user'>踢出房间</span>"+
+                            "<span class='shut'>禁言</span>"+
+                            "<img src='${ctx}/static/images/id_HM.png' alt=''>"+
+                            "</li>"
+                    }
+
+                    $("#"+w+"_list").append(li);
+                });
+
+            }
+            else{
+                var w=whoClick;
+                $("#"+w+"_list").html("");    //清空在线列表
+                $.each(list.list, function(index, item){     //添加私聊和视频按钮
+
+                    if(item.level==4 && item.userid == "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span>"+item.userid.slice(0,3)+"****</span>"+
+                            "<img src='${ctx}/static/images/id_ZM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==4 && item.userid != "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<img src='${ctx}/static/images/id_ZM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==3 && item.userid == "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<img src='${ctx}/static/images/id_BM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==3 && item.userid != "${userid}"){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<img src='${ctx}/static/images/id_BM.png' alt=''>"+
+                            "</li>"
+                    }else if(item.level==2){
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<span class='user'>踢出房间</span>"+
+                            "<span class='shut'>禁言</span>"+
+                            "<img src='${ctx}/static/images/id_HM.png' alt=''>"+
+                            "</li>"
+                    }else{
+                        var li ="<li>"+
+                            "<img src='${ctx}/static/images/avater/"+item.headmsg+"' alt=''>"+
+                            "<span name='"+item.userid+"'>"+item.userid.slice(0,3)+"****</span>"+
+                            "<span class='sendSingle'>私聊</span>"+
+                            "<span class='user'>踢出房间</span>"+
+                            "<span class='shut'>禁言</span>"+
+                            "<img src='${ctx}/static/images/id_YK.png' alt=''>"+
+                            "</li>"
+                    }
+
+                    $("#"+w+"_list").append(li);
+                });
+
+            }
+
+		    //提出房间
 		    $(".user").click(function(){  //提出房间
 		    	sendInfo($(this).parent().children(":first").next().attr("name"),"out"); //将id传到服务器
 		    })

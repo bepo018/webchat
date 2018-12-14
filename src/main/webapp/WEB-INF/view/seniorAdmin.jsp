@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html lang="en">
 <head>
@@ -93,7 +94,7 @@
                                                 <td>${admin.qq}</td>
                                                 <td>${admin.weixin}</td>
                                                 <td>${admin.createUser}</td>
-                                                <td>${admin.createTime}</td>
+                                                <td><fmt:formatDate  value="${admin.createTime}" type="both" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                                 <td>${admin.modifiedUser}</td>
                                                 <td>${admin.modifiedTime}</td>
                                                 <td>${admin.remarks}</td>

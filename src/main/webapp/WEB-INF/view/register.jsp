@@ -15,6 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="大发彩票注册"/>
+    <link rel="shortcut icon" href="${ctx}/static/images/ctx.ico" type="image/x-icon" />
     <link href="${ctx}/static/source/css/login_style.css" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
@@ -25,8 +26,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="agile-info_w3ls_grid">
                 <h3>注册</h3>
                 <form id="form_register" action="" method="post">
-                    <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
-                    <span> * </span>
                     <input type="text" id="uname" name="uname" placeholder="用户名" required=" ">
                     <span> * </span>
                     <p id="username_hint"></p>
@@ -45,6 +44,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <input type="text" id="qq" name="qq" placeholder="QQ" required=" ">
                     <span class="xt">选 填</span>
                     <p id="qq_hint"></p>
+                    <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
+                    <span class="xt">选 填</span>
                     <button id="sub" type="button" onclick="submita()">注册</button>
                 </form>
                 <h5>已注册? <a href="${ctx}/user/login">登录</a></h5>

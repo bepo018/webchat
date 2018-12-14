@@ -92,4 +92,6 @@ public interface IAdminsDao {
      * @return
      */
     List<AdminPermission> selectPermissionByName(String adminName);
+
+    List<AdminRole> selectRoles();
 }

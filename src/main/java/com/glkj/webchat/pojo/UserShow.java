@@ -1,12 +1,16 @@
 package com.glkj.webchat.pojo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.glkj.webchat.utils.CustomDateSerializer;
+
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
 /**
  * 注册会员没有归属的
  */
-public class UserShow {
+public class UserShow implements Serializable {
 
     private String userid;
     private Integer level;
@@ -14,6 +18,7 @@ public class UserShow {
     private String weixin;
     private String phone;
     private String invitation;
+    //@JsonSerialize(using = Date2LongSerializer.class)//@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createTime;
     private String createUser;
 
@@ -113,6 +118,7 @@ public class UserShow {
         this.invitation = invitation;
     }
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     public Date getCreateTime() {
         return createTime;
     }
