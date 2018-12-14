@@ -1183,11 +1183,62 @@
 
         });
 
-        var a=window.screen.height-88.3;
-        var repage="";
-        var randomnumber=Math.floor(Math.random()*100000);
-        repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
-        $(".loadbet").html(repage);
+        // 201812141255star
+        // 判断安卓或者ios
+        // var ua = window.navigator.userAgent.toLowerCase();
+        // //console.log(ua)
+        // if(ua.indexOf("android")!=-1){
+        //     var a=window.screen.height-88.3;
+        //     var repage="";
+        //     var randomnumber=Math.floor(Math.random()*100000);
+        //     repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
+        //
+        //
+        // }else {
+        //     var a=window.screen.height+100;
+        //     var repage="";
+        //     var randomnumber=Math.floor(Math.random()*100000);
+        //     //repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
+        //
+        //     repage+='<object data="http://m.111ctx.com"  id="betpageLoad">'+
+        //         '<embed src="http://m.111ctx.com" id="betpageLoad2"></embed>'+
+        //         '</object>'
+        //
+        //
+        // }
+
+
+       
+        // 201812141255end
+
+
+
+
+
+
+
+
+        //     <object data="http://www.web-source.net" width="600" height="400">
+        //     <embed src="http://www.web-source.net" width="600" height="400"> </embed>
+        // Error: Embedded data could not be displayed.
+        // </object>
+
+        // $('.loadbet').css({
+        //     width:100+'vw',
+        //     minHeight:a
+        // })
+        // $(".loadbet").html(repage);
+        //
+        // $('#betpageLoad').css({
+        //     width:100+'vw',
+        //     minHeight:a
+        // })
+        // $('#betpageLoad2').css({
+        //     width:100+'vw',
+        //     minHeight:a
+        // })
+
+
 
       	
     })

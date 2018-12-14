@@ -885,6 +885,8 @@ a{
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     -ms-box-sizing:border-box;
+    overflow-y: auto;
+    /*-webkit-overflow-scrolling: touch;*/
 
 }
 .loadbet>iframe{
