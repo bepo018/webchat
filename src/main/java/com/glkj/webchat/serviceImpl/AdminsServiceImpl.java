@@ -13,13 +13,14 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * TODO 这里修改过
  * 管理员业务层实现类
  */
 @Service(value = "adminsService")
-class adminsDaoImpl implements IAdminsService {
+public class AdminsServiceImpl implements IAdminsService {
     @Resource
     private IAdminsDao adminsDao;
 
@@ -34,20 +35,19 @@ class adminsDaoImpl implements IAdminsService {
     }
 
     @Override
-    public Boolean save(Admins admin, int[] rights, String createUser) {
+    public Boolean save(Admins admin, Integer rights, String createUser) {
         Admins a = adminsDao.selectAdminByName(admin.getUsername());
         if (a == null) {
+            Random random = new Random();
+            admin.setProfilehead("avater"+random.nextInt(90)+".png");
             adminsDao.save(admin);
             int adminId = findByName(admin.getUsername()).getId();
-            //循环创建权限关联记录
-            for (int i = 0; i < rights.length; i++) {
-                RightsAdmins rightsAdmins = new RightsAdmins();
-                rightsAdmins.setAdminID(adminId);
-                rightsAdmins.setRoleID(rights[i]);
-                rightsAdmins.setCreate_time(new Date());
-                rightsAdmins.setCreate_user(createUser);
-                adminsDao.saveRights(rightsAdmins);
-            }
+            RightsAdmins rightsAdmins = new RightsAdmins();
+            rightsAdmins.setAdminID(adminId);
+            rightsAdmins.setRoleID(rights);
+            rightsAdmins.setCreate_time(new Date());
+            rightsAdmins.setCreate_user(createUser);
+            adminsDao.saveRights(rightsAdmins);
             return true;
         } else {
             throw new UsernameNotFoundException("管理员已存在");
@@ -57,6 +57,7 @@ class adminsDaoImpl implements IAdminsService {
     @Override
     public Admins login(String username, String password) {
         Admins admins = adminsDao.selectAdminByName(username);
+
         if (admins == null) {
             throw new UsernameNotFoundException("管理员不存在");
         } else {
@@ -71,6 +72,7 @@ class adminsDaoImpl implements IAdminsService {
 
     @Override
     public Boolean update(Admins admins, Integer rights, String modifiedUser) {
+        //TODO 这个方法需要修改
         Admins a1 = findByName(admins.getUsername());
         if (a1 == null) {
             throw new UsernameNotFoundException("管理员不存在");
@@ -78,9 +80,10 @@ class adminsDaoImpl implements IAdminsService {
             Integer aid = a1.getId();
             admins.setId(aid);
             adminsDao.update(admins);
-            if (rights == 1) {
-                adminsDao.removeRights(aid, 2);
-            } else if (rights == 2) {
+            if (rights == 3) {
+                adminsDao.removeRights(aid);
+                return true;
+            } else if (rights == 4) {
                 if (adminsDao.getCountByAidRid(aid, 2) <1) {
                     RightsAdmins admins1 = new RightsAdmins();
                     admins1.setRoleID(2);
@@ -90,7 +93,10 @@ class adminsDaoImpl implements IAdminsService {
                     adminsDao.saveRights(admins1);
                 }else{
                     System.out.println("高级权限已存在");
+                    return true;
                 }
+            }else{
+                throw new UsernameNotFoundException("请输入正确人值");
             }
             return true;
         }
@@ -104,6 +110,7 @@ class adminsDaoImpl implements IAdminsService {
     @Override
     public Boolean deleteAdmind(String adminName) {
         Admins admins = adminsDao.selectAdminByName(adminName);
+        adminsDao.removeRights(admins.getId());
         if(admins == null){
             throw new UsernameNotFoundException("管理员不存在");
         }else{

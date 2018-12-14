@@ -1187,7 +1187,6 @@
             }else{
                 w=whoClick
             }
-            console.log(whoClick)
 		    $("#"+w+"_list").html("");    //清空在线列表
 		    $.each(list.list, function(index, item){     //添加私聊和视频按钮
 		    	if(item.level==4 && item.userid == "${userid}"){
@@ -2119,14 +2118,12 @@
             type: "GET",
             data:{"lott":lott,"gid":gid.substring(gid.length-3),"play":play},
             success: function (data) {
-                console.log(data.data)
                 var guessMsg='';
                 var result='';
                 var win='';
                 var liHtml='';
                 var winMsg='';
                 for(var i=0,j=0;i<data.data.yuce.length;i++){
-                    console.log(j)
                     if(play==''&& lott=='bjpk10'){
                         guessMsg='冠军大小'
                         winMsg='开'+data.data.lott[j].award.split(',')[0]

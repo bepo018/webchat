@@ -4,11 +4,16 @@ import com.glkj.webchat.pojo.AdminPermission;
 import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.JsonResult;
 import com.glkj.webchat.service.IAdminsService;
+import com.glkj.webchat.service.ex.PasswordNotMatchException;
 import com.glkj.webchat.service.ex.UsernameNotFoundException;
+import com.glkj.webchat.utils.WordDefined;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -26,13 +31,61 @@ public class AdminsController {
     private IAdminsService adminsService;
 
     /**
+     * 展示登录页面
+     * @return
+     */
+    @RequestMapping(value = "adminLogin",method = RequestMethod.GET)
+    public String toLogin(){
+        return "ht_login";
+    }
+
+    /**
+     * 展示主页页面
+     * @return
+     */
+    @RequestMapping(value = "index",method = RequestMethod.GET)
+    public String index(Model model ,HttpSession session){
+        String userid = (String) session.getAttribute("userid");
+        if(userid == null || userid == "")
+            return "redirect:/admin/adminLogin";
+        List<AdminPermission> list = adminsService.findPermissionByName(userid);
+        System.out.println("list::::::"+list);
+        model.addAttribute("menus",list);
+        return "ht_index";
+    }
+
+    /**
+     * 处理登录业务
+     * @param adminName
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "adminLogin",method = RequestMethod.POST)
+    public String login(String adminName, String password, RedirectAttributes attributes, HttpSession session, Model model){
+        try {
+            Admins admins = adminsService.login(adminName, password);
+            session.setAttribute("level", admins.getLevel());
+            session.setAttribute("userid", admins.getUsername());
+            session.setAttribute("headmsg", admins.getProfilehead());
+            return "redirect:/admin/index";
+        } catch (UsernameNotFoundException e) {
+            attributes.addFlashAttribute("error",e.getMessage());
+            return "redirect:/admin/adminLogin";
+        } catch (PasswordNotMatchException e){
+            attributes.addFlashAttribute("error",e.getMessage());
+            return "redirect:/admin/adminLogin";
+        }
+    }
+
+    /**
      * 展示注册管理员页面 TODO
      *
      * @return
      */
     @RequestMapping(value = "registerAdmin", method = RequestMethod.GET)
     public String toRegisterAdmin() {
-        return "registerAdmin";
+
+        return "editAdmin";
     }
 
     /**
@@ -45,7 +98,6 @@ public class AdminsController {
      * @param weixin
      * @param phone
      * @param remarks
-     * @param rights
      * @param session
      * @return
      */
@@ -53,7 +105,7 @@ public class AdminsController {
     @ResponseBody
     public JsonResult<Void> registeAdmin(
             String username, String password, Integer level, String qq, String weixin,
-            String phone, String remarks, Integer rights, HttpSession session
+            String phone, String remarks, HttpSession session
     ) {
         JsonResult<Void> jr;
         Admins admins = new Admins();
@@ -65,12 +117,8 @@ public class AdminsController {
         admins.setPhone(phone);
         admins.setRemarks(remarks);
         String createUser = session.getAttribute("userid").toString();
-        int[] r = new int[rights];
-        for (int i = 0; i < rights; i++) {
-            r[i] = i + 1;
-        }
         try {
-            adminsService.save(admins, r, createUser);
+            adminsService.save(admins, level, createUser);
             jr = new JsonResult<>(1, "创建成功");
         } catch (UsernameNotFoundException e) {
             jr = new JsonResult<>(0, e);
@@ -83,7 +131,10 @@ public class AdminsController {
      * @return
      */
     @RequestMapping(value = "editAdmin",method = RequestMethod.GET)
-    public String toEditAdmin(){
+    public String toEditAdmin(String adminName,Model model){
+        Admins admin = adminsService.findByName(adminName);
+        System.out.println(admin.getLevel());
+        model.addAttribute("admin",admin);
         return "editAdmin";
     }
 
@@ -135,11 +186,10 @@ public class AdminsController {
      * @return
      */
     @RequestMapping(value = "getAll",method = RequestMethod.GET)
-    @ResponseBody
-    public JsonResult<List<Admins>> getAll(){
+    public String getAll(Model model){
         List<Admins> list = adminsService.findAllAdmins();
-        JsonResult<List<Admins>> jr = new JsonResult<>(1,"success",list);
-        return jr;
+        model.addAttribute("admins",list);
+        return "seniorAdmin";
     }
 
     /**
@@ -172,5 +222,14 @@ public class AdminsController {
         List<AdminPermission>  list =  adminsService.findPermissionByName(adminName);
         jr = new JsonResult<>(1,"success",list);
         return jr;
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session, RedirectAttributes attributes, WordDefined defined) {
+        session.removeAttribute("userid");
+        session.removeAttribute("level");
+        session.removeAttribute("headmsg");
+        attributes.addFlashAttribute("message", defined.LOGOUT_SUCCESS);
+        return "redirect:/admin/adminLogin";
     }
 }

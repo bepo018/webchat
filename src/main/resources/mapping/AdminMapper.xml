@@ -42,7 +42,7 @@
             create_user createUser,
             create_time createTime,
             modified_user modifiedUser,
-            modified_time modifiedTime
+            modified_time modifiedTime,profilehead
         FROM
             q_admins
         WHERE
@@ -83,7 +83,7 @@
         DELETE FROM
             q_admins_role
         WHERE
-            aid=#{0} AND rid= #{1}
+            aid=#{aid};
     </delete>
 
     <!-- 查询管理员权限是否存在-->

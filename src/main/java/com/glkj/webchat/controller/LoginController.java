@@ -81,6 +81,7 @@ public class LoginController {
                 session.setAttribute("level", admins.getLevel());
                 session.setAttribute("userid", userid);
                 session.setAttribute("login_status", true);
+                System.out.println("admins.getProfilehead()::"+admins.getProfilehead());
                 session.setAttribute("headmsg", admins.getProfilehead());
                 session.setMaxInactiveInterval(-1);
                 return "redirect:/chat";
@@ -123,9 +124,12 @@ public class LoginController {
     public String logout(HttpSession session, RedirectAttributes attributes, WordDefined defined) {
         session.removeAttribute("userid");
         session.removeAttribute("login_status");
+        session.removeAttribute("level");
+        session.removeAttribute("headmsg");
         attributes.addFlashAttribute("message", defined.LOGOUT_SUCCESS);
         return "redirect:/user/login";
     }
+
 
 
 }

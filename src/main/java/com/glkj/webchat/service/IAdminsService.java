@@ -29,7 +29,7 @@ public interface IAdminsService {
      * @param admin
      * @return 返回受影响的行数
      */
-    Boolean save(Admins admin,int[] rights,String createUser);
+    Boolean save(Admins admin,Integer rights,String createUser);
 
     /**
      * 管理员登录

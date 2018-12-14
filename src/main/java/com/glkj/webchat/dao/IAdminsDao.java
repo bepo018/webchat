@@ -54,10 +54,9 @@ public interface IAdminsDao {
     /**
      * 移除高级权限
      * @param aid 管理员ID
-     * @param rid  权限ID
      * @return
      */
-    Integer removeRights(Integer aid,Integer rid);
+    Integer removeRights(Integer aid);
 
     /**
      * 查询管理员权限是否存在

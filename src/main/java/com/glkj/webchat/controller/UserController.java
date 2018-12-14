@@ -4,6 +4,7 @@ import com.glkj.webchat.pojo.JsonResult;
 import com.glkj.webchat.pojo.UserShow;
 import com.glkj.webchat.service.ex.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.channels.MembershipKey;
 import java.util.List;
 
 /**
@@ -204,12 +206,10 @@ public class UserController {
      * @return
      */
     @RequestMapping("showUserInfo")
-    @ResponseBody
-    public JsonResult<List<UserShow>> showUserInfo(){
-        JsonResult<List<UserShow>> jr;
+    public String showUserInfo(Model model){
         List<UserShow> list = userService.showUserInfo();
-        jr = new JsonResult<>(1,"success",list);
-        return jr;
+        model.addAttribute("list",list);
+        return "vip";
     }
 
     /**
@@ -217,15 +217,12 @@ public class UserController {
      * @return
      */
     @RequestMapping("showPrivateUser")
-    @ResponseBody
-    public JsonResult<List<UserShow>> showPrivateUser(HttpSession session){
-
+    public String showPrivateUser(HttpSession session,Model model){
         Object uidObject = session.getAttribute("userid");
         String  uid = uidObject.toString();
-        JsonResult<List<UserShow>> jr;
         List<UserShow> list = userService.showPrivateUser(uid);
-        jr = new JsonResult<>(1,"success",list);
-        return jr;
+        model.addAttribute("list",list);
+        return "privateVip";
     }
 
     /**
@@ -234,7 +231,7 @@ public class UserController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "updateInvitation",method = RequestMethod.POST)
+    @RequestMapping(value = "updateInvitation",method = RequestMethod.GET)
     @ResponseBody
     public JsonResult<Void> updateInvitation(String userid ,HttpSession session){
         JsonResult<Void> jr;

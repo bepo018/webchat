@@ -20,8 +20,8 @@ import java.util.Map;
  * @author qsjteam
  * @date 2018-10-1
  */
-//@RestController
-//@RequestMapping(value = "/lott")
+@RestController
+@RequestMapping(value = "/lott")
 public class LotteryController {
 
     @Autowired

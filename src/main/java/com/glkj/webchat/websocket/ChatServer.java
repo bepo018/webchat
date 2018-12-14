@@ -288,7 +288,7 @@ public class ChatServer {
 			for (ChatServer key : webSocketSet) {
 				// s判断所有websocket集合中是否包含当前房间的用户
 				if (userid.equals(key.userid)) {
-					Map<String, String> s = new HashMap<String, String>();
+					Map<String, String> s = new HashMap<>();
 					s.put("userid", key.userid);
 					s.put("level", key.httpSession.getAttribute("level").toString());
 					s.put("headmsg", key.httpSession.getAttribute("headmsg").toString());
