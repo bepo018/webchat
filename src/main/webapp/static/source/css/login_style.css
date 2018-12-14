@@ -77,7 +77,12 @@ body a:hover,body a{
 .wthree_top_forms{
 	margin:3em auto 0;
 	width:70%;
-	    text-align: center;
+    text-align: center;
+}
+.admin_top_forms{
+    margin:3em auto 0;
+    width:48%;
+    text-align: center;
 }
 .agile-info_w3ls{
 	width:32.35%;
@@ -610,6 +615,9 @@ h5.rest {
 	.wthree_top_forms {
 		width: 88%;
 	}
+    .admin_top_forms{
+        width:57%;
+    }
 	.agile-info_w3ls input[type="text"], .agile-info_w3ls input[type="password"], .agile-info_w3ls input[type="email"] {
 		width: 60.5%;
 	}
@@ -628,6 +636,9 @@ h5.rest {
 	.wthree_top_forms {
 		width: 93%;
 	}
+    .admin_top_forms{
+        width:69%;
+    }
 	.agile-info_w3ls {
 		width: 32.25%;
 	}
@@ -652,6 +663,9 @@ h5.rest {
     .wthree_top_forms {
         width: 80%;
     }
+    .admin_top_forms{
+        width:80%;
+    }
 	.main h1 {
 		font-size: 2.5em;
         margin: -2%;
@@ -671,6 +685,9 @@ h5.rest {
 @media (max-width:991px){
     .wthree_top_forms {
         width: 80%;
+    }
+    .admin_top_forms{
+        width:91%;
     }
 	.agile-info_w3ls input[type="text"], .agile-info_w3ls input[type="password"], .agile-info_w3ls input[type="email"] {
         width: 63.5%;

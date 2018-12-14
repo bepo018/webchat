@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body style="background: #eee;">
 <div class="main">
-    <div class="wthree_top_forms" style="width: 61%;">
+    <div class="admin_top_forms" >
         <div class="agile-info_w3ls hvr-buzz-out" style="width: 49%;">
             <div class="agile-info_w3ls_grid">
                 <c:if test="${admin == null}">
@@ -30,13 +30,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </c:if>
 
                 <form id="form_register" action="" method="post">
-                    <span>用户名：</span><input type="text" id="uname" name="username" required=" "  value="${admin.username}">
-                    <span>密码：</span><input type="password" id="pwd" name="password"  required=" " value="${admin.password}">
-                    <span>手机：</span><input type="text" id="phone" name="phone"  required=" " style="margin: 1.5em 0;" value="${admin.phone}">
-                    <span>微信：</span><input type="text" id="weixin" name="weixin"  required=" " value="${admin.weixin}">
-                    <span>QQ：</span><input type="text" id="qq" name="qq"  required=" " value="${admin.qq}">
-                    <span>等级：</span><input type="text" id="level" name="level"  required=" " value="${admin.level}">
-                    <span>备注：</span><input type="text" id="remarks" name="remarks" required=" " value="${admin.remarks}">
+                    <em>用户名：</em><input type="text" id="uname" name="username" required=" "  value="${admin.username}">
+                    <em>密码：</em><input type="password" id="pwd" name="password"  required=" " value="${admin.password}">
+                    <em>手机：</em><input type="text" id="phone" name="phone"  required=" " style="margin: 1.5em 0;" value="${admin.phone}">
+                    <em>微信：</em><input type="text" id="weixin" name="weixin"  required=" " value="${admin.weixin}">
+                    <em>QQ：</em><input type="text" id="qq" name="qq"  required=" " value="${admin.qq}">
+                    <em>等级：</em><input type="text" id="level" name="level"  required=" " value="${admin.level}">
+                    <em>备注：</em><input type="text" id="remarks" name="remarks" required=" " value="${admin.remarks}">
                     <button id="sub" type="button" onclick="submita()">提交</button>
                 </form>
             </div>

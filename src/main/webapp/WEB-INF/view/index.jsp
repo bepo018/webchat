@@ -1522,10 +1522,11 @@
 	             success: function (data) {
 	            	 var mId="";
 	            	 var sId="";
-	            	 var trueTime=data.time ;  //正常开奖时间延时120秒
+	            	 var trueTime=data.time + 120000;  //正常开奖时间延时120秒
 	            	 var m = parseInt(trueTime/1000 / 60.0);
 	            	 var s = Math.ceil((parseFloat(trueTime/1000 / 60.0) -
 	                         parseInt(trueTime/1000 / 60.0)) * 60);
+                     clearInterval(set);
 	            	 var set = setInterval(function() {
 	            	    	if( (m == 0 && s == 0) || (m == null && s == null) ){
 	            	    		clearInterval(set);
@@ -1538,16 +1539,6 @@
 	            					s = 59;
 	            	  			}
 	            	 		}
-                             if(m<0){
-                                 clearInterval(set);
-                                 $("#"+mId+"").html("");
-                                 m=0;
-                             }
-	            	 		if(s<0){
-                                clearInterval(set);
-                                $("#"+sId+"").html("");
-                                s=59;
-                            }
 	            	    	$("#"+mId+"").html(m);
 	            	        $("#"+sId+"").html(s);
 	            	    }, 1000);
