@@ -224,6 +224,7 @@ public class AdminsController {
         return jr;
     }
 
+
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session, RedirectAttributes attributes, WordDefined defined) {
         session.removeAttribute("userid");
@@ -231,5 +232,6 @@ public class AdminsController {
         session.removeAttribute("headmsg");
         attributes.addFlashAttribute("message", defined.LOGOUT_SUCCESS);
         return "redirect:/admin/adminLogin";
+
     }
 }
