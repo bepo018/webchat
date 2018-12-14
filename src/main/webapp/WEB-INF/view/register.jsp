@@ -41,11 +41,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <input type="text" id="weixin" name="weixin" placeholder="微信" required=" ">
                     <span> * </span>
                     <p id="weixin_hint"></p>
+                    <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
+                    <span class="xt">选 填</span>
                     <input type="text" id="qq" name="qq" placeholder="QQ" required=" ">
                     <span class="xt">选 填</span>
                     <p id="qq_hint"></p>
-                    <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
-                    <span class="xt">选 填</span>
+
                     <button id="sub" type="button" onclick="submita()">注册</button>
                 </form>
                 <h5>已注册? <a href="${ctx}/user/login">登录</a></h5>
