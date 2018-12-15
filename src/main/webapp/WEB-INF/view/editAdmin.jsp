@@ -35,7 +35,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <span>手机：</span><input type="text" id="phone" name="phone"  required=" " style="margin: 1.5em 0;" value="${admin.phone}">
                     <span>微信：</span><input type="text" id="weixin" name="weixin"  required=" " value="${admin.weixin}">
                     <span>QQ：</span><input type="text" id="qq" name="qq"  required=" " value="${admin.qq}">
-                    <span>等级：</span><input  class="browsers" list="browsers" type="text" id="level" name="level"  required=" " >
+                    <span>等级：</span><input  class="browsers" list="browsers" type="text" id="level" name="level" value="${admin.level}"  required=" " >
                     <datalist id="browsers">browsers
                         <option value="3">普通管理员</option>
                         <option value="4">高级管理员</option>
@@ -75,10 +75,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 "dataType":"JSON",
                 "success":function (obj) {
                     alert(obj.message);
+                    window.location.reload();
                 }
             })
         }
-
     }
 
 </script>

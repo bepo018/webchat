@@ -94,4 +94,6 @@ public interface IAdminsDao {
     List<AdminPermission> selectPermissionByName(String adminName);
 
     List<AdminRole> selectRoles();
+
+    void updateRole(Integer level, Integer username);
 }
