@@ -53,7 +53,7 @@
                             <a id="addIframe" href="http://www.111ctx.com/register?id=94649462" target="myFrameName" class="btn btnReg btn-lg btn-block" >在线投注</a>
                         </li>
                         <li>
-                        	<a id='closeIframe' style='margin-top: 2px;color: white;border-radius: 19%;cursor: pointer;background: rgb(230, 86, 16);display:none;width: 37px;text-align: center;'>X</a>
+                        	<a id='closeIframe' style='margin-top: 2px;color: white;border-radius: 19%;cursor: pointer;background: rgb(230, 86, 16);display:none;width: 37px;text-align: center;margin-left: 40px; '>X</a>
                         </li>
                     </ul>
                 </div>
