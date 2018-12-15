@@ -135,6 +135,12 @@
 		WHERE USERID = #{userid, jdbcType=VARCHAR}
 	</delete>
 
+	<!-- 删除用户 -->
+	<delete id="deleteLog" parameterType="string">
+		DELETE FROM log
+		WHERE USERID = #{userid, jdbcType=VARCHAR}
+	</delete>
+
 	<!-- 获取聊天内容 -->
 	<select id="list" resultType="java.lang.String"
 		parameterType="java.lang.Integer">
@@ -217,10 +223,10 @@
 			userid LIKE #{userid};
 	</select>
 
-	<!--展示未归属用户信息-->
+	<!--展示个人归属用户信息-->
 	<select id="selectPrivateUser" resultType="com.glkj.webchat.pojo.UserShow">
 		SELECT
-			userid,level,qq,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
+			userid,level,qq,weixin,remarks,phone,enter_status,invitation,create_time createTime,create_user createUser
 		FROM
 			user
 		WHERE

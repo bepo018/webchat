@@ -56,7 +56,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="clear"></div>
     </div>
     <div class="agileits_copyright">
-        <p>© 2018 大发彩票注册. All rights reserved | Design by <a href="http://www.chatcai.com">chatcai.com</a></p>
+        <p>© 2018 大发彩票注册. All rights reserved | Design by <a href="http://chatcai.com">chatcai.com</a></p>
     </div>
 </div>
 </body>
