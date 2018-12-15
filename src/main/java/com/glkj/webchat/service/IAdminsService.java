@@ -29,7 +29,7 @@ public interface IAdminsService {
      * @param admin
      * @return 返回受影响的行数
      */
-    Boolean save(Admins admin,Integer rights,String createUser);
+    Boolean save(Admins admin,Integer rights);
 
     /**
      * 管理员登录
@@ -44,11 +44,9 @@ public interface IAdminsService {
     /**
      * 修改管理员信息
      * @param admins 管理员ID
-     * @param rights 权限等级  1 基本管理  2 高级管理
-     * @param modifiedUser  修改者
      * @return   返回是否修改成功
      */
-    Boolean update(Admins admins,Integer rights,String modifiedUser);
+    Boolean update(Admins admins);
 
     /**
      * 查询所有管理员

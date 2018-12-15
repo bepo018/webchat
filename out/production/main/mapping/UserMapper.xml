@@ -237,4 +237,8 @@
 			userid LIKE #{1};
 	</update>
 
+	<select id="selectCountByAdmin" resultType="integer">
+		SELECT COUNT(username) FROM q_admins WHERE username = #{invitation}
+	</select>
+
 </mapper>

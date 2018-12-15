@@ -22,26 +22,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="admin_top_forms" >
         <div class="agile-info_w3ls hvr-buzz-out" style="width: 49%;">
             <div class="agile-info_w3ls_grid">
-                <c:if test="${admin == null}">
-                    <h3>注册</h3>
-                </c:if>
-                <c:if test="${admin != null}">
-                    <h3>修改</h3>
-                </c:if>
-
+                <h3>修改</h3>
                 <form id="form_register" action="" method="post">
-                    <span>用户名：</span><input type="text" id="uname" name="username" required=" "  value="${admin.username}">
-                    <span>密码：</span><input type="password" id="pwd" name="password"  required=" " value="${admin.password}">
-                    <span>手机：</span><input type="text" id="phone" name="phone"  required=" " style="margin: 1.5em 0;" value="${admin.phone}">
-                    <span>微信：</span><input type="text" id="weixin" name="weixin"  required=" " value="${admin.weixin}">
-                    <span>QQ：</span><input type="text" id="qq" name="qq"  required=" " value="${admin.qq}">
-                    <span>等级：</span><input  class="browsers" list="browsers" type="text" id="level" name="level" value="${admin.level}"  required=" " >
+                    <span>用户名：</span><input type="text" id="uname" name="username" required=" "  value="${user.userid}">
+                    <span>密码：</span><input type="password" id="pwd" name="password"  required=" " value="${user.password}">
+                    <span>手机：</span><input type="text" id="phone" name="phone"  required=" " style="margin: 1.5em 0;" value="${user.phone}">
+                    <span>微信：</span><input type="text" id="weixin" name="weixin"  required=" " value="${user.weixin}">
+                    <span>QQ：</span><input type="text" id="qq" name="qq"  required=" " value="${user.qq}">
+                    <span>等级：</span><input  class="browsers" list="browsers" type="text" id="level" name="level"  value="${user.level}" required=" " >
                     <datalist id="browsers">browsers
-                        <option value="3">普通管理员</option>
-                        <option value="4">高级管理员</option>
+                        <option value="1">游客</option>
+                        <option value="2">会员</option>
                     </datalist>
-
-                    <span>备注：</span><input type="text" id="remarks" name="remarks" required=" " value="${admin.remarks}">
+                    <span>备注：</span><input type="text" id="remarks" name="remarks" required=" " value="${user.remarks}">
                     <button id="sub" type="button" onclick="submita()">提交</button>
                 </form>
             </div>
@@ -53,11 +46,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="${ctx}/static/source/js/jquery.min.js"></script>
 <script type="text/javascript">
     function submita() {
-        if(${admin == null}){
             var data = $("#form_register").serialize();
             $.ajax({
-                "url":"${ctx}/admin/registerAdmin",
-
+                "url":"${ctx}updateUser",
                 "data":data,
                 "type":"POST",
                 "dataType":"JSON",
@@ -66,19 +57,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     window.location.reload();
                 }
             })
-        }else{
-            var data = $("#form_register").serialize();
-            $.ajax({
-                "url":"${ctx}/admin/editAdmin",
-                "data":data,
-                "type":"POST",
-                "dataType":"JSON",
-                "success":function (obj) {
-                    alert(obj.message);
-                    window.location.reload();
-                }
-            })
-        }
     }
 
 </script>
