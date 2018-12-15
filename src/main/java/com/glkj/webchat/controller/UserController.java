@@ -168,6 +168,18 @@ public class UserController {
         return jr;
     }
 
+    @RequestMapping("check_invitation")
+    @ResponseBody
+    public JsonResult<Void> check_invitation(String invitation) {
+        JsonResult<Void> jr;
+        if (userService.checkInvitation(invitation)) {
+            jr = new JsonResult<>(1, "success");
+        } else {
+            jr = new JsonResult<>(0, "邀请码不正确");
+        }
+        return jr;
+    }
+
     /**
      * 注册会员
      *
@@ -182,11 +194,12 @@ public class UserController {
     @ResponseBody
     public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String qq,String weixin) {
         JsonResult<Void> jr;
+
         User user = new User();
         user.setUserid(uname);
         user.setPassword(password);
         user.setInvitation(invitation);
-        if(invitation == null){
+        if (!userService.checkInvitation(invitation)){
             user.setInvitation("0");
         }
         user.setPhone(phone);

@@ -1145,6 +1145,13 @@ a{
 
 /* 201811281426更改聊天页面中奖播报end */
 
+/*201812151027增加滚动条跳转样式*/
+.jump{
+    color:red !important;
+    font-weight: normal !important;
+}
+
+
 
 
 

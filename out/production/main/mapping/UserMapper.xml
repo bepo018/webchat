@@ -205,7 +205,7 @@
 		FROM
 			user
 		WHERE
-			level = 2 AND invitation LIKE '没有归属';
+			level = 2 AND invitation LIKE '0';
 	</select>
 
 	<select id="selectUseShow" resultType="com.glkj.webchat.pojo.UserShow">

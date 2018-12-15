@@ -43,6 +43,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <p id="weixin_hint"></p>
                     <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
                     <span class="xt">选 填</span>
+                    <p id="invitation_hint"></p>
                     <input type="text" id="qq" name="qq" placeholder="QQ" required=" ">
                     <span class="xt">选 填</span>
                     <p id="qq_hint"></p>
@@ -207,5 +208,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         }
     }
+
+    /**发起异步GET请求，询问服务器邀请码是否已经存在**/
+    $("#invitation").blur(function () {
+        $("#invitation_hint").html("");
+        $.ajax({
+            "url": "${ctx}/check_invitation",
+            "data": "invitation=" + $("#invitation").val(),
+            "type": "GET",
+            "dataType": "json",
+            "success": function (result) {
+                if (result.code == 1) {
+                    $("#invitation_hint").html("").css('color', 'green');
+                } else {
+                    $("#invitation_hint").html(result.message).css('color', 'red');
+                }
+            },
+        });
+    })
 </script>
 </html>

@@ -92,4 +92,11 @@ public interface IUserService {
      * @throws UsernameNotFoundException 用户没找到
      */
     Boolean updateInvitation(String invitation,String userid);
+
+    /**
+     * 检查用户输入的验证码是否是管理员账号
+     * @param invitation
+     * @return
+     */
+    boolean checkInvitation(String invitation);
 }
