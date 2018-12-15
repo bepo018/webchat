@@ -19,14 +19,15 @@ import java.util.Random;
 /**
  * Copyright © 2018 The so-called success is to make extraordinary persistence
  * in the ordinary.
- * 
+ *
  * @author qsjteam
  * @date 2018-10-1
  */
 @Service(value = "userService")
 public class UserServiceImpl implements IUserService {
 
-    @Resource private IUserDao userDao;
+    @Resource
+    private IUserDao userDao;
 
     @Override
     public List<User> selectAll(int page, int pageSize) {
@@ -41,7 +42,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public int selectCount(int pageSize) {
         int pageCount = Integer.parseInt(userDao.selectCount().getUserid());
-        return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize + 1;
+        return pageCount % pageSize == 0 ? pageCount / pageSize : pageCount / pageSize + 1;
     }
 
     @Override
@@ -56,29 +57,25 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean delete(String userid) {
-        return userDao.delete(userid);
+        User user = findUserByUserId(userid);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户数据不存在");
+        } else {
+            userDao.deleteLog(userid);
+            return userDao.delete(userid);
+        }
     }
 
-	@Override
-	public Integer level(String userid) {
-		return userDao.level(userid);
-	}
+    @Override
+    public Integer level(String userid) {
+        return userDao.level(userid);
+    }
 
     public Integer register(User user) {
-        if(findUserByUserId(user.getUserid())== null){
-            Random num = new Random();
-            user.setPassword(GetMD5.getMD5(user.getPassword()));
-            user.setNickname("高级会员");
-            user.setSex(0);
-            user.setAge(18);
-            user.setStatus(1);
-            user.setLevel(2);
-            user.setProfilehead("avater"+num.nextInt(136)+".png");
-            user.setEnterStatus(1);
-            user.setCreateUser("[System]");
-            user.setCreateTime(new Date());
+        if (findUserByUserId(user.getUserid()) == null) {
+
             return userDao.insertSeniorMenber(user);
-        }else {
+        } else {
             throw new UsernameAlreadExistsException("用户名已存在");
         }
     }
@@ -92,31 +89,32 @@ public class UserServiceImpl implements IUserService {
     }
 
     public Boolean checkQqExists(String qq) {
-        return userDao.getRecordCountByQq(qq)>0;
+        return userDao.getRecordCountByQq(qq) > 0;
     }
 
 
     public Boolean checkPhoneExists(String phone) {
-        return userDao.getRocordCountByPhone(phone)>0;
+        return userDao.getRocordCountByPhone(phone) > 0;
     }
 
     public Boolean checkWeixinExists(String weixin) {
-        return userDao.getRocordCountByWeixin(weixin)>0;
+        return userDao.getRocordCountByWeixin(weixin) > 0;
     }
 
     public User login(String username, String password) {
         User user = userDao.findUserByUserid(username);
-        if(user!=null){
+        if (user != null) {
             password = GetMD5.getMD5(password);
-            if(user.getPassword().equals(password)){
+            if (user.getPassword().equals(password)) {
                 return user;
-            }else{
+            } else {
                 throw new PasswordNotMatchException("密码不正确");
             }
-        }else{
+        } else {
             throw new UsernameNotFoundException("该用户不存在");
         }
     }
+
     @Override
     public List<UserShow> showUserInfo() {
         return userDao.selectUserInfo();
@@ -130,10 +128,10 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Boolean updateInvitation(String invitation, String userid) {
         UserShow usershow = userDao.selectUseShow(userid);
-        if(usershow == null){
+        if (usershow == null) {
             throw new UsernameNotFoundException("用户名不存在");
-        }else{
-            return userDao.updateInvitation(invitation,userid)>0;
+        } else {
+            return userDao.updateInvitation(invitation, userid) > 0;
         }
     }
 

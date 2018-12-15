@@ -135,6 +135,12 @@
 		WHERE USERID = #{userid, jdbcType=VARCHAR}
 	</delete>
 
+	<!-- 删除用户 -->
+	<delete id="deleteLog" parameterType="string">
+		DELETE FROM log
+		WHERE USERID = #{userid, jdbcType=VARCHAR}
+	</delete>
+
 	<!-- 获取聊天内容 -->
 	<select id="list" resultType="java.lang.String"
 		parameterType="java.lang.Integer">

@@ -95,7 +95,7 @@
                                                 <td>${user.createUser}</td>
                                                 <td>${user.invitation}</td>
                                                 <th>${user.remarks}</th>
-                                                <th><a href="${ctx}/updateUser?username=${user.userid}">修改</a>/<a href="#">删除</a></th>
+                                                <th><a href="${ctx}/updateUser?username=${user.userid}">修改</a>/<a href="#" onclick="deleteU('${user.userid}')">删除</a></th>
                                             </tr>
                                         </c:forEach>
 
@@ -152,11 +152,11 @@
 <script src="${ctx}/static/ht/js/charts.js"></script>
 <script src="${ctx}/static/ht/js/jquery.slimscroll.min.js"></script>
 <script>
-    function getGS(data) {
+    function deleteU(data) {
         $.ajax({
-            url:"${ctx}/updateInvitation",
+            url:"${ctx}/deleteUser",
             type:"GET",
-            data:"userid="+data,
+            data:"username="+data,
             success:function (res) {
                 alert(res.message)
                 window.location.reload();

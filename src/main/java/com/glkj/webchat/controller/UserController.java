@@ -20,40 +20,45 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.channels.MembershipKey;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Copyright © 2018 The so-called success is to make extraordinary persistence
  * in the ordinary.
- * 
+ *
  * @author qsjteam
  * @date 2018-10-1
  */
 @Controller
 @SessionAttributes("userid")
 public class UserController {
-	
-    @Resource private User user;
-    @Resource private IUserService userService;
-    @Resource private ILogService logService;
-    
+
+    @Resource
+    private User user;
+    @Resource
+    private IUserService userService;
+    @Resource
+    private ILogService logService;
+
     /**
      * 视频主页
-     
-    @RequestMapping(value = "chat")
-    public ModelAndView getVideo(){
-        ModelAndView view = new ModelAndView("video");
-        return view;
-    }*/
-    
+
+     @RequestMapping(value = "chat")
+     public ModelAndView getVideo(){
+     ModelAndView view = new ModelAndView("video");
+     return view;
+     }*/
+
     /**
      * 聊天主页
-    */
+     */
     @RequestMapping(value = "chat")
     public String getIndex(HttpServletRequest request) {
 
@@ -72,18 +77,18 @@ public class UserController {
      * 显示个人信息页面
      */
     @RequestMapping(value = "{userid}", method = RequestMethod.GET)
-    public ModelAndView selectUserByUserid(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid){
+    public ModelAndView selectUserByUserid(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid) {
         ModelAndView view = new ModelAndView("information");
         user = userService.selectUserByUserid(userid);
         view.addObject("user", user);
         return view;
     }
-    
+
     /**
      * 显示休闲游戏页面
      */
     @RequestMapping(value = "five", method = RequestMethod.GET)
-    public String fivechess(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid){
+    public String fivechess(@PathVariable("userid") String userid, @ModelAttribute("userid") String sessionid) {
         return "fivechess";
     }
 
@@ -99,14 +104,15 @@ public class UserController {
 
     /**
      * 展示修改会员页面
+     *
      * @param username
      * @param model
      * @return
      */
-    @RequestMapping(value = "updateUser",method = RequestMethod.GET)
-    public String ShowUpdateUser(String username,Model model){
+    @RequestMapping(value = "updateUser", method = RequestMethod.GET)
+    public String ShowUpdateUser(String username, Model model) {
         User user = userService.findUserByUserId(username);
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "editUser";
     }
 
@@ -164,6 +170,7 @@ public class UserController {
         }
         return jr;
     }
+
     /**
      * 检查电话号码
      *
@@ -206,36 +213,64 @@ public class UserController {
      */
     @RequestMapping(value = "form_register", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String qq,String weixin) {
+    public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String qq, String weixin) {
         JsonResult<Void> jr;
 
         User user = new User();
         user.setUserid(uname);
         user.setPassword(password);
         user.setInvitation(invitation);
-        if (!userService.checkInvitation(invitation)){
+        System.out.println("111111");
+        if (!userService.checkInvitation(invitation)) {
             user.setInvitation("0");
         }
+        System.out.println("3333333");
         user.setPhone(phone);
         user.setQq(qq);
         user.setWeixin(weixin);
+        Random num = new Random();
+        user.setPassword(GetMD5.getMD5(user.getPassword()));
+        user.setNickname("高级会员");
+        user.setSex(0);
+        user.setAge(18);
+        user.setStatus(1);
+        user.setLevel(2);
+        user.setProfilehead("avater" + num.nextInt(136) + ".png");
+        user.setEnterStatus(1);
+        user.setCreateUser("[System]");
+        user.setCreateTime(new Date());
         try {
             userService.register(user);
+            System.out.println("3333");
             jr = new JsonResult<>(1, "注册成功");
         } catch (Exception e) {
             jr = new JsonResult<>(0, "注册失败，请重新注册");
         }
         return jr;
     }
-    @RequestMapping(value = "updateUser",method = RequestMethod.POST)
+
+    /**
+     * 修改会信息
+     *
+     * @param username
+     * @param password
+     * @param phone
+     * @param weixin
+     * @param qq
+     * @param level
+     * @param remarks
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "updateUser", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult<Void> handle_updateUser(String username,String password,String phone,String weixin,String qq,String level,String remarks,HttpSession session){
+    public JsonResult<Void> handle_updateUser(String username, String password, String phone, String weixin, String qq, String level, String remarks, HttpSession session) {
         JsonResult<Void> jr;
         User user = new User();
         User u = userService.selectUserByUserid(username);
-        if(u == null){
-            jr = new JsonResult<>(-1,"用户数据不存在");
-        }else{
+        if (u == null) {
+            jr = new JsonResult<>(-1, "用户数据不存在");
+        } else {
             user.setUserid(u.getUserid());
             u.setPassword(password);
             u.setPhone(phone);
@@ -246,53 +281,75 @@ public class UserController {
             u.setModifiedUser(session.getAttribute("userid").toString());
             u.setModifiedTime(new Date());
             userService.update(u);
-            jr = new JsonResult<>(1,"修改成功");
+            jr = new JsonResult<>(1, "修改成功");
+        }
+        return jr;
+    }
+
+    /**
+     * 删除会员
+     *
+     * @param username
+     * @return
+     */
+    @RequestMapping("deleteUser")
+    @ResponseBody
+    public JsonResult<Void> handle_delete(String username) {
+        JsonResult<Void> jr;
+        try {
+            userService.delete(username);
+            jr = new JsonResult<>(1, "操作成功");
+        } catch (Exception e) {
+            jr = new JsonResult<>(-1, "操作失败");
         }
         return jr;
     }
 
     /**
      * 展示没有归属的用户信息
+     *
      * @return
      */
     @RequestMapping("showUserInfo")
-    public String showUserInfo(Model model){
+    public String showUserInfo(Model model) {
         List<UserShow> list = userService.showUserInfo();
-        System.out.println("list::"+list);
-        model.addAttribute("list",list);
+        System.out.println("list::" + list);
+        model.addAttribute("list", list);
         return "vip";
     }
 
     /**
      * 展示私有归属的用户信息
+     *
      * @return
      */
     @RequestMapping("showPrivateUser")
-    public String showPrivateUser(HttpSession session,Model model){
+    public String showPrivateUser(HttpSession session, Model model) {
         Object uidObject = session.getAttribute("userid");
-        String  uid = uidObject.toString();
+        String uid = uidObject.toString();
         List<UserShow> list = userService.showPrivateUser(uid);
-        model.addAttribute("list",list);
+        model.addAttribute("list", list);
         return "privateVip";
     }
 
     /**
      * 修改用户归属
+     *
      * @param userid
      * @param session
      * @return
      */
-    @RequestMapping(value = "updateInvitation",method = RequestMethod.GET)
+    @RequestMapping(value = "updateInvitation", method = RequestMethod.GET)
     @ResponseBody
-    public JsonResult<Void> updateInvitation(String userid ,HttpSession session){
+    public JsonResult<Void> updateInvitation(String userid, HttpSession session) {
         JsonResult<Void> jr;
         // 获取当前用户id
-        String  id = session.getAttribute("userid").toString();
+        String id = session.getAttribute("userid").toString();
         try {
-            userService.updateInvitation(id,userid);
-            jr = new JsonResult<>(1,"用户已修改");
+            userService.updateInvitation(id, userid);
+            jr = new JsonResult<>(1, "用户已修改");
         } catch (UsernameNotFoundException e) {
-            jr = new JsonResult<>(0,"用户数据不存在");
+            jr = new JsonResult<>(0, "用户数据不存在");
         }
         return jr;
     }
