@@ -142,4 +142,12 @@
         WHERE
             a.username LIKE #{adminName} ;
     </select>
+
+    <select id="selectRoles" resultType="com.glkj.webchat.pojo.AdminRole">
+        SELECT  id,type,role_name roleName,role_code roleCode,status,
+            create_time createTime,
+            create_user createUser,
+            modified_time modifiedTime,
+            modified_user modifiedUser FROM q_role
+    </select>
 </mapper>

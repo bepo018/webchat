@@ -68,8 +68,9 @@
                     <span>头条</span>
                 </div>
                 <div>
-                    <marquee behavior="scroll" direction="left" scrollamount="5" onmouseover="this.start()">
-                        温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -273,6 +274,23 @@
                 </li>
             </ul>
         </div>
+        <!-- 滚动区域 -->
+        <div class="tip">
+            <!-- 字体轮播 -->
+            <div class="wordCarousel">
+                <div>
+                    <span>彩票</span>
+                    <span>头条</span>
+                </div>
+                <div>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                    </marquee>
+                </div>
+            </div>
+
+        </div>
     </div>
     <div data-role="main">
         <ul class="plan-tab">
@@ -452,6 +470,23 @@
                 </li>
             </ul>
         </div>
+        <!-- 滚动区域 -->
+        <div class="tip">
+            <!-- 字体轮播 -->
+            <div class="wordCarousel">
+                <div>
+                    <span>彩票</span>
+                    <span>头条</span>
+                </div>
+                <div>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                    </marquee>
+                </div>
+            </div>
+
+        </div>
     </div>
     <div data-role="main">
         <div class="loadbet" >
@@ -485,6 +520,23 @@
                     <a href="#pagesix">直播</a>
                 </li>
             </ul>
+        </div>
+        <!-- 滚动区域 -->
+        <div class="tip">
+            <!-- 字体轮播 -->
+            <div class="wordCarousel">
+                <div>
+                    <span>彩票</span>
+                    <span>头条</span>
+                </div>
+                <div>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                    </marquee>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -522,6 +574,23 @@
                     <a href="#pagesix">直播</a>
                 </li>
             </ul>
+        </div>
+        <!-- 滚动区域 -->
+        <div class="tip">
+            <!-- 字体轮播 -->
+            <div class="wordCarousel">
+                <div>
+                    <span>彩票</span>
+                    <span>头条</span>
+                </div>
+                <div>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                    </marquee>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -584,6 +653,23 @@
                     <a href="#pagesix" class="nav-active">直播</a>
                 </li>
             </ul>
+        </div>
+        <!-- 滚动区域 -->
+        <div class="tip">
+            <!-- 字体轮播 -->
+            <div class="wordCarousel">
+                <div>
+                    <span>彩票</span>
+                    <span>头条</span>
+                </div>
+                <div>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                    </marquee>
+                </div>
+            </div>
+
         </div>
     </div>
 	
@@ -1185,27 +1271,27 @@
 
         // 201812141255star
         // 判断安卓或者ios
-        // var ua = window.navigator.userAgent.toLowerCase();
+         var ua = window.navigator.userAgent.toLowerCase();
         // //console.log(ua)
-        // if(ua.indexOf("android")!=-1){
-        //     var a=window.screen.height-88.3;
-        //     var repage="";
-        //     var randomnumber=Math.floor(Math.random()*100000);
-        //     repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
-        //
-        //
-        // }else {
-        //     var a=window.screen.height+100;
-        //     var repage="";
-        //     var randomnumber=Math.floor(Math.random()*100000);
-        //     //repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
-        //
-        //     repage+='<object data="http://m.111ctx.com"  id="betpageLoad">'+
-        //         '<embed src="http://m.111ctx.com" id="betpageLoad2"></embed>'+
-        //         '</object>'
-        //
-        //
-        // }
+         if(ua.indexOf("android")!=-1){
+             var a=window.screen.height-88.3;
+             var repage="";
+             var randomnumber=Math.floor(Math.random()*100000);
+             repage+='<iframe id="myframe" src="https://%31%31%31%63%74%78%2E%63%6F%6D?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
+
+
+         }else {
+            var a=window.screen.height+100;
+             var repage="";
+             var randomnumber=Math.floor(Math.random()*100000);
+             //repage+='<iframe id="myframe" src="http://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
+
+             repage+='<object data="http://m.111ctx.com"  id="betpageLoad">'+
+                 '<embed src="http://%31%31%31%63%74%78%2E%63%6F%6D" id="betpageLoad2"></embed>'+
+                 '</object>'
+
+
+         }
 
 
 
@@ -1218,25 +1304,21 @@
 
 
 
-        //     <object data="http://www.web-source.net" width="600" height="400">
-        //     <embed src="http://www.web-source.net" width="600" height="400"> </embed>
-        // Error: Embedded data could not be displayed.
-        // </object>
 
-        // $('.loadbet').css({
-        //     width:100+'vw',
-        //     minHeight:a
-        // })
-        // $(".loadbet").html(repage);
-        //
-        // $('#betpageLoad').css({
-        //     width:100+'vw',
-        //     minHeight:a
-        // })
-        // $('#betpageLoad2').css({
-        //     width:100+'vw',
-        //     minHeight:a
-        // })
+         $('.loadbet').css({
+             width:100+'vw',
+             minHeight:a
+         })
+         $(".loadbet").html(repage);
+
+         $('#betpageLoad').css({
+             width:100+'vw',
+             minHeight:a
+         })
+         $('#betpageLoad2').css({
+             width:100+'vw',
+             minHeight:a
+         })
 
 
 
@@ -1625,7 +1707,7 @@
 
 
     // 201812091031增加定位胆预测功能end
-
+    
 
 
 </script>
