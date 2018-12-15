@@ -96,4 +96,11 @@ public interface IUserDao {
      * @return
      */
     Integer updateInvitation(String invitation,String userid);
+
+    /**
+     * 查找验证码与adminId相同的记录
+     * @param invitation
+     * @return
+     */
+    Integer selectCountByAdmin(String invitation);
 }

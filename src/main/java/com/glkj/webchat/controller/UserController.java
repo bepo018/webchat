@@ -168,6 +168,18 @@ public class UserController {
         return jr;
     }
 
+    @RequestMapping("check_invitation")
+    @ResponseBody
+    public JsonResult<Void> check_invitation(String invitation) {
+        JsonResult<Void> jr;
+        if (userService.checkInvitation(invitation)) {
+            jr = new JsonResult<>(0, "邀请码不正确");
+        } else {
+            jr = new JsonResult<>(1, "success");
+        }
+        return jr;
+    }
+
     /**
      * 注册会员
      *
