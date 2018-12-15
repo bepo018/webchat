@@ -103,4 +103,11 @@ public interface IUserDao {
      * @return
      */
     Integer selectCountByAdmin(String invitation);
+
+
+    /**
+     * 删除用户log日志
+     * @param userid
+     */
+    void deleteLog(String userid);
 }

@@ -78,6 +78,9 @@
                                             <th>创建时间</th>
                                             <th>创建者</th>
                                             <th>归属</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -91,6 +94,8 @@
                                                 <td><fmt:formatDate  value="${user.createTime}" type="both" pattern="yyyy.MM.dd HH:mm:ss" /></td>
                                                 <td>${user.createUser}</td>
                                                 <td>${user.invitation}</td>
+                                                <th>${user.remarks}</th>
+                                                <th><a href="${ctx}/updateUser?username=${user.userid}">修改</a>/<a href="#" onclick="deleteU('${user.userid}')">删除</a></th>
                                             </tr>
                                         </c:forEach>
 
@@ -147,11 +152,11 @@
 <script src="${ctx}/static/ht/js/charts.js"></script>
 <script src="${ctx}/static/ht/js/jquery.slimscroll.min.js"></script>
 <script>
-    function getGS(data) {
+    function deleteU(data) {
         $.ajax({
-            url:"${ctx}/updateInvitation",
+            url:"${ctx}/deleteUser",
             type:"GET",
-            data:"userid="+data,
+            data:"username="+data,
             success:function (res) {
                 alert(res.message)
                 window.location.reload();

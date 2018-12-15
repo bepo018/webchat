@@ -136,7 +136,7 @@
             p.id,p.pid,p.type,p.menu_code menuCode,p.menu_name menuName,p.href,p.icon,p.status,p.href
         FROM
             q_admins a RIGHT JOIN q_admins_role rar ON a.id = rar.aid
-            RIGHT JOIN q_role r ON rar.rid = r.id
+            RIGHT JOIN q_role r ON rar.rid = r.role_code
             RIGHT JOIN q_role_permission rrp ON r.id = rrp.rid
             RIGHT JOIN q_permission p ON rrp.pid = p.id
         WHERE
