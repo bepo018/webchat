@@ -117,6 +117,7 @@
     </delete>
 
     <!--根据管理员名查询管理等级-->
+
     <select id="selectRoleByName" resultType="com.glkj.webchat.pojo.AdminRole">
         SELECT
             r.id,r.type,r.role_name roleName,r.role_code roleCode,r.status,
