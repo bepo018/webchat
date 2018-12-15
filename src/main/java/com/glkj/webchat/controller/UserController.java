@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.channels.MembershipKey;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -94,6 +95,19 @@ public class UserController {
     @RequestMapping("register")
     public String showRegister() {
         return "register";
+    }
+
+    /**
+     * 展示修改会员页面
+     * @param username
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "updateUser",method = RequestMethod.GET)
+    public String ShowUpdateUser(String username,Model model){
+        User user = userService.findUserByUserId(username);
+        model.addAttribute("user",user);
+        return "editUser";
     }
 
     /**
@@ -210,6 +224,29 @@ public class UserController {
             jr = new JsonResult<>(1, "注册成功");
         } catch (Exception e) {
             jr = new JsonResult<>(0, "注册失败，请重新注册");
+        }
+        return jr;
+    }
+    @RequestMapping(value = "updateUser",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult<Void> handle_updateUser(String username,String password,String phone,String weixin,String qq,String level,String remarks,HttpSession session){
+        JsonResult<Void> jr;
+        User user = new User();
+        User u = userService.selectUserByUserid(username);
+        if(u == null){
+            jr = new JsonResult<>(-1,"用户数据不存在");
+        }else{
+            user.setUserid(u.getUserid());
+            u.setPassword(password);
+            u.setPhone(phone);
+            u.setWeixin(weixin);
+            u.setQq(qq);
+            u.setLevel(Integer.valueOf(level));
+            u.setRemarks(remarks);
+            u.setModifiedUser(session.getAttribute("userid").toString());
+            u.setModifiedTime(new Date());
+            userService.update(u);
+            jr = new JsonResult<>(1,"修改成功");
         }
         return jr;
     }
