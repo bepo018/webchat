@@ -35,18 +35,17 @@ public class AdminsServiceImpl implements IAdminsService {
     }
 
     @Override
-    public Boolean save(Admins admin, Integer rights, String createUser) {
+    public Boolean save(Admins admin, Integer rights) {
         Admins a = adminsDao.selectAdminByName(admin.getUsername());
         if (a == null) {
-            Random random = new Random();
-            admin.setProfilehead("avater"+random.nextInt(90)+".png");
+
             adminsDao.save(admin);
             int adminId = findByName(admin.getUsername()).getId();
             RightsAdmins rightsAdmins = new RightsAdmins();
             rightsAdmins.setAdminID(adminId);
             rightsAdmins.setRoleID(rights);
             rightsAdmins.setCreate_time(new Date());
-            rightsAdmins.setCreate_user(createUser);
+            rightsAdmins.setCreate_user(admin.getCreateUser());
             adminsDao.saveRights(rightsAdmins);
             return true;
         } else {
@@ -70,7 +69,7 @@ public class AdminsServiceImpl implements IAdminsService {
     }
 
     @Override
-    public Boolean update(Admins admins, Integer rights, String modifiedUser) {
+    public Boolean update(Admins admins) {
         //TODO 这个方法需要修改
         Admins a1 = findByName(admins.getUsername());
         if (a1 == null) {
@@ -79,23 +78,8 @@ public class AdminsServiceImpl implements IAdminsService {
             Integer aid = a1.getId();
             admins.setId(aid);
             adminsDao.update(admins);
-            if (rights == 3) {
-                adminsDao.removeRights(aid);
-                return true;
-            } else if (rights == 4) {
-                if (adminsDao.getCountByAidRid(aid, 2) <1) {
-                    RightsAdmins admins1 = new RightsAdmins();
-                    admins1.setRoleID(2);
-                    admins1.setAdminID(aid);
-                    admins1.setCreate_user(modifiedUser);
-                    admins1.setCreate_time(new Date());
-                    adminsDao.saveRights(admins1);
-                }else{
-                    return true;
-                }
-            }else{
-                throw new UsernameNotFoundException("请输入正确人值");
-            }
+            AdminRole role = new AdminRole();
+            adminsDao.updateRole(admins.getLevel(),admins.getId());
             return true;
         }
     }

@@ -19,7 +19,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.security.Permission;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 管理员控制器层
@@ -116,9 +118,12 @@ public class AdminsController {
         admins.setWeixin(weixin);
         admins.setPhone(phone);
         admins.setRemarks(remarks);
-        String createUser = session.getAttribute("userid").toString();
+        admins.setCreateUser(session.getAttribute("userid").toString());
+        admins.setCreateTime(new Date());
+        Random random = new Random();
+        admins.setProfilehead("avater"+random.nextInt(90)+".png");
         try {
-            adminsService.save(admins, level, createUser);
+            adminsService.save(admins, level);
             jr = new JsonResult<>(1, "创建成功");
         } catch (UsernameNotFoundException e) {
             jr = new JsonResult<>(0, e);
@@ -146,7 +151,6 @@ public class AdminsController {
      * @param weixin
      * @param phone
      * @param remarks
-     * @param rights
      * @param session
      * @return
      */
@@ -154,7 +158,7 @@ public class AdminsController {
     @ResponseBody
     public JsonResult<Void> editAdmin(
             String username, String password, Integer level, String qq, String weixin,
-            String phone, String remarks, Integer rights, HttpSession session
+            String phone, String remarks, HttpSession session
     ) {
         JsonResult<Void> jr;
         Admins admins = new Admins();
@@ -165,10 +169,11 @@ public class AdminsController {
         admins.setWeixin(weixin);
         admins.setPhone(phone);
         admins.setRemarks(remarks);
-        String modifiedUser = session.getAttribute("userid").toString();
-
+        admins.setModifiedUser(session.getAttribute("userid").toString());
+        admins.setModifiedTime(new Date());
+        System.out.println("admins"+admins);
         try {
-            Boolean  flag = adminsService.update(admins, rights, modifiedUser);
+            Boolean  flag = adminsService.update(admins);
             if (flag) {
                 jr = new JsonResult<>(1, "修改成功！");
             } else {

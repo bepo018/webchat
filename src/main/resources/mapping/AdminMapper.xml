@@ -85,6 +85,13 @@
         WHERE
             aid=#{aid};
     </delete>
+    <update id="updateRole">
+        UPDATE q_admins_role
+        SET
+            rid = ${0}
+        WHERE
+            aid = ${1}
+    </update>
 
     <!-- 查询管理员权限是否存在-->
     <select id="getCountByAidRid" resultType="java.lang.Integer">
