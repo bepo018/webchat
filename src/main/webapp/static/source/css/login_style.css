@@ -81,7 +81,7 @@ body a:hover,body a{
 }
 .admin_top_forms{
     margin:3em auto 0;
-    width:42%;
+    width:47%;
     text-align: center;
 }
 .agile-info_w3ls{
@@ -613,7 +613,7 @@ h5.rest {
 /*-----start-responsive-design------*/
 @media (max-width:1680px){
     .admin_top_forms{
-        width:47%;
+        width:49%;
     }
     .agile-info_w3ls input[type="text"], .agile-info_w3ls input[type="password"], .agile-info_w3ls input[type="email"] {
         width: 60.5%;
@@ -624,7 +624,7 @@ h5.rest {
 		width: 88%;
 	}
     .admin_top_forms{
-        width:60%;
+        width:57%;
     }
 	.agile-info_w3ls input[type="text"], .agile-info_w3ls input[type="password"], .agile-info_w3ls input[type="email"] {
 		width: 60.5%;
@@ -634,18 +634,24 @@ h5.rest {
 	.wthree_top_forms {
 		width: 88%;
 	}
+    .admin_top_forms{
+        width:60%;
+    }
 }
 @media (max-width:1280px){
 	.wthree_top_forms {
 		width: 88%;
 	}
+    .admin_top_forms{
+        width:63%;
+    }
 }
 @media (max-width: 1080px){
 	.wthree_top_forms {
 		width: 93%;
 	}
     .admin_top_forms{
-        width:69%;
+        width:68%;
     }
 	.agile-info_w3ls {
 		width: 32.25%;
@@ -672,7 +678,7 @@ h5.rest {
         width: 80%;
     }
     .admin_top_forms{
-        width:80%;
+        width:77%;
     }
 	.main h1 {
 		font-size: 2.5em;
@@ -695,7 +701,7 @@ h5.rest {
         width: 80%;
     }
     .admin_top_forms{
-        width:91%;
+        width:90%;
     }
 	.agile-info_w3ls input[type="text"], .agile-info_w3ls input[type="password"], .agile-info_w3ls input[type="email"] {
         width: 63.5%;
@@ -704,6 +710,9 @@ h5.rest {
 @media (max-width:800px){
     .wthree_top_forms {
         width: 70%;
+    }
+    .admin_top_forms{
+        width:111%;
     }
 	.agile-info_w3ls {
 		width: 75%;
