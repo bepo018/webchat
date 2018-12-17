@@ -104,15 +104,16 @@
     </select>
 
     <!--查询所有管理员-->
-    <select id="selectAllAdmins" resultType="com.glkj.webchat.pojo.Admins">
+    <select id="selectAllAdmins" resultType="com.glkj.webchat.pojo.AdminVO">
         SELECT
-            id,username,password,level,qq,weixin,phone,remarks,
-            create_user createUser,
-            create_time createTime,
-            modified_user modifiedUser,
-            modified_time modifiedTime
+            q.id,q.username,q.password,q.level,q.qq,q.weixin,q.phone,q.remarks,
+            q.create_user createUser,
+            q.create_time createTime,
+            q.modified_user modifiedUser,
+            q.modified_time modifiedTime,
+            (SELECT COUNT(u.invitation) FROM `user` u WHERE u.invitation = q.username) users
         FROM
-            q_admins;
+            q_admins q
     </select>
 
     <!--删除管理员-->

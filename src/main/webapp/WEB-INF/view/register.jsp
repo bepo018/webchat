@@ -26,6 +26,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="agile-info_w3ls_grid">
                 <h3>注册</h3>
                 <form id="form_register" action="" method="post">
+
+
                     <input type="text" id="uname" name="uname" placeholder="用户名" required=" ">
                     <span> * </span>
                     <p id="username_hint"></p>
@@ -38,9 +40,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <input type="text" id="phone" name="phone" placeholder="手机" required=" " style="margin: 1.5em 0;">
                     <span> * </span>
                     <p id="phone_hint"></p>
+
+
                     <input type="text" id="weixin" name="weixin" placeholder="微信" required=" ">
                     <span> * </span>
                     <p id="weixin_hint"></p>
+
                     <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
                     <span class="xt">选 填</span>
                     <p id="invitation_hint"></p>

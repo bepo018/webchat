@@ -104,11 +104,8 @@ public class AdminsController {
      */
     @RequestMapping(value = "registerAdmin", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult<Void> registeAdmin(
-            String username, String password, Integer level, String qq, String weixin,
-            String phone, String remarks, HttpSession session
-    ) {
-
+    public JsonResult<Void> registeAdmin(String username, String password, Integer level, String qq, String weixin,
+                                        String phone, String remarks, HttpSession session) {
         JsonResult<Void> jr;
         Admins admins = new Admins();
         admins.setUsername(username);
@@ -138,6 +135,7 @@ public class AdminsController {
     @RequestMapping(value = "editAdmin",method = RequestMethod.GET)
     public String toEditAdmin(String adminName,Model model){
         Admins admin = adminsService.findByName(adminName);
+        model.addAttribute("levels",adminsService.selectRoles());
         model.addAttribute("admin",admin);
         return "editAdmin";
     }
@@ -156,10 +154,8 @@ public class AdminsController {
      */
     @RequestMapping(value = "editAdmin",method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult<Void> editAdmin(
-            String username, String password, Integer level, String qq, String weixin,
-            String phone, String remarks, HttpSession session
-    ) {
+    public JsonResult<Void> editAdmin(String username, String password, Integer level, String qq, String weixin,
+            String phone, String remarks, HttpSession session ) {
         JsonResult<Void> jr;
         Admins admins = new Admins();
         admins.setUsername(username);
@@ -171,7 +167,6 @@ public class AdminsController {
         admins.setRemarks(remarks);
         admins.setModifiedUser(session.getAttribute("userid").toString());
         admins.setModifiedTime(new Date());
-        System.out.println("admins"+admins);
         try {
             Boolean  flag = adminsService.update(admins);
             if (flag) {

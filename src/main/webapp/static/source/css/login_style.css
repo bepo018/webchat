@@ -104,7 +104,7 @@ body a:hover,body a{
     background:#6a67ce;
 }
 .agile-info_w3ls_grid{
-	padding:2em;
+	padding:1em;/*201812171428修改css*/
         background: url(../../images/login/1.jpg) no-repeat 0px 0px;
     background-size: cover;
     -webkit-background-size: cover;
@@ -112,6 +112,22 @@ body a:hover,body a{
     -o-background-size: cover;
     -ms-background-size: cover;
 }
+
+/*201812171428修改css-star*/
+
+.formStyle div{
+    display:flex;
+
+}
+.formStyle div>label{
+    width:4rem;
+}
+.formStyle div>input{
+    flex: 1;
+}
+
+/*201812171428修改css-end*/
+
 agile-info_w3ls_grid p{
     color: wheat;
 }

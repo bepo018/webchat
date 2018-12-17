@@ -56,7 +56,7 @@
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
-                            <span id="menuName">会员列表</span>
+                            <span id="menuName">管理员列表</span>
                         </li>
                     </ol>
                 </div>
@@ -73,6 +73,7 @@
                                             <th>ID</th>
                                             <th>用户名</th>
                                             <th>等级</th>
+                                            <th>下属会员</th>
                                             <th>电话</th>
                                             <th>QQ</th>
                                             <th>微信</th>
@@ -90,13 +91,14 @@
                                                 <td>${admin.id}</td>
                                                 <td>${admin.username}</td>
                                                 <td>${admin.level}</td>
+                                                <td>${admin.users} 人</td>
                                                 <td>${admin.phone}</td>
                                                 <td>${admin.qq}</td>
                                                 <td>${admin.weixin}</td>
                                                 <td>${admin.createUser}</td>
                                                 <td><fmt:formatDate  value="${admin.createTime}" type="both" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                                 <td>${admin.modifiedUser}</td>
-                                                <td>${admin.modifiedTime}</td>
+                                                <td><fmt:formatDate  value="${admin.modifiedTime}" type="both" pattern="yyyy-MM-dd HH:mm:ss" /></td>
                                                 <td>${admin.remarks}</td>
                                                 <td>  <a id="update" href="${ctx}/admin/editAdmin?adminName=${admin.username}">修改</a>/
                                                     <a id="delete" onclick="adminDelete('${admin.username}')">删除</a>
