@@ -56,7 +56,7 @@
                     <ol class="breadcrumb">
                         <li>
                             <i class="fa fa-home"></i>
-                            <span id="menuName">会员列表</span>
+                            <span id="menuName">会员列表</span><span>&nbsp;&nbsp;&nbsp;(你的会员有： <span style="color: #eea236">${your}</span> 个)</span>
                         </li>
                     </ol>
                 </div>

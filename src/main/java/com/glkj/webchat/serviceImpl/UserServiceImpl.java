@@ -139,4 +139,9 @@ public class UserServiceImpl implements IUserService {
     public boolean checkInvitation(String invitation) {
         return userDao.selectCountByAdmin(invitation) > 0;
     }
+
+    @Override
+    public Integer adminUsers(String userid) {
+        return userDao.selectUserCountByAdminId(userid);
+    }
 }

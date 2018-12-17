@@ -220,11 +220,9 @@ public class UserController {
         user.setUserid(uname);
         user.setPassword(password);
         user.setInvitation(invitation);
-        System.out.println("111111");
         if (!userService.checkInvitation(invitation)) {
             user.setInvitation("0");
         }
-        System.out.println("3333333");
         user.setPhone(phone);
         user.setQq(qq);
         user.setWeixin(weixin);
@@ -241,7 +239,6 @@ public class UserController {
         user.setCreateTime(new Date());
         try {
             userService.register(user);
-            System.out.println("3333");
             jr = new JsonResult<>(1, "注册成功");
         } catch (Exception e) {
             jr = new JsonResult<>(0, "注册失败，请重新注册");
@@ -311,10 +308,11 @@ public class UserController {
      * @return
      */
     @RequestMapping("showUserInfo")
-    public String showUserInfo(Model model) {
+    public String showUserInfo(Model model,HttpSession session) {
         List<UserShow> list = userService.showUserInfo();
         System.out.println("list::" + list);
         model.addAttribute("list", list);
+        model.addAttribute("your",userService.adminUsers((String) session.getAttribute("userid")));
         return "vip";
     }
 

@@ -1,5 +1,7 @@
 package com.glkj.webchat.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -16,6 +18,7 @@ public class UserShow implements Serializable {
     private String phone;
     private String invitation;
     private String remarks;
+    //@JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
     private String createUser;
 

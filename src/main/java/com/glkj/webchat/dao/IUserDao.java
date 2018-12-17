@@ -110,4 +110,6 @@ public interface IUserDao {
      * @param userid
      */
     void deleteLog(String userid);
+
+    Integer selectUserCountByAdminId(String userid);
 }

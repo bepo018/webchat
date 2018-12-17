@@ -99,4 +99,6 @@ public interface IUserService {
      * @return
      */
     boolean checkInvitation(String invitation);
+
+    Integer adminUsers(String userid);
 }

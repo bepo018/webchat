@@ -247,4 +247,8 @@
 		SELECT COUNT(username) FROM q_admins WHERE username = #{invitation}
 	</select>
 
+	<select id="selectUserCountByAdminId" resultType="integer">
+		SELECT COUNT(invitation) FROM user WHERE invitation = #{userid}
+	</select>
+
 </mapper>
