@@ -53,10 +53,13 @@
                         </c:if>
                         <c:choose>
                             <c:when test="${level == 1}">
-                                <li>游客：${userid}</li>
+                                <li>游客：<span>${userid}</span>
+                                    <span class="btn btnReg btn-xs " style="margin-left:5px;">注册</span>
+                                    <span class="btn btnReg btn-xs " style="margin-left:5px;">登陆</span>
+                                </li>
                             </c:when>
                             <c:otherwise>
-                                <li>${userid},欢迎你</li>
+                                <li><span>${userid}</span>,欢迎你<span class="btn btnReg btn-xs " style="margin-left:5px;" onclick="logout()">退出</span></li>
                             </c:otherwise>
                         </c:choose>
                         <li>
@@ -498,6 +501,8 @@
 	<script src="${ctx}/static/source/js/jquery.qqFace.js"></script>
 	
 	<script type="text/javascript">
+
+
 	//添加右键菜单
 	$(function () {
 			//getConnection(); 
@@ -560,7 +565,15 @@
 	    return currentdate;
 	}
 
-
+    function logout() {
+        window.location.href = "${ctx}/user/logout";
+    }
+    function register() {
+        window.location.href = "${ctx}/register";
+    }
+    function login() {
+        window.location.href = "${ctx}/user/login";
+    }
 	/**
 	 * 检查连接
 	 */
