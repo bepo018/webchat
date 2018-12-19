@@ -19,6 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<script src="${ctx}/static/source/js/jquery.min.js"></script>
+    <link rel="shortcut icon" href="${ctx}/static/images/ctx.ico" type="image/x-icon" />
 	<link href="${ctx}/static/source/css/login_style.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- //for-mobile-apps -->
 </head>
@@ -27,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<h1>大发彩票登录</h1>
 		<div class="wthree_top_forms">
 			<div class="agile-info_w3ls agile-info_w3ls_sub hvr-buzz-out">
-				
+
 				<div class="agile-info_w3ls_grid second">
                     <h3>登录</h3>
 					<form  action="${ctx}/user/login" method="POST" id="form_login">
@@ -38,6 +39,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="submit" id="sub"  value="登录"/>
 					</form>
 					<h5>还没注册? <a href="${ctx}/register">注册</a></h5>
+					<h5>忘记密码? <a href="${ctx}/findpassword">找回密码</a></h5>
 				</div>
 			</div>
 			<div class="clear"> </div>

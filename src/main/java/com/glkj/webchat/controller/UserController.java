@@ -28,6 +28,7 @@ import java.nio.channels.MembershipKey;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Copyright © 2018 The so-called success is to make extraordinary persistence
@@ -136,6 +137,24 @@ public class UserController {
     }
 
     /**
+     * 检查邮箱
+     *
+     * @param email
+     * @return
+     */
+    @RequestMapping("check_email")
+    @ResponseBody
+    public JsonResult<Void> checkEmail(String email) {
+        JsonResult<Void> jr;
+        if (userService.checkEmailExists(email)) {
+            jr = new JsonResult<>(0, "邮箱已被使用");
+        } else {
+            jr = new JsonResult<>(1, "可以使用的邮箱");
+        }
+        return jr;
+    }
+
+    /**
      * 检查qq号
      *
      * @param qq
@@ -213,7 +232,7 @@ public class UserController {
      */
     @RequestMapping(value = "form_register", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String qq, String weixin) {
+    public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String qq, String weixin, String email) {
         JsonResult<Void> jr;
 
         User user = new User();
@@ -231,14 +250,18 @@ public class UserController {
         user.setNickname("高级会员");
         user.setSex(0);
         user.setAge(18);
-        user.setStatus(1);
+        user.setStatus(0);
         user.setLevel(2);
         user.setProfilehead("avater" + num.nextInt(136) + ".png");
         user.setEnterStatus(1);
         user.setCreateUser("[System]");
         user.setCreateTime(new Date());
+        user.setEmail(email);
+        String code = UUID.randomUUID().toString();
+        user.setProfile(code);
         try {
             userService.register(user);
+            new Thread(new MailUtil(user.getEmail(), code)).start();
             jr = new JsonResult<>(1, "注册成功");
         } catch (Exception e) {
             jr = new JsonResult<>(0, "注册失败，请重新注册");
@@ -278,7 +301,7 @@ public class UserController {
             u.setModifiedUser(session.getAttribute("userid").toString());
             u.setModifiedTime(new Date());
             userService.update(u);
-            jr = new JsonResult<>(1, "修改成功");
+            jr = new JsonResult<>(1, "success");
         }
         return jr;
     }
@@ -350,6 +373,62 @@ public class UserController {
             jr = new JsonResult<>(0, "用户数据不存在");
         }
         return jr;
+    }
+
+    @RequestMapping("activate")
+    public String activateUser(String msg, Model model){
+        model.addAttribute("msg", msg);
+        return "activate";
+    }
+
+    @RequestMapping("findpassword")
+    public String findpassword(){
+        return "findpassword";
+    }
+
+    @RequestMapping("registActive/{code}")
+    public String registActive(@PathVariable("code") String code, Model model){
+        String userID = userService.findUserByProFile(code);
+        if(userID != null){
+            userService.active(userID);
+            model.addAttribute("msg","账号激活成功");
+        }else {
+            model.addAttribute("msg","激活码已失效，请重新注册");
+        }
+        return "activeResult";
+    }
+
+    @RequestMapping("registActive")
+    public String registActive(){
+        return "activeResult";
+    }
+
+    @RequestMapping("reset")
+    public String resetPassword(String email, Model model){
+        String pro = RandomCode.getCode(6);
+        Integer a=userService.updateCaptcha(pro, email);
+        System.out.println(a);
+        new Thread(new ModifyPasswordMailUtil(email, pro)).start();
+        model.addAttribute("email", email);
+        return "resetpassword";
+    }
+
+    @RequestMapping(value = "checkCaptcha", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult<Void> checkCaptcha(String captcha, String email){
+        if(userService.checkCaptcha(captcha, email)){
+            return new JsonResult<>(1,"success");
+        }
+        return new JsonResult<>(0,"验证失败");
+    }
+
+    @RequestMapping(value = "updatePassword", method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult<Void> updatePassword(String password, String email){
+        if(userService.updatePassword(GetMD5.getMD5(password), email) > 0){
+            return new JsonResult<>(1,"success");
+        }
+        return new JsonResult<>(0,"密码修改失败");
     }
 
 }

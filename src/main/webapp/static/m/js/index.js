@@ -103,6 +103,8 @@ $(function(){
                 $('.imgContent').html(TXimgHtml);
             }else if(index==4){
                 $('.imgContent').html(DLimgHtml);
+            }else if(index==5){
+                $('.imgContent').html(PLimgHtml);
             }
 
             $(this).parent().addClass("hide").removeClass("show").next().addClass("show").removeClass("hide");
@@ -142,9 +144,14 @@ $(function(){
             './static/m/images/course/dl_02.jpg',
             './static/m/images/course/dl_03.jpg',
             './static/m/images/course/dl_04.jpg'
+        ],
+        'pl':[
+            './static/m/images/course/pl_01.jpg',
+            './static/m/images/course/pl_02.jpg',
+            './static/m/images/course/pl_03.jpg'
         ]
     }
-    var ZCimgHtml="",CZimgHtml="",GCimgHtml="",TXimgHtml="",DLimgHtml="";
+    var ZCimgHtml="",CZimgHtml="",GCimgHtml="",TXimgHtml="",DLimgHtml="",PLimgHtml="";
     for(var i=0;i<imgList.zc.length;i++){
         ZCimgHtml+=`<li>
                             <img src="${imgList.zc[i]}" alt="">
@@ -167,6 +174,11 @@ $(function(){
     for(var i=0;i<imgList.dl.length;i++){
         DLimgHtml+=`<li>
                             <img src="${imgList.dl[i]}" alt="">
+                        </li>`
+    }
+    for(var i=0;i<imgList.pl.length;i++){
+        PLimgHtml+=`<li>
+                            <img src="${imgList.pl[i]}" alt="">
                         </li>`
     }
 

@@ -91,17 +91,15 @@ public class LoginController {
                 System.out.println(e.getMessage());
                 //登录失败
                 return "redirect:/user/login";
-
             }
-
         } else {
             if (!user.getPassword().equals(password)) {
                 attributes.addFlashAttribute("error", defined.LOGIN_PASSWORD_ERROR);
                 return "redirect:/user/login";
             } else {
                 if (user.getStatus() != 1) {
-                    attributes.addFlashAttribute("error", defined.LOGIN_USERID_DISABLED);
-                    return "redirect:/user/login";
+                    attributes.addFlashAttribute("msg", "账号未激活，请前往你的邮箱完成激活");
+                    return "redirect:/registActive";
                 } else {
                     logService.insert(logUtil.setLog(userid, date.getTime24(), defined.LOG_TYPE_LOGIN, defined.LOG_DETAIL_USER_LOGIN, netUtil.getIpAddress(request)));
                     session.setAttribute("level", user.getLevel());
@@ -111,7 +109,6 @@ public class LoginController {
                     session.setMaxInactiveInterval(-1);
                     user.setLasttime(date.getTime24());
                     user.setIp(ip);
-                    System.out.println("33333333333");
                     userService.update(user);
                     attributes.addFlashAttribute("message", defined.LOGIN_SUCCESS);
                     return "redirect:/chat";

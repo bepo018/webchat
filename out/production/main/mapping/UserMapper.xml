@@ -168,12 +168,12 @@
 		userid,password,nickname,sex,age,profilehead,status,
 		level,qq,phone,weixin,
 		enter_status,invitation,
-		create_time,create_user)
+		create_time,create_user,email,profile)
 		VALUES(
 		#{userid},#{password},#{nickname},#{sex},#{age},#{profilehead},#{status},
 		#{level},#{qq},#{phone},#{weixin},
 		#{enterStatus},#{invitation},
-		#{createTime},#{createUser}
+		#{createTime},#{createUser},#{email},#{profile}
 		);
 	</insert>
 
@@ -251,4 +251,27 @@
 		SELECT COUNT(invitation) FROM user WHERE invitation = #{userid}
 	</select>
 
+	<select id="findUserByProFile" resultType="string">
+		SELECT userid FROM  user WHERE profile = #{code} AND status = 0
+	</select>
+
+    <update id="activeUserid" parameterType="string">
+        UPDATE user SET status = 1 WHERE userid = #{userID}
+    </update>
+
+    <select id="findUserByEmail" resultType="integer">
+        SELECT COUNT(email) FROM user WHERE email = #{email}
+    </select>
+
+    <select id="findUserByEmailAndProfile" resultType="integer">
+        SELECT COUNT(userid) FROM user WHERE email = #{1} AND profile = #{0}
+    </select>
+
+    <update id="updatePassword" parameterType="string">
+        UPDATE user SET password = #{0} WHERE email = #{1}
+    </update>
+
+    <update id="updateProfileByEmail" parameterType="string">
+        UPDATE user SET profile=#{param1} WHERE email = #{param2}
+    </update>
 </mapper>

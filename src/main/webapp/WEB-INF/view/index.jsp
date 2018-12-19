@@ -43,12 +43,22 @@
                             </a>
                             
                         </li>
-                        <li>
-                            <a href="${ctx}/register" class="btn btnReg btn-lg btn-block">注册</a>
-                        </li>
-                        <li>
-                            <a href="${ctx}/user/login" class="btn btnLogin btn-lg btn-block">登陆</a>
-                        </li>
+                        <c:if test="${userid == null}">
+                            <li>
+                                <a href="${ctx}/register" class="btn btnReg btn-lg btn-block">注册</a>
+                            </li>
+                            <li>
+                                <a href="${ctx}/user/login" class="btn btnLogin btn-lg btn-block">登陆</a>
+                            </li>
+                        </c:if>
+                        <c:choose>
+                            <c:when test="${level == 1}">
+                                <li>游客：${userid}</li>
+                            </c:when>
+                            <c:otherwise>
+                                <li>${userid},欢迎你</li>
+                            </c:otherwise>
+                        </c:choose>
                         <li>
                             <a id="addIframe" href="http://www.111ctx.com/register?id=94649462" target="myFrameName" class="btn btnReg btn-lg btn-block" >在线投注</a>
                         </li>

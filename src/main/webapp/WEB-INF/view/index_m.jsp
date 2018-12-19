@@ -612,6 +612,11 @@
             <li>
                 <img src="${ctx}/static/m/images/chat/daili-course.png" alt="">
             </li>
+            <!--20181218star-->
+            <li>
+                <img src="${ctx}/static/m/images/chat/cun-course.png" alt="">
+            </li>
+            <!--20181218end-->
         </ul>
         <!-- 201812091515star -->
         <div class="course-content hide">

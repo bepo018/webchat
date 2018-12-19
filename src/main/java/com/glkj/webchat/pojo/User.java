@@ -36,6 +36,8 @@ public class User {
 	private String createUser;  //创建者
 	private Date modifiedTime;  //修改时间
 	private String modifiedUser;//修改者
+	private String email;
+
 	public User() {
 	}
 
@@ -55,7 +57,7 @@ public class User {
 		this.createUser = createUser;
 	}
 
-	public User(String userid, String password, String nickname, Integer sex, Integer age, String profilehead, String profile, String firsttime, String lasttime, Integer status, String ip, Integer level, String qq, String weixin, String phone, Integer enterStatus,String invitation, String remarks, Date createTime, String createUser, Date modifiedTime, String modifiedUser) {
+	public User(String userid, String password, String nickname, Integer sex, Integer age, String profilehead, String profile, String firsttime, String lasttime, Integer status, String ip, Integer level, String qq, String weixin, String phone, Integer enterStatus,String invitation, String remarks, Date createTime, String createUser, Date modifiedTime, String modifiedUser,String email) {
 		this.userid = userid;
 		this.password = password;
 		this.nickname = nickname;
@@ -78,40 +80,44 @@ public class User {
 		this.createUser = createUser;
 		this.modifiedTime = modifiedTime;
 		this.modifiedUser = modifiedUser;
+		this.email = email;
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		User user = (User) o;
-		return Objects.equals(userid, user.userid) &&
-				Objects.equals(password, user.password) &&
-				Objects.equals(nickname, user.nickname) &&
-				Objects.equals(sex, user.sex) &&
-				Objects.equals(age, user.age) &&
-				Objects.equals(profilehead, user.profilehead) &&
-				Objects.equals(profile, user.profile) &&
-				Objects.equals(firsttime, user.firsttime) &&
-				Objects.equals(lasttime, user.lasttime) &&
-				Objects.equals(status, user.status) &&
-				Objects.equals(ip, user.ip) &&
-				Objects.equals(level, user.level) &&
-				Objects.equals(qq, user.qq) &&
-				Objects.equals(weixin, user.weixin) &&
-				Objects.equals(phone, user.phone) &&
-				Objects.equals(enterStatus, user.enterStatus) &&
-				Objects.equals(invitation, user.invitation) &&
-				Objects.equals(remarks, user.remarks) &&
-				Objects.equals(createTime, user.createTime) &&
-				Objects.equals(createUser, user.createUser) &&
-				Objects.equals(modifiedTime, user.modifiedTime) &&
-				Objects.equals(modifiedUser, user.modifiedUser);
+	public String toString() {
+		return "User{" +
+				"userid='" + userid + '\'' +
+				", password='" + password + '\'' +
+				", nickname='" + nickname + '\'' +
+				", sex=" + sex +
+				", age=" + age +
+				", profilehead='" + profilehead + '\'' +
+				", profile='" + profile + '\'' +
+				", firsttime='" + firsttime + '\'' +
+				", lasttime='" + lasttime + '\'' +
+				", status=" + status +
+				", ip='" + ip + '\'' +
+				", level=" + level +
+				", qq='" + qq + '\'' +
+				", weixin='" + weixin + '\'' +
+				", phone='" + phone + '\'' +
+				", enterStatus=" + enterStatus +
+				", invitation='" + invitation + '\'' +
+				", remarks='" + remarks + '\'' +
+				", createTime=" + createTime +
+				", createUser='" + createUser + '\'' +
+				", modifiedTime=" + modifiedTime +
+				", modifiedUser='" + modifiedUser + '\'' +
+				", email='" + email + '\'' +
+				'}';
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(userid, password, nickname, sex, age, profilehead, profile, firsttime, lasttime, status, ip, level, qq, weixin, phone, enterStatus, invitation, remarks, createTime, createUser, modifiedTime, modifiedUser);
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getInvitation() {
@@ -290,31 +296,4 @@ public class User {
 		this.modifiedUser = modifiedUser;
 	}
 
-	@Override
-	public String toString() {
-		return "User{" +
-				"userid='" + userid + '\'' +
-				", password='" + password + '\'' +
-				", nickname='" + nickname + '\'' +
-				", sex=" + sex +
-				", age=" + age +
-				", profilehead='" + profilehead + '\'' +
-				", profile='" + profile + '\'' +
-				", firsttime='" + firsttime + '\'' +
-				", lasttime='" + lasttime + '\'' +
-				", status=" + status +
-				", ip='" + ip + '\'' +
-				", level=" + level +
-				", qq='" + qq + '\'' +
-				", weixin='" + weixin + '\'' +
-				", phone='" + phone + '\'' +
-				", enterStatus=" + enterStatus +
-				", invitation='" + invitation + '\'' +
-				", remarks='" + remarks + '\'' +
-				", createTime=" + createTime +
-				", createUser='" + createUser + '\'' +
-				", modifiedTime=" + modifiedTime +
-				", modifiedUser='" + modifiedUser + '\'' +
-				'}';
-	}
 }

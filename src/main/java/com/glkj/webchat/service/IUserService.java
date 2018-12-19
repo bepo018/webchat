@@ -101,4 +101,16 @@ public interface IUserService {
     boolean checkInvitation(String invitation);
 
     Integer adminUsers(String userid);
+
+    String findUserByProFile(String code);
+
+    void active(String userID);
+
+    boolean checkEmailExists(String email);
+
+    boolean checkCaptcha(String profile, String email);
+
+    Integer updatePassword(String password, String email);
+
+    Integer updateCaptcha(String pro, String email);
 }

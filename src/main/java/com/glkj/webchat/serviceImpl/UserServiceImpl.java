@@ -5,6 +5,7 @@ import com.glkj.webchat.service.ex.PasswordNotMatchException;
 import com.glkj.webchat.service.ex.UsernameAlreadExistsException;
 import com.glkj.webchat.service.ex.UsernameNotFoundException;
 import com.glkj.webchat.utils.GetMD5;
+import com.glkj.webchat.utils.MailUtil;
 import org.springframework.stereotype.Service;
 
 import com.glkj.webchat.dao.IUserDao;
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * Copyright © 2018 The so-called success is to make extraordinary persistence
@@ -144,4 +146,37 @@ public class UserServiceImpl implements IUserService {
     public Integer adminUsers(String userid) {
         return userDao.selectUserCountByAdminId(userid);
     }
+
+    @Override
+    public String findUserByProFile(String code) {
+        return userDao.findUserByProFile(code);
+    }
+
+    @Override
+    public void active(String userID) {
+        userDao.activeUserid(userID);
+    }
+
+    @Override
+    public boolean checkEmailExists(String email) {
+        return userDao.findUserByEmail(email) > 0;
+    }
+
+    @Override
+    public boolean checkCaptcha(String profile, String email) {
+        return userDao.findUserByEmailAndProfile(profile,email) > 0;
+    }
+
+    @Override
+    public Integer updatePassword(String password, String email) {
+        return userDao.updatePassword(password,email);
+    }
+
+    @Override
+    public Integer updateCaptcha(String pro, String email) {
+        System.out.println(pro);
+        return userDao.updateProfileByEmail(pro, email);
+    }
+
+
 }

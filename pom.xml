@@ -270,6 +270,18 @@
             <version>1.2.3</version>
         </dependency>
         <!-- mybatis 配置结束 -->
+
+        <!-- JavaMail相关依赖 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
     </dependencies>
     <!-- <build>
         <finalName>webchat</finalName>

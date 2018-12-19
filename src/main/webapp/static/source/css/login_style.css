@@ -905,3 +905,74 @@ h5.rest {
 		background-size: 55%;
 	}
 }
+
+/*201812191423star--添加activate页面样式*/
+body,html{
+    width:100%;
+    height:100%;
+    margin:0 auto;
+    padding:0;
+}
+.activate_style{
+    width:60%;
+    margin:0 auto;
+    padding-top:0 ;
+    text-align: center;
+    height:400px;
+    background: #fff;
+
+}
+.activate_style a{
+    color:#ffb900;
+}
+.activate_style input{
+    width:15rem;
+    text-indent: 5px;
+}
+.activate_style>div{
+    padding: 5rem 0 2rem;
+}
+.actvate_footer{
+    padding-top: 8rem !important;
+}
+.activate_button{
+    margin-top:1rem;
+}
+.activate_button h5{
+    margin-top:0.5rem;
+}
+
+.alert_page{
+    width:300px;
+    height:150px;
+    background: #ffd0e1;
+    padding:1rem;
+    position: absolute;
+    left: 35%;
+    top:10%;
+    z-index: 100;
+}
+.alert_page>div{
+    display: flex;
+    margin:1rem;
+}
+.alert_page>div>label{
+    width:80px;
+}
+.alert_page>div>input{
+    flex:1;
+}
+.alert_page>div:last-child{
+    float: right;
+}
+.alert_page button{
+    margin-left:1rem;
+    cursor: pointer;
+}
+.hide{
+    display:none;
+}
+.show{
+    display:block;
+}
+/*201812191423end*/
