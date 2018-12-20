@@ -187,7 +187,7 @@ public class AutoMessage {
 	 */
 	private String getContent() {
 		now = Calendar.getInstance();
-		int time = now.get(Calendar.MINUTE);
+		int time = now.get(Calendar.HOUR_OF_DAY);
 		//初始化
 		if(flag){
 			timeout=time;
@@ -199,7 +199,6 @@ public class AutoMessage {
 			contents.clear();
 			timeout=time;
 			addContents();
-			System.out.println("更换【time:"+time+" listsize:"+contents.size()+" 上一次count:"+count+"】");
 		}
 		if (count >= contents.size()) { // 如果是集合最后一条数据则重新定位
 			count = rand.nextInt(contents.size());
