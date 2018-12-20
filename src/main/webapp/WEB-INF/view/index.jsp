@@ -45,10 +45,10 @@
                         </li>
                         <c:if test="${userid == null}">
                             <li>
-                                <a href="${ctx}/register" class="btn btnReg btn-lg btn-block">注册</a>
+                                <a href="${ctx}/register" class="btn btnReg btn-lg btn-block" onclick="register()">注册</a>
                             </li>
                             <li>
-                                <a href="${ctx}/user/login" class="btn btnLogin btn-lg btn-block">登陆</a>
+                                <a href="${ctx}/user/login" class="btn btnLogin btn-lg btn-block" onclick="login()">登陆</a>
                             </li>
                         </c:if>
                         <c:choose>
