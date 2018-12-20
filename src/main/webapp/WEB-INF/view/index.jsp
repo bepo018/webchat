@@ -1383,6 +1383,7 @@
 	})
     //点击表情图，加载动态表情
     $("#toolChose").click(function () {
+        $("#gif").html("")
         var html=""
         for(var i=1;i<=30;i++){
             if(i<10){

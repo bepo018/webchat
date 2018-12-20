@@ -2,10 +2,7 @@ package com.glkj.webchat.utils;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -23,13 +20,13 @@ public class AutoMessage {
 	IUserDao dao;
 	private List<?> contents;
 	private static Integer count;
-	private Date now;
+	private Calendar now;
 	private Random rand;
 	private int page;
 	private boolean flag;
 	private int timeout;
 	String joinOrLeave = null;
-	List<String> chaters = new ArrayList<>();
+	List<String> chaters = new ArrayList<>(7200);
 
 	public AutoMessage() {
 		flag = true;
@@ -177,7 +174,7 @@ public class AutoMessage {
 	 * @return
 	 */
 	private String getTime() {
-		now = new Date();
+		Date now = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 可以方便地修改日期格式
 		String time = dateFormat.format(now);
 		return time;
@@ -189,21 +186,20 @@ public class AutoMessage {
 	 * @return
 	 */
 	private String getContent() {
-		now = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("HH");// 获取当前秒数
-		String time = dateFormat.format(now);
-		Integer s = Integer.parseInt(time);
+		now = Calendar.getInstance();
+		int time = now.get(Calendar.MINUTE);
 		//初始化
 		if(flag){
-			timeout=s;
+			timeout=time;
 			flag=false;
 			addContents();
 		}
 		// 判断是否更换
-		if(!s.equals(timeout)) {
+		if(time != timeout) {
 			contents.clear();
-			timeout=s;
+			timeout=time;
 			addContents();
+			System.out.println("更换【time:"+time+" listsize:"+contents.size()+" 上一次count:"+count+"】");
 		}
 		if (count >= contents.size()) { // 如果是集合最后一条数据则重新定位
 			count = rand.nextInt(contents.size());
@@ -218,9 +214,13 @@ public class AutoMessage {
 	private void addContents() {
 		contents = dao.list(page);
 		page=page+7200;
-		if(page>30000) {
+		if(7200 > contents.size()) {
 			page=1;
+		}else if (contents.size() == 0){
+			page=1;
+			contents = dao.list(page);
 		}
+
 	}
 
 	/**

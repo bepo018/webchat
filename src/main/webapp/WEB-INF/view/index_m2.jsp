@@ -249,6 +249,24 @@
                 </li>
             </ul>
         </div>
+
+        <!-- 滚动区域 -->
+        <div class="tip">
+            <!-- 字体轮播 -->
+            <div class="wordCarousel">
+                <div>
+                    <span>彩票</span>
+                    <span>头条</span>
+                </div>
+                <div>
+                    <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
+                        <%--20181215star增加跳转--%>
+                        <a href="http://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                    </marquee>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <div data-role="content">
@@ -266,12 +284,24 @@
                 <img src="${ctx}/static/m/images/chat/tixian-course.png" alt="">
             </li>
             <li>
-                <img src="${ctx}/static/m/images/chat/cun-course.png" alt="">
-            </li>
-            <li>
                 <img src="${ctx}/static/m/images/chat/daili-course.png" alt="">
             </li>
+            <!--20181218star-->
+            <li>
+                <img src="${ctx}/static/m/images/chat/cun-course.png" alt="">
+            </li>
+            <!--20181218end-->
         </ul>
+
+        <!-- 201812091515star -->
+        <div class="course-content hide">
+            <div class="course-close">
+                <span></span>
+            </div>
+            <ul class="imgContent">
+            </ul>
+        </div>
+        <!-- 201812091515end-->
     </div>
 
 </div>
