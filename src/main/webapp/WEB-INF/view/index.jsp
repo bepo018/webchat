@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="${ctx}/static/plugins/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="${ctx}/static/plugins/contextjs/css/context.standalone.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_847013_vx0c3bbwqw.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_978748_wlymuy69yve.css">
     <link rel="stylesheet" href="${ctx}/static/source/css/index.css">
     
     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1275283994'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1275283994' type='text/javascript'%3E%3C/script%3E"));</script>
@@ -297,7 +298,10 @@
                                         </a>
                                     </li>
                                     <li id="Click-teach">
-                                        <a href="javascript:;">教程</a>
+                                        <a href="javascript:;">
+                                            <i class="icon iconfont icon-tushu"></i>
+                                            教程
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
