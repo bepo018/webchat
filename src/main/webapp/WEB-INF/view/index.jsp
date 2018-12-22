@@ -296,6 +296,9 @@
                                             美女直播
                                         </a>
                                     </li>
+                                    <li id="Click-teach">
+                                        <a href="javascript:;">教程</a>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- 右侧内容显示栏 -->
@@ -481,6 +484,43 @@
                                         <!-- 进入直播页面 -->
                                             <!-- 伊娃大姐姐 -->
                                     </div>
+                                </div>
+                                <!-- 教程页面 -->
+                                <div class="bdRt-bd bdteach hide">
+                                    <!-- 教程入口页面 -->
+                                    <ul class="course-list">
+                                        <li>
+                                            <img src="${ctx}/static/m/images/chat/register-course.png" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${ctx}/static/m/images/chat/chongzhi-course.png" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${ctx}/static/m/images/chat/bet-course.png" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${ctx}/static/m/images/chat/tixian-course.png" alt="">
+                                        </li>
+                                        <li>
+                                            <img src="${ctx}/static/m/images/chat/daili-course.png" alt="">
+                                        </li>
+                                        <!--20181218star-->
+                                        <li>
+                                            <img src="${ctx}/static/m/images/chat/cun-course.png" alt="">
+                                        </li>
+                                        <!--20181218end-->
+                                    </ul>
+                                    <!-- 201812091515star -->
+                                    <div class="course-content hide">
+                                        <div class="course-close">
+                                            <span>X</span>
+                                        </div>
+                                        <ul class="imgContent">
+                                        </ul>
+                                    </div>
+                                    <!-- 201812091515end-->
+
+                                </div>
                                 </div>
                             </div> 
                            	<div id="mServiceContent"></div>
