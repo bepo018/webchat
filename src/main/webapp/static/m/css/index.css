@@ -1,4 +1,4 @@
-/* header部分star */
+﻿/* header部分star */
 /* logo部分开始 */
 .chatHeader{
     width:100%;
@@ -661,6 +661,7 @@ a{
     top:2.2rem;
     max-height: 300px;
     overflow: auto;
+    
 
 }
 .togglePlan>li{

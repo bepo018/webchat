@@ -55,8 +55,8 @@
                         <c:choose>
                             <c:when test="${level == 1}">
                                 <li>游客：<span>${userid}</span>
-                                    <span class="btn btnReg btn-xs " style="margin-left:5px;">注册</span>
-                                    <span class="btn btnReg btn-xs " style="margin-left:5px;">登陆</span>
+                                    <span class="btn btnReg btn-xs " style="margin-left:5px;" onclick="register()">注册</span>
+                                    <span class="btn btnReg btn-xs " style="margin-left:5px;" onclick="login()">登陆</span>
                                 </li>
                             </c:when>
                             <c:otherwise>
