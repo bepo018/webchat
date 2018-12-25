@@ -145,15 +145,4 @@ public class LotteryHandler {
 		return nexttime <= systemTime;
 	}
 
-	/*
-	 * public static void main(String[] args) {
-	 * 
-	 * int i = 0; for (Entry<String, String> entry : BufferPool.allLott.entrySet())
-	 * { System.out.println(++i+"    Key:::"+entry.getKey()+"   Value:::"+entry.
-	 * getValue()); } i = 0; for (Entry<String, String> entry :
-	 * BufferPool.allLott20.entrySet()) {
-	 * System.out.println(++i+"    Key:::"+entry.getKey()+"   Value:::"+entry.
-	 * getValue()); } }
-	 */
-
 }

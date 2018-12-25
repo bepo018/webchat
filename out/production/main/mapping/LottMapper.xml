@@ -22,4 +22,20 @@
         AND lott_id = (SELECT id FROM lott_type WHERE lott_code = #{lott}) ORDER BY gid DESC
 	</select>
 
+	<select id="findYuCe" parameterType="string" resultType="com.glkj.webchat.pojo.YuCe">
+		SELECT
+		    id,lott_id AS lottId,gid,champ_num AS champNum,first
+		FROM
+		    yuce
+		WHERE
+		    gid = #{nextOpenIssue} AND lott_id = (SELECT id FROM lott_type WHERE lott_code = #{roomName})
+	</select>
+
+    <select id="findLottType" resultType="com.glkj.webchat.pojo.LottType">
+        SELECT id,lott_code AS lottCode,lott_name AS lottName,lott_cycle AS lottCycle,state,
+			created_user AS createdUser,created_time AS createdTime,
+			modified_user AS modifiedUser,modified_time AS modifiedTime
+		FROM lott_type WHERE lott_code = #{lottCode}
+    </select>
+
 </mapper>

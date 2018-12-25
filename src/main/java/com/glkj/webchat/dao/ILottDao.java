@@ -19,4 +19,8 @@ public interface ILottDao {
 	List<LottType> selectActivation(Integer state);
 
 	List<YuCe> findYuCeByIds(@Param("lott")String lott, @Param("gid")String gid, @Param("play")String play);
+
+	YuCe findYuCe(@Param("roomName")String roomName, @Param("nextOpenIssue")String nextOpenIssue);
+
+	LottType findLottType(String lottCode);
 }

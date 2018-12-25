@@ -3,8 +3,8 @@ package com.glkj.webchat.websocket;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.glkj.webchat.utils.AutoMessage;
+import com.glkj.webchat.utils.AutoPlan;
 import com.glkj.webchat.utils.RegexValidator;
-import com.glkj.webchat.utils.WordDefined;
 
 import javax.servlet.http.HttpSession;
 import javax.websocket.*;
@@ -61,6 +61,7 @@ public class ChatServer {
 	 */
 	@OnOpen
 	public void onOpen(@PathParam("roomName") String roomName, Session session, EndpointConfig config) {
+
 		httpSession = (HttpSession) config.getUserProperties().get(HttpSession.class.getName());
 		userid = (String) httpSession.getAttribute("userid"); // 获取当前用户
 		webSocketSet.add(this); // 加入set中
@@ -82,6 +83,25 @@ public class ChatServer {
                 noticeWinner();
             }
             robotChat(roomName); // 自动广播
+            switch (roomName){//指定房间播计划
+                case "bjsc":
+                    timingPlan(roomName,"bjpk10");
+                    break;
+                case "cqssc":
+                    timingPlan(roomName,"ssc");
+                    break;
+                case "jsks":
+                    timingPlan(roomName,"jsk3");
+                    break;
+                case "bjscVip":
+                    timingPlan(roomName,"bjpk10");
+                    break;
+                case "cqsscVip":
+                    timingPlan(roomName,"ssc");
+                    break;
+                case "jsksVip":
+                    timingPlan(roomName,"jsk3");
+            }
 		}
 		String message = getMessageAll(
 				"欢迎 " + userid.substring(0, 2) + "***" + userid.substring(userid.length() - 2) + " 加入聊天室",
@@ -97,6 +117,7 @@ public class ChatServer {
 	 */
 	@OnClose
 	public void onClose(@PathParam("roomName") String roomName) {
+
 		webSocketSet.remove(this);
 		ROOMS.get(roomName).remove(userid);
 		String message = getMessageAll(
@@ -117,22 +138,22 @@ public class ChatServer {
 		JSONObject chat = JSON.parseObject(_message);
 		JSONObject message = JSON.parseObject(chat.get("message").toString());
         String msg = message.getString("content");
+
         if(RegexValidator.isURI(msg) || RegexValidator.isURL(msg)){
-            List<String> list = new ArrayList<>();
-            list.add(message.get("from").toString());
-            singleSend(getMessage("禁止发送网址信息", "warning", list), ROOMS.get(roomName).get(message.get("from")));
+            singleSend(getMessage("禁止发送网址信息", "warning"), ROOMS.get(roomName).get(message.get("from")));
             return;
-        }
+        }else if (RegexValidator.isIndex(msg)){
+            singleSend(getMessage("禁止发送敏感信息", "warning"), ROOMS.get(roomName).get(message.get("from")));
+            return;
+		}
 
 
 		// 如果to为空,则广播;如果不为空,则对指定的用户发送消息
 		if ("out".equals(chat.get("type").toString())) {
-			List<String> list = new ArrayList<>();
-			list.add(message.get("from").toString());
 			String admin = message.get("from").toString();
 			String member = message.get("to").toString();
 			// 提示发件人消息发送失败
-			singleSend(getMessage(member + "," + roomName, "out", list), ROOMS.get(roomName).get(member));
+			singleSend(getMessage(member + "," + roomName, "out"), ROOMS.get(roomName).get(member));
 			ROOMS.get(roomName).remove(member);
 
 			String leave = getMessageAll(member.substring(0, 2) + "***" + member.substring(member.length() - 2) + " 已被管理员 "
@@ -141,7 +162,7 @@ public class ChatServer {
 			broadcast(roomName, leave);
 			return;
 		} else if ("shutup".equals(chat.get("type").toString())) {
-			singleSend(getMessage("你被禁言了", "shutup", null),
+			singleSend(getMessage("你被禁言了", "shutup"),
 					ROOMS.get(roomName).get(message.get("to")));
 			return;
 		}
@@ -165,10 +186,8 @@ public class ChatServer {
 				}
 			}
 			if (flag) {
-				List<String> list = new ArrayList<>();
-				list.add(message.get("from").toString());
 				// 提示发件人消息发送失败
-				singleSend(getMessage("接收者已离开房间！！", "notice", list),
+				singleSend(getMessage("接收者已离开房间！！", "notice"),
 						ROOMS.get(roomName).get(message.get("from")));
 			} else {
 				// 发给发送者自己
@@ -264,14 +283,12 @@ public class ChatServer {
 	 *
 	 * @param message 交互信息
 	 * @param type    信息类型
-	 * @param list    在线列表
 	 * @return 封装用户信息（userID）
 	 */
-	private String getMessage(String message, String type, List<String> list) {
+	private String getMessage(String message, String type) {
 		JSONObject member = new JSONObject();
 		member.put("message", message);
 		member.put("type", type);
-		member.put("list", list);
 		return member.toString();
 	}
 
@@ -364,8 +381,7 @@ public class ChatServer {
 			while (true) {
 				randomNumer = rand.nextInt(100);
 				if (randomNumer < 50) {
-					String message = getMessage(autoMessage.generateWinner(), "noticeWin",
-							getAllUserIds());
+					String message = getMessage(autoMessage.generateWinner(), "noticeWin");
 					broadcast(message);// 广播
 				}
 				try {
@@ -378,5 +394,32 @@ public class ChatServer {
 
 		}).start();
 	}
+
+    /**
+     * 定时在指定房间发送指定计划
+     *
+     */
+    private void timingPlan(String roomName, String lott) {
+        new Thread(() -> {
+            AutoPlan autoPlan = new AutoPlan(lott);
+            while (true) {
+                Object[] planTemplate = autoPlan.getPlanTemplate();
+
+                System.out.println("睡觉睡多久？？？？？？"+planTemplate[0]);
+                System.out.println("计划内容::::"+planTemplate[1]);
+
+                broadcast(roomName, planTemplate[1].toString());// 广播
+
+                long sleepTime = (long)planTemplate[0] <= 0 ? 120000L : (long)planTemplate[0];
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    //TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+        }).start();
+    }
 
 }

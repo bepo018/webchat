@@ -27,6 +27,11 @@ public class RegexValidator {
         return matche(regex, str);
     }
 
+    public static boolean isIndex(String str) {
+        String regex = ".*([wW][xX]|[qQ]{2}|[微][信]|[扣]{2}).*";
+        return matche(regex, str);
+    }
+
     /**
      * @param regex 正则表达式字符串
      * @param str   要匹配的字符串

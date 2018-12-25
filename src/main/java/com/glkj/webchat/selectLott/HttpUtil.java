@@ -125,8 +125,5 @@ public class HttpUtil {
 			return null;
 		}
 	}
-	
-	public static void main(String[] args) throws IOException {
-		getLottInfo("bjpk10", 1);
-	}
+
 }

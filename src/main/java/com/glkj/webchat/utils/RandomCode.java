@@ -44,6 +44,14 @@ public class RandomCode {
         return rand.nextInt(length);
     }
 
+    public static float getFloat(){
+        long s = rand.nextInt(10000);
+        while (s < 6000) {
+            s = rand.nextInt(10000);
+        }
+        return s/100f;
+    }
+
     /**
      * 彩票预测
      *

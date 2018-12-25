@@ -1598,7 +1598,7 @@
                                     "<img src='"+result.data[i].photo+"' id='zbImg"+parseInt(i+1)+"'>"+
                                     "<span>"+
                                         "<i class='icon iconfont icon-icon-'></i>"+
-                                        "<span>"+result.data[i].hot+"</span>万"+
+                                        "<span>"+result.data[i].hot+"</span>"+
                                     "</span>"+
                                     "<p>"+result.data[i].name+"</p>"+
                                     "<video src='"+result.data[i].roomAddress+"' controls='controls' poster='"+result.data[i].photo+"' width='300' height='500' style='display:none;margin: 0 auto;'><video>"+
@@ -1607,7 +1607,7 @@
                                      "<img src='"+result.data[i+1].photo+"' id='zbImg"+parseInt(i+2)+"'>"+
                                     "<span>"+
                                         "<i class='icon iconfont icon-icon-'></i>"+
-                                        "<span>"+result.data[i+1].hot+"</span>万"+
+                                        "<span>"+result.data[i+1].hot+"</span>"+
                                     "</span>"+
                                     "<p>"+result.data[i+1].name+"</p>"+
                                     "<video src='"+result.data[i+1].roomAddress+"' controls='controls' poster='"+result.data[i+1].photo+"'  width='300' height='500' style='display:none;margin: 0 auto;'><video>"+
@@ -2026,33 +2026,35 @@
 	function addPeo(c,level){
         var a=[];
         var html="";
-	     if(level == "pt"){
-             for(var i=0;i<50;i++){
-                 var array=["id_ZM.png","id_YK.png","id_HM.png","id_BM.png"];
-                 var ever=Math.random().toString(36).substr(2).slice(0,3);
-                 var index = Math.floor((Math.random()*array.length));
-                 var ind=array[index];
-                 var num=parseInt(Math.random()*137,10);
-                 var html="<li><img src='${ctx}/static/images/avater/avater"+num+".png' alt=''><span>"+ever+"****</span><img src='${ctx}/static/images/"+ind+"' alt=''>"
-                 a.push(html);
-             }
-         }else{
-             for(var i=0;i<50;i++){
-                 var array=["id_ZM.png","id_HM.png","id_BM.png"];
-                 var ever=Math.random().toString(36).substr(2).slice(0,3);
-                 var index = Math.floor((Math.random()*array.length));
-                 var ind=array[index];
-                 var num=parseInt(Math.random()*137,10);
-                 var html="<li><img src='${ctx}/static/images/avater/avater"+num+".png' alt=''><span>"+ever+"****</span><img src='${ctx}/static/images/"+ind+"' alt=''>"
-                 a.push(html);
-             }
-         }
-         for(let key in a){
-             var b=document.getElementById(c);
-             b.innerHTML+=a[key];
-         }
-     }
-	$(function(){
+        if(level == "pt"){
+            for(var i=0;i<50;i++){
+                var array=["id_ZM.png","id_YK.png","id_HM.png","id_BM.png"];
+                var ever=Math.random().toString(36).substr(2).slice(0,3);
+                var index = Math.floor((Math.random()*array.length));
+                var ind=array[index];
+                var num=parseInt(Math.random()*137,10);
+                var html="<li><img src='${ctx}/static/images/avater/avater"+num+".png' alt=''><span>"+ever+"****</span><img src='${ctx}/static/images/"+ind+"' alt=''>"
+                a.push(html);
+            }
+        }else{
+            for(var i=0;i<50;i++){
+                var array=["id_ZM.png","id_HM.png","id_BM.png"];
+                var ever=Math.random().toString(36).substr(2).slice(0,3);
+                var index = Math.floor((Math.random()*array.length));
+                var ind=array[index];
+                var num=parseInt(Math.random()*137,10);
+                var html="<li><img src='${ctx}/static/images/avater/avater"+num+".png' alt=''><span>"+ever+"****</span><img src='${ctx}/static/images/"+ind+"' alt=''>"
+                a.push(html);
+            }
+        }
+        for(let key in a){
+            var b=document.getElementById(c);
+            b.innerHTML+=a[key];
+        }
+    }
+
+
+    $(function(){
 		$("#hallToggle").trigger("click");
 		$("#bjsc").trigger("click");
 	})

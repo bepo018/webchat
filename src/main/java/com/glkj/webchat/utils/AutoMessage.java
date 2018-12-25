@@ -1,13 +1,13 @@
 package com.glkj.webchat.utils;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
+import com.glkj.webchat.dao.ILottDao;
+import com.glkj.webchat.dao.IUserDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.glkj.webchat.dao.IUserDao;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 自动获取消息类
@@ -16,7 +16,7 @@ import com.glkj.webchat.dao.IUserDao;
  *
  */
 public class AutoMessage {
-	ApplicationContext ac;
+    ApplicationContext ac;
 	IUserDao dao;
 	private List<?> contents;
 	private static Integer count;
@@ -114,17 +114,6 @@ public class AutoMessage {
 		return df.format(money);
 	}
 
-	//	public static void main(String[] args) {
-	//		AutoMessage a = new AutoMessage();
-	//		for (int i = 0; i < 100; i++) {
-	//			System.out.println(a.getMoney());
-	//			try {
-	//				Thread.sleep(1000);
-	//			} catch (InterruptedException e) {
-	//				e.printStackTrace();
-	//			}
-	//		}
-	//	}
 	/**
 	 * 获取中奖信息
 	 * 
