@@ -405,9 +405,6 @@ public class ChatServer {
             while (true) {
                 Object[] planTemplate = autoPlan.getPlanTemplate();
 
-                System.out.println("睡觉睡多久？？？？？？"+planTemplate[0]);
-                System.out.println("计划内容::::"+planTemplate[1]);
-
                 broadcast(roomName, planTemplate[1].toString());// 广播
 
                 long sleepTime = (long)planTemplate[0] <= 0 ? 120000L : (long)planTemplate[0];
