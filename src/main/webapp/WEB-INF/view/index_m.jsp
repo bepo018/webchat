@@ -709,7 +709,7 @@
     $(function () {
         //TODO 清屏未处理
         //clearConsole();
-        getConnection("ctx");
+        getConnection("bjsc");
         
       
     });
@@ -1248,7 +1248,7 @@
                     '</div>' +
                     '<div class="name">' + Obj.data[i].name + '</div>' +
                     '</div>'
-               htmlpage = '<iframe width="100%" height="' + window.screen.height + '"  frameborder="0" scrolling="no" src="' + Obj.data[i].roomAddress + '?_'+new Date().getTime()+'"></iframe>'
+               htmlpage = '<video  autoplay width="100%" height="' + window.screen.height + '"  frameborder="0" scrolling="no" src="' + Obj.data[i].roomAddress + '?_'+new Date().getTime()+'"></video>'
             	
                 htmlpageList.push(htmlpage);
            
