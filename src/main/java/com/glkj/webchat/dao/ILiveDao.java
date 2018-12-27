@@ -11,7 +11,7 @@ public interface ILiveDao {
 
     void insert(LiveInfo live);
 
-    List<LiveInfo> selectAll();
+    List<LiveInfo> selectAll(Integer page);
 
     List<LivePc> selectLive();
 }

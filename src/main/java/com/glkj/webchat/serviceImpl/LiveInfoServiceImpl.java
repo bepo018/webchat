@@ -1,10 +1,12 @@
 package com.glkj.webchat.serviceImpl;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 import com.glkj.webchat.pojo.LivePc;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,8 @@ import com.glkj.webchat.service.LiveInfoService;
 public class LiveInfoServiceImpl implements LiveInfoService {
     @Autowired
     private ILiveDao iLiveDao;
+    private Integer count = 1;
+    private Boolean flag = true;
 
     @Override
     public void addOne(LiveInfo liveInfo) {
@@ -27,11 +31,29 @@ public class LiveInfoServiceImpl implements LiveInfoService {
 
     @Override
     public List<LiveInfo> selectAll() {
-        return iLiveDao.selectAll();
+        List<LiveInfo> list = iLiveDao.selectAll(count);
+        int time = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        System.out.println(time);
+        if (time == 5 || time == 17) {  //5点或17点时将标记设置为true
+            flag = true;
+        }
+        if ((time == 6 && flag) || (time == 18 && flag)) {
+            count += list.size();
+            flag = false;     //count改变之后标记设置为false
+        }
+
+        if (list.size() < 40) {
+            count = 1;
+        } else {
+            count = 1;
+            list = iLiveDao.selectAll(count);
+        }
+        return list;
     }
 
     /**
      * 返回JSON字符
+     *
      * @return
      */
     public JSONObject liveInfoToJson() {
