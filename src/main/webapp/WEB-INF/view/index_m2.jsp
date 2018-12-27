@@ -289,7 +289,7 @@
                     '</div>' +
                     '<div class="name">' + Obj.data[i].name + '</div>' +
                     '</div>'
-                htmlpage = '<iframe width="100%" height="' + window.screen.height + '"  frameborder="0" scrolling="no" src="' + Obj.data[i].roomAddress + '?_'+randomnumber2+'"></iframe>'
+                htmlpage = '<video autoplay width="100%" height="' + window.screen.height + '"  frameborder="0" scrolling="no" src="' + Obj.data[i].roomAddress + '?_'+randomnumber2+'"></video>'
 
                 htmlpageList.push(htmlpage);
 
