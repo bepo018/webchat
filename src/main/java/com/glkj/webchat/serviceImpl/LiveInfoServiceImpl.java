@@ -37,14 +37,16 @@ public class LiveInfoServiceImpl implements LiveInfoService {
         if (time == 5 || time == 17) {  //5点或17点时将标记设置为true
             flag = true;
         }
-        if ((time == 6 && flag) || (time == 18 && flag)) {
+        if ((time == 10 && flag) || (time == 18 && flag)) {
             count += list.size();
             flag = false;     //count改变之后标记设置为false
         }
 
         if (list.size() < 40) {
             count = 1;
-        } else if(list.size()==0){
+
+        } else if (list.size() == 0) {
+
             count = 1;
             list = iLiveDao.selectAll(count);
         }

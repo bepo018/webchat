@@ -9,7 +9,7 @@
         VALUES(#{name},#{photo},#{hot},#{roomAddress},#{createTime},#{createUser});
     </insert>
     <select id="selectAll" resultType="com.glkj.webchat.pojo.LiveInfo">
-        SELECT * FROM livebroadcast limit #{page},20 ORDER BY id desc;
+        SELECT * FROM livebroadcast limit #{page},40;
     </select>
     <select id="selectLive" resultType="com.glkj.webchat.pojo.LivePc">
         SELECT * FROM livepc;
