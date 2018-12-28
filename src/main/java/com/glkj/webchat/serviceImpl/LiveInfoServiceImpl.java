@@ -44,7 +44,7 @@ public class LiveInfoServiceImpl implements LiveInfoService {
 
         if (list.size() < 40) {
             count = 1;
-        } else {
+        } else if(list.size()==0){
             count = 1;
             list = iLiveDao.selectAll(count);
         }
