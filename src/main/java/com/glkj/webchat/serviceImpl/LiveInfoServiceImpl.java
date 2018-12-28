@@ -31,7 +31,6 @@ public class LiveInfoServiceImpl implements LiveInfoService {
 
     @Override
     public List<LiveInfo> selectAll() {
-        System.out.println("count：" + count);
         List<LiveInfo> list = iLiveDao.selectAll(count);
         int time = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         System.out.println(time);
@@ -39,9 +38,7 @@ public class LiveInfoServiceImpl implements LiveInfoService {
             flag = true;
         }
         if ((time == 10 && flag) || (time == 18 && flag)) {
-            System.out.println("我已经修改");
             count += list.size();
-            System.out.println("改变之后的：count:" + count + "  list.size()" + list.size());
             flag = false;     //count改变之后标记设置为false
         }
 
