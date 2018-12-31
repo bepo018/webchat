@@ -1601,7 +1601,7 @@
                                         "<span>"+result.data[i].hot+"</span>"+
                                     "</span>"+
                                     "<p>"+result.data[i].name+"</p>"+
-                                    "<video autoplay src='"+result.data[i].roomAddress+"' controls='controls' poster='"+result.data[i].photo+"' width='100%' height='100%' style='display:none;margin: 0 auto;'><video>"+
+                                    "<video  src='"+result.data[i].roomAddress+"' controls='controls' poster='"+result.data[i].photo+"' width='100%' height='100%' style='display:none;margin: 0 auto;'><video>"+
                                 "</div>"+
                                 "<div class='col-xs-6 zbList'>"+
                                      "<img src='"+result.data[i+1].photo+"' id='zbImg"+parseInt(i+2)+"'>"+
@@ -1610,7 +1610,7 @@
                                         "<span>"+result.data[i+1].hot+"</span>"+
                                     "</span>"+
                                     "<p>"+result.data[i+1].name+"</p>"+
-                                    "<video autoplay src='"+result.data[i+1].roomAddress+"' controls='controls' poster='"+result.data[i+1].photo+"'  width='100%' height='100%' style='display:none;margin: 0 auto;'><video>"+
+                                    "<video  src='"+result.data[i+1].roomAddress+"' controls='controls' poster='"+result.data[i+1].photo+"'  width='100%' height='100%' style='display:none;margin: 0 auto;'><video>"+
                                 "</div>"+
                             "</div>"
                     }

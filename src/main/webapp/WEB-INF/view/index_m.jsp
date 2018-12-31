@@ -85,7 +85,7 @@
             </div>--%>
         </div>
     </div>
-    <div data-role="main">
+    <div data-role="main" id="scrollMessage">
         <!-- 聊天区域 -->
         <div class="chatlist" id="chat-view" onclick="$.mobile.silentScroll(10000);">
             <ul id="chat">
@@ -758,7 +758,7 @@
     //获取连接
     function getConnection(whoClick) {
         if (ws == null) {
-            wsServer = "wss://" + location.host + "${pageContext.request.contextPath}" + "/chatServer/" + whoClick;
+            wsServer = "ws://" + location.host + "${pageContext.request.contextPath}" + "/chatServer/" + whoClick;
             ws = new WebSocket(wsServer);
             ws.onopen = function (evt) {
             };
@@ -770,6 +770,7 @@
                     $("#chat li")[0].remove();
                 }
                 analysisMessage(evt.data);
+                changeTooBar();
             };
             ws.onerror = function (evt) {
                 // layer.msg("产生异常", { offset: 0});
@@ -1708,12 +1709,16 @@
         })
     }
 
-
-
-
     // 201812091031增加定位胆预测功能end
 
+    //201812261413star-更改聊天室滚动条，使其发消息时最新消息一直在可视区域
+    function changeTooBar(){
+        chat.scrollIntoView(false);
+    }
 
+
+
+    //201812261413end
 
 </script>
 </body>
