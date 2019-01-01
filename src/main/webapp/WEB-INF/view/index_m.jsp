@@ -70,7 +70,7 @@
                 <div>
                     <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
                         <%--20181215star增加跳转--%>
-                        <a href="https://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                        <a href="http://x781111.com/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -285,7 +285,7 @@
                 <div>
                     <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
                         <%--20181215star增加跳转--%>
-                        <a href="https://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                        <a href="http://x781111.com/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -481,7 +481,7 @@
                 <div>
                     <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
                         <%--20181215star增加跳转--%>
-                        <a href="https://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                        <a href="http://x781111.com/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -532,7 +532,7 @@
                 <div>
                     <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
                         <%--20181215star增加跳转--%>
-                        <a href="https://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                        <a href="http://x781111.com/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -586,7 +586,7 @@
                 <div>
                     <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
                         <%--20181215star增加跳转--%>
-                        <a href="https://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                        <a href="http://x781111.com/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -670,7 +670,7 @@
                 <div>
                     <marquee behavior="scroll" direction="left" scrollamount="5" <%--onmouseover="this.start()"--%>>
                         <%--20181215star增加跳转--%>
-                        <a href="https://%31%31%31%63%74%78%2E%63%6F%6D/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
+                        <a href="http://x781111.com/register?id=94649462" class="jump">温馨提示：欢迎光临彩天下，点击优惠活动查询领取，祝你游戏愉快</a>
                     </marquee>
                 </div>
             </div>
@@ -1283,7 +1283,7 @@
              var a=window.screen.height-88.3;
              var repage="";
              var randomnumber=Math.floor(Math.random()*100000);
-             repage+='<iframe id="myframe" src="https://%31%31%31%63%74%78%2E%63%6F%6D?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
+             repage+='<iframe id="myframe" src="http://x781111.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
 
 
          }else {
@@ -1293,7 +1293,7 @@
              //repage+='<iframe id="myframe" src="https://m.111ctx.com?_='+(new Date()).getTime()+'" frameborder="0"  scrolling="auto" style="height:'+a+'px"></iframe>'
 
              repage+='<object data="https://m.111ctx.com"  id="betpageLoad">'+
-                 '<embed src="https://%31%31%31%63%74%78%2E%63%6F%6D" id="betpageLoad2"></embed>'+
+                 '<embed src="http://x781111.com" id="betpageLoad2"></embed>'+
                  '</object>'
 
 
