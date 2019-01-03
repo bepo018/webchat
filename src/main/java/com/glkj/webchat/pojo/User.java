@@ -26,7 +26,6 @@ public class User {
 	private Integer status;     //账号状态(1正常 0禁用)
 	private String ip;          //登陆ip
 	private Integer level;      //会员等级
-	private String qq;          //qq
 	private String weixin;      //微信
 	private String phone;       //电话
 	private Integer enterStatus;//入驻状态
@@ -36,52 +35,7 @@ public class User {
 	private String createUser;  //创建者
 	private Date modifiedTime;  //修改时间
 	private String modifiedUser;//修改者
-	private String email;
-
-	public User() {
-	}
-
-	public User(String userid, String password,String nickname, String profilehead,Integer status,Integer level, String qq, String weixin, String phone, Integer enterStatus, String remarks, Date createTime, String createUser) {
-		this.userid = userid;
-		this.password = password;
-		this.nickname = nickname;
-		this.profilehead = profilehead;
-		this.status = status;
-		this.level = level;
-		this.qq = qq;
-		this.weixin = weixin;
-		this.phone = phone;
-		this.enterStatus = enterStatus;
-		this.remarks = remarks;
-		this.createTime = createTime;
-		this.createUser = createUser;
-	}
-
-	public User(String userid, String password, String nickname, Integer sex, Integer age, String profilehead, String profile, String firsttime, String lasttime, Integer status, String ip, Integer level, String qq, String weixin, String phone, Integer enterStatus,String invitation, String remarks, Date createTime, String createUser, Date modifiedTime, String modifiedUser,String email) {
-		this.userid = userid;
-		this.password = password;
-		this.nickname = nickname;
-		this.sex = sex;
-		this.age = age;
-		this.profilehead = profilehead;
-		this.profile = profile;
-		this.firsttime = firsttime;
-		this.lasttime = lasttime;
-		this.status = status;
-		this.ip = ip;
-		this.level = level;
-		this.qq = qq;
-		this.weixin = weixin;
-		this.phone = phone;
-		this.enterStatus = enterStatus;
-		this.invitation = invitation;
-		this.remarks = remarks;
-		this.createTime = createTime;
-		this.createUser = createUser;
-		this.modifiedTime = modifiedTime;
-		this.modifiedUser = modifiedUser;
-		this.email = email;
-	}
+	private String realname;
 
 	@Override
 	public String toString() {
@@ -98,7 +52,6 @@ public class User {
 				", status=" + status +
 				", ip='" + ip + '\'' +
 				", level=" + level +
-				", qq='" + qq + '\'' +
 				", weixin='" + weixin + '\'' +
 				", phone='" + phone + '\'' +
 				", enterStatus=" + enterStatus +
@@ -108,24 +61,8 @@ public class User {
 				", createUser='" + createUser + '\'' +
 				", modifiedTime=" + modifiedTime +
 				", modifiedUser='" + modifiedUser + '\'' +
-				", email='" + email + '\'' +
+				", realname='" + realname + '\'' +
 				'}';
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getInvitation() {
-		return invitation;
-	}
-
-	public void setInvitation(String invitation) {
-		this.invitation = invitation;
 	}
 
 	public String getUserid() {
@@ -224,14 +161,6 @@ public class User {
 		this.level = level;
 	}
 
-	public String getQq() {
-		return qq;
-	}
-
-	public void setQq(String qq) {
-		this.qq = qq;
-	}
-
 	public String getWeixin() {
 		return weixin;
 	}
@@ -254,6 +183,14 @@ public class User {
 
 	public void setEnterStatus(Integer enterStatus) {
 		this.enterStatus = enterStatus;
+	}
+
+	public String getInvitation() {
+		return invitation;
+	}
+
+	public void setInvitation(String invitation) {
+		this.invitation = invitation;
 	}
 
 	public String getRemarks() {
@@ -296,4 +233,11 @@ public class User {
 		this.modifiedUser = modifiedUser;
 	}
 
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
 }

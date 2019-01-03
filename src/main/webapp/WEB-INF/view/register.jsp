@@ -26,12 +26,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="agile-info_w3ls_grid">
                 <h3>注册</h3>
                 <form id="form_register" action="" method="post">
-                    <input type="text" id="uname" name="uname" placeholder="用户名" required=" ">
+                    <input type="text" id="uname" name="uname" placeholder="帐户名" required=" ">
                     <span> * </span>
                     <p id="username_hint"></p>
-                    <input type="text" id="email" name="email" placeholder="邮箱" required=" " >
+                    <input type="text" id="realname" name="realname" placeholder="真实姓名" required=" " >
                     <span> * </span>
-                    <p id="email_hint" style="font-size: 7px;color: #aaa;"> &nbsp;&nbsp;&nbsp;↑ 用于激活账号</p>
+                    <p id="realname_hint"></p>
                     <input type="password" id="pwd" name="password" placeholder="密码" required=" ">
                     <span> * </span>
                     <p id="pwd_hint"></p>
@@ -42,14 +42,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <span> * </span>
                     <p id="phone_hint"></p>
                     <input type="text" id="weixin" name="weixin" placeholder="微信" required=" ">
-                    <span> * </span>
+                    <span class="xt">选 填</span>
                     <p id="weixin_hint"></p>
                     <input type="text" id="invitation" name="invitation" placeholder="邀请码" required=" ">
                     <span class="xt">选 填</span>
                     <p id="invitation_hint"></p>
-                    <input type="text" id="qq" name="qq" placeholder="QQ" required=" ">
+                    <%--<input type="text" id="qq" name="qq" placeholder="QQ" required=" ">
                     <span class="xt">选 填</span>
-                    <p id="qq_hint"></p>
+                    <p id="qq_hint"></p>--%>
 
                     <button id="sub" type="button" onclick="submita()">注册</button>
                 </form>
@@ -87,25 +87,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
     })
 
-    /**发起异步GET请求，询问服务器邮箱是否已经存在**/
-    $("#email").blur(function () {
-        var email = $("#email").val();
-        if (/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(email)) {
-            $.ajax({
-                "url": "${ctx}/check_email",
-                "data": "email=" + email,
-                "type": "GET",
-                "dataType": "json",
-                "success": function (obj) {
-                    if (obj.code == 1) {
-                        $("#email_hint").html(" &nbsp;&nbsp;&nbsp;↑ 用于激活账号").css('color', '#aaa').css('font-size','7px');
-                    } else {
-                        $("#email_hint").html(obj.message).css('color', 'red');
-                    }
-                },
-            });
+    $("#realname").blur(function () {
+        var realname = $("#realname").val();
+        if (realname) {
+            $("#realname_hint").html("").css('color', 'green');
         } else {
-            $("#email_hint").html("邮箱格式不正确").css('color', 'red');
+            $("#realname_hint").html("真实姓名不能为空").css('color', 'red');
         }
     })
 
@@ -116,26 +103,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         } else {
             $("#phone_hint").html("手机号码有误，请重填").css('color', 'red');
         }
-    })
-    $("#qq").blur(function () {
-        var qq = $("#qq").val();
-        if (qq.length >= 4) {
-            if (/^[1-9]\d{4,12}$/.test(qq)) {
-                $("#qq_hint").html("").css('color', 'green');
-            } else {
-                $("#qq_hint").html("qq号码有误，请重填").css('color', 'red');
-            }
-        }
-
-    })
-    $("#weixin").blur(function () {
-        var weixin = $("#weixin").val();
-        if (/^[a-zA-Z0-9_-]{4,16}$/.test(weixin)) {
-            $("#weixin_hint").html("").css('color', 'green');
-        } else {
-            $("#weixin_hint").html("请输入4到16位（字母，数字，下划线，减号）").css('color', 'red');
-        }
-
     })
 
     $("#pwd").blur(function () {
@@ -178,8 +145,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 dataType: "json",
                 success: function (obj) {
                     if (obj.code == 1) {
-                        alert("恭喜您注册成功！确定将转到激活页面")
-                        window.location.href = "${ctx}/activate";
+                        alert("恭喜您注册成功！确定将转到登陆页面")
+                        window.location.href = "${ctx}/user/login";
                     } else {
                         alert(obj.message);
                     }

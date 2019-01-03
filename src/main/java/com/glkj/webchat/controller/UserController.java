@@ -217,12 +217,11 @@ public class UserController {
      * @param uname
      * @param password
      * @param phone
-     * @param qq
      * @return
      */
     @RequestMapping(value = "form_register", method = RequestMethod.POST)
     @ResponseBody
-    public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String qq, String weixin, String email) {
+    public JsonResult<Void> handle_Register(String invitation, String uname, String password, String phone, String weixin,String realname) {
         JsonResult<Void> jr;
 
         User user = new User();
@@ -233,25 +232,24 @@ public class UserController {
             user.setInvitation("0");
         }
         user.setPhone(phone);
-        user.setQq(qq);
         user.setWeixin(weixin);
         Random num = new Random();
         user.setPassword(GetMD5.getMD5(user.getPassword()));
         user.setNickname("高级会员");
         user.setSex(0);
         user.setAge(18);
-        user.setStatus(0);
+        user.setStatus(1);
         user.setLevel(2);
         user.setProfilehead("avater" + num.nextInt(136) + ".png");
         user.setEnterStatus(1);
         user.setCreateUser("[System]");
         user.setCreateTime(new Date());
-        user.setEmail(email);
+        user.setRealname(realname);
         String code = UUID.randomUUID().toString();
         user.setProfile(code);
         try {
             userService.register(user);
-            new Thread(new MailUtil(user.getEmail(), code)).start();
+            //new Thread(new MailUtil(user.getEmail(), code)).start();
             jr = new JsonResult<>(1, "注册成功");
         } catch (Exception e) {
             jr = new JsonResult<>(0, "注册失败，请重新注册");
@@ -285,7 +283,6 @@ public class UserController {
             u.setPassword(password);
             u.setPhone(phone);
             u.setWeixin(weixin);
-            u.setQq(qq);
             u.setLevel(Integer.valueOf(level));
             u.setRemarks(remarks);
             u.setModifiedUser(session.getAttribute("userid").toString());

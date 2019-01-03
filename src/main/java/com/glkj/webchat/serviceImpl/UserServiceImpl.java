@@ -75,7 +75,6 @@ public class UserServiceImpl implements IUserService {
 
     public Integer register(User user) {
         if (findUserByUserId(user.getUserid()) == null) {
-
             return userDao.insertSeniorMenber(user);
         } else {
             throw new UsernameAlreadExistsException("用户名已存在");

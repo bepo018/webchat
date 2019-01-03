@@ -58,13 +58,13 @@
 	<insert id="insert"
 		parameterType="com.glkj.webchat.pojo.User">
 		INSERT INTO user (USERID, PASSWORD, NICKNAME, SEX, AGE, PROFILEHEAD,
-		PROFILE, FIRSTTIME, LASTTIME, STATUS, IP)
+		PROFILE, FIRSTTIME, LASTTIME, STATUS, IP,realname)
 		VALUES (#{userid, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
 		#{nickname, jdbcType=VARCHAR}, #{sex, jdbcType=INTEGER},
 		#{age, jdbcType=INTEGER}, #{profilehead, jdbcType=VARCHAR}, #{profile,
 		jdbcType=VARCHAR},
 		#{firsttime, jdbcType=VARCHAR}, #{lasttime, jdbcType=VARCHAR}, #{status,
-		jdbcType=INTEGER}, #{ip, jdbcType=VARCHAR})
+		jdbcType=INTEGER}, #{ip, jdbcType=VARCHAR},#{realname,jdbcType=VARCHAR})
 	</insert>
 
 	<!-- 更新用户 -->
@@ -86,9 +86,6 @@
 			</if>
 			<if test="level !=null and level != ''">
 				level =#{level},
-			</if>
-			<if test="qq !=null">
-				qq = #{qq},
 			</if>
 			<if test="weixin!=null">
 				weixin = #{weixin},
@@ -151,11 +148,11 @@
 	<select id="findUserByUserid" resultType="com.glkj.webchat.pojo.User" >
 		SELECT
 		userid,password,nickname,profilehead,status,
-		level,qq,weixin,phone,
+		level,weixin,phone,
 		enter_status enterStatus,
 		invitation,remarks,
 		create_time createTime,
-		create_user createUser
+		create_user createUser,realname
 		FROM
 		user
 		WHERE
@@ -165,15 +162,15 @@
 	<!--插入高级用户-->
 	<insert id="insertSeniorMenber" parameterType="com.glkj.webchat.pojo.User">
 		INSERT INTO user(
-		userid,password,nickname,sex,age,profilehead,status,
-		level,qq,phone,weixin,
+		userid,realname,password,nickname,sex,age,profilehead,status,
+		level,phone,weixin,
 		enter_status,invitation,
-		create_time,create_user,email,profile)
+		create_time,create_user,profile)
 		VALUES(
-		#{userid},#{password},#{nickname},#{sex},#{age},#{profilehead},#{status},
-		#{level},#{qq},#{phone},#{weixin},
+		#{userid},#{realname},#{password},#{nickname},#{sex},#{age},#{profilehead},#{status},
+		#{level},#{phone},#{weixin},
 		#{enterStatus},#{invitation},
-		#{createTime},#{createUser},#{email},#{profile}
+		#{createTime},#{createUser},#{profile}
 		);
 	</insert>
 
@@ -207,7 +204,7 @@
 	<!--展示未归属用户信息-->
 	<select id="selectUserInfo" resultType="com.glkj.webchat.pojo.UserShow">
 		SELECT
-			userid,level,qq,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
+			userid,level,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
 		FROM
 			user
 		WHERE
@@ -216,7 +213,7 @@
 
 	<select id="selectUseShow" resultType="com.glkj.webchat.pojo.UserShow">
 		SELECT
-			userid,level,qq,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
+			userid,level,weixin,phone,enter_status,invitation,create_time createTime,create_user createUser
 		FROM
 			user
 		WHERE
@@ -226,7 +223,7 @@
 	<!--展示个人归属用户信息-->
 	<select id="selectPrivateUser" resultType="com.glkj.webchat.pojo.UserShow">
 		SELECT
-			userid,level,qq,weixin,remarks,phone,enter_status,invitation,create_time createTime,create_user createUser
+			userid,level,weixin,remarks,phone,enter_status,invitation,create_time createTime,create_user createUser
 		FROM
 			user
 		WHERE
