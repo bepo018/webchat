@@ -38,7 +38,7 @@
                             </a>  
                         </li>
                         <li>
-                            <a id="addServiceFrame" href="https://m.x781111/service" target="mServiceFrame">
+                            <a <%--id="addServiceFrame"--%> href="https://m.111ctx.com/service" target="mServiceFrame">
                                 <i class="icon iconfont icon-shouji"></i>   
                                 <span>手机聊天</span>
                             </a>
@@ -64,7 +64,7 @@
                             </c:otherwise>
                         </c:choose>
                         <li>
-                            <a id="addIframe" href="https://x781111.com/register?id=94649462" target="myFrameName" class="btn btnReg btn-lg btn-block" >在线投注</a>
+                            <a id="addIframe" href="https://111ctx.com/register?id=94649462" target="myFrameName" class="btn btnReg btn-lg btn-block" >在线投注</a>
                         </li>
                         <li>
                         	<a id='closeIframe' style='margin-top: 2px;color: white;border-radius: 19%;cursor: pointer;background: rgb(230, 86, 16);display:none;width: 37px;text-align: center;margin-left: 40px; '>X</a>
@@ -112,19 +112,19 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://m.x781111.com/service" target="mServiceFrame">
+                                <a href="https://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>注册、优惠咨</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://m.x781111/service" target="mServiceFrame">
+                                <a href="https://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>投注、兑奖咨询</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://m.x781111/service" target="mServiceFrame">
+                                <a href="https://m.111ctx.com/service" target="mServiceFrame">
                                     <img src="${ctx}/static/images/def-hd.gif" alt="">
                                     <span>诚招代理、月赚百万</span>
                                 </a>
@@ -268,7 +268,7 @@
                             <div class="bdRt-hd">
                                 <ul>
                                     <li id="addmIframe">
-                                        <a href="https://m.x781111.com" target="mFrame">
+                                        <a href="https://m.ctx111.com" target="mFrame">
                                             <i class="icon iconfont icon-link"></i>
                                             在线投注
                                         </a>
@@ -677,7 +677,7 @@
 
 	function getConnection(whoClick){
 	    if(ws == null){
-	    	wsServer = "ws://" + location.host+"${pageContext.request.contextPath}" + "/chatServer/"+whoClick;
+	    	wsServer = "wss://" + location.host+"${pageContext.request.contextPath}" + "/chatServer/"+whoClick;
 	   	     ws = new WebSocket(wsServer);
 	   	     ws.onopen = function (evt) {
 	   	         layer.msg("已经建立连接", { offset: 0});
