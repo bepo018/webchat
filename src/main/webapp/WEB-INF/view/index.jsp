@@ -677,7 +677,7 @@
 
 	function getConnection(whoClick){
 	    if(ws == null){
-	    	wsServer = "wss://" + location.host+"${pageContext.request.contextPath}" + "/chatServer/"+whoClick;
+	    	wsServer = "ws://" + location.host+"${pageContext.request.contextPath}" + "/chatServer/"+whoClick;
 	   	     ws = new WebSocket(wsServer);
 	   	     ws.onopen = function (evt) {
 	   	         layer.msg("已经建立连接", { offset: 0});

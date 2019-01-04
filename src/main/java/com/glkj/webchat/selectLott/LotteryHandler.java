@@ -113,6 +113,8 @@ public class LotteryHandler {
 		if(arr.length != 0) {
             JSONArray newlott = json.getJSONArray("data");
             Date date = JSONObject.parseObject(newlott.getString(0)).getDate("date");// * 1000;
+			if(date == null)
+				return true;
 			return date.getDay() < new Date().getDay();
 		}
 		return true;
@@ -139,6 +141,8 @@ public class LotteryHandler {
         if (arr.length == 0)
             return false;
         Date date = JSONObject.parseObject(json.getJSONArray("data").getString(0)).getDate("nextOpenTime");
+        if(date == null)
+        	return true;
 		long nexttime = date.getTime() + 120000L;
 		//获取系统当前时间的毫秒数
 		long systemTime = new Date().getTime();
