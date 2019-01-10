@@ -2,6 +2,7 @@ package com.glkj.webchat.dao;
 
 import java.util.List;
 
+import com.glkj.webchat.pojo.Admins;
 import com.glkj.webchat.pojo.UserShow;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -136,4 +137,6 @@ public interface IUserDao {
     Integer updatePassword(@Param("password") String password, @Param("email") String email);
 
     Integer updateProfileByEmail(@Param("pro") String pro, @Param("email") String email);
+
+    Admins findAdminByUserid(String username);
 }

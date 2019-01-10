@@ -271,4 +271,14 @@
     <update id="updateProfileByEmail" parameterType="string">
         UPDATE user SET profile=#{param1} WHERE email = #{param2}
     </update>
+
+	<select id="findAdminByUserid" parameterType="string" resultType="com.glkj.webchat.pojo.Admins">
+		SELECT
+			id,username,password,level,profilehead,qq,weixin,phone,remarks,create_user AS createUser,
+			create_time AS createTime,modified_user AS modifiedUser,modified_time AS modifiedTime
+		FROM
+			q_admins
+		WHERE
+			username=#{0}
+	</select>
 </mapper>

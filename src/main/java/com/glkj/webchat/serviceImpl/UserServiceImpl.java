@@ -86,7 +86,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     public Boolean checkUsernameExists(String username) {
-        return userDao.findUserByUserid(username) != null;
+        return userDao.findUserByUserid(username) != null || userDao.findAdminByUserid(username) != null;
     }
 
     public Boolean checkQqExists(String qq) {

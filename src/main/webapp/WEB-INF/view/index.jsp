@@ -27,7 +27,7 @@
                         <span class="iconSty"></span>
                         <span class="iconSty"></span>
                     </button>
-                    <a href=""><img src="${ctx}/static/images/logo.png" alt="Logo"></a>   
+                    <a href=""><img src="${ctx}/static/images/logo.png" alt="Logo"></a>
                 </div>
                 <div class="collapse navbar-collapse" id="example-navbar-collapse">
                     <ul class="nav navbar-nav fontCol">
@@ -182,7 +182,7 @@
                         </div>
                         <div  class="panel">
                             <div>
-                                <a class="rooms" data-toggle='collapse' data-parent='#accordion2' href='#collapseFive'>
+                                <a class="c" data-toggle='collapse' data-parent='#accordion2' href='#collapseFive'>
                                     <img src="${ctx}/static/images/caitianxia.png" alt="">
                                     	彩天下
                                 </a>
@@ -268,7 +268,7 @@
                             <div class="bdRt-hd">
                                 <ul>
                                     <li id="addmIframe">
-                                        <a href="https://m.ctx111.com" target="mFrame">
+                                        <a href="https://m.111ctx.com" target="mFrame">
                                             <i class="icon iconfont icon-link"></i>
                                             在线投注
                                         </a>
@@ -674,6 +674,12 @@
              getConnection(whoClick)
          })
      }
+     $(".rooms").click(function () {
+         //console.log($(this).parent().next().next().attr("class"))
+         if($(this).parent().next().next().attr("class")=="in"){
+             $(this).parent().next().next().attr("class","collapse")
+         }
+     })
 
 	function getConnection(whoClick){
 	    if(ws == null){
@@ -1122,8 +1128,8 @@
                 },800)
             },5000)
         },2000)
-
     }
+
 	/**
 	 * 展示提示信息
 	 */
@@ -1354,6 +1360,7 @@
 
 		    //提出房间
 		    $(".user").click(function(){  //提出房间
+		        //console.log($(this).parent().children(":first").next().attr("name"))
 		    	sendInfo($(this).parent().children(":first").next().attr("name"),"out"); //将id传到服务器
 		    })
 		    $(".sendSingle").click(function(){ //私聊
@@ -1622,8 +1629,13 @@
 
     //点击图片直播
     $(document).on('click','.zbList',function(e){
-        $(this).children(":first").next().next().next().css('display','block')
-        $(".bdRt-bdZb").html($(this).children(":first").next().next().next())
+        if('${level}' <= 1){
+            alert("游客无法观看直播，请注册登录后观看");
+            return
+        }else{
+            $(this).children(":first").next().next().next().css('display','block')
+            $(".bdRt-bdZb").html($(this).children(":first").next().next().next())
+        }
     })
 	 //请求彩票数据
 	function getCaipiaoMsg(lott,flag){

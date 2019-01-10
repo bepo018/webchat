@@ -139,15 +139,6 @@ public class ChatServer {
 		JSONObject message = JSON.parseObject(chat.get("message").toString());
         String msg = message.getString("content");
 
-        if(RegexValidator.isURI(msg) || RegexValidator.isURL(msg)){
-            singleSend(getMessage("禁止发送网址信息", "warning"), ROOMS.get(roomName).get(message.get("from")));
-            return;
-        }else if (RegexValidator.isIndex(msg)){
-            singleSend(getMessage("禁止发送敏感信息", "warning"), ROOMS.get(roomName).get(message.get("from")));
-            return;
-		}
-
-
 		// 如果to为空,则广播;如果不为空,则对指定的用户发送消息
 		if ("out".equals(chat.get("type").toString())) {
 			String admin = message.get("from").toString();
@@ -166,6 +157,15 @@ public class ChatServer {
 					ROOMS.get(roomName).get(message.get("to")));
 			return;
 		}
+
+		if(RegexValidator.isURI(msg) || RegexValidator.isURL(msg)){
+			singleSend(getMessage("禁止发送网址信息", "warning"), ROOMS.get(roomName).get(message.get("from")));
+			return;
+		}else if (RegexValidator.isIndex(msg)){
+			singleSend(getMessage("禁止发送敏感信息", "warning"), ROOMS.get(roomName).get(message.get("from")));
+			return;
+		}
+
 		if (message.get("to") == null || message.get("to").equals("")) {
 			broadcast(roomName, _message);
 		} else {
