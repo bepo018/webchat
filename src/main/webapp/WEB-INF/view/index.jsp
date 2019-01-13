@@ -683,7 +683,7 @@
 
 	function getConnection(whoClick){
 	    if(ws == null){
-	    	wsServer = "wss://" + location.host+"${pageContext.request.contextPath}" + "/chatServer/"+whoClick;
+	    	wsServer = "ws://" + location.host+"${pageContext.request.contextPath}" + "/chatServer/"+whoClick;
 	   	     ws = new WebSocket(wsServer);
 	   	     ws.onopen = function (evt) {
 	   	         layer.msg("已经建立连接", { offset: 0});
@@ -1646,7 +1646,11 @@
 		         beforeSend:function(XMLHttpRequest){
 		        	 $(".plan-win").html("<div class='planinfo'><span>开奖中<span></div><img src='${ctx}/static/images/load.gif' style='width:50%;'><img src='${ctx}/static/images/load.gif' style='width:50%;'>")
 		         },
+                 error:function(err){
+                     console.log(err);
+                 },
 	             success: function (data) {
+				     console.log("瓦莉拉");
 	            	 var mId="";
 	            	 var sId="";
 	            	 var trueTime=data.time + 120000;  //正常开奖时间延时120秒

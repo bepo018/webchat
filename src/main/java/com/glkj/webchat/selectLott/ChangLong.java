@@ -41,7 +41,7 @@ public class ChangLong {
 		try {
 			do {
 				
-				String uri ="http://api.jiekouapi.com:7373/hall/trendService/getRoadBeads?lotKey="+urlStr+"&uid=330&date=&time=1540179556&md5=f7ab80d949a4e60bcd1590c31060b6d4&site=www.caipiaoapi.com";
+				String uri ="http://line6.caipiaoapi.com:7373/hall/trendService/getRoadBeads?lotKey="+urlStr+"&uid=330&date=&time=1540179556&md5=f7ab80d949a4e60bcd1590c31060b6d4&site=www.caipiaoapi.com";
 				url = new URL(uri);
 				conn = url.openConnection();
 				in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
